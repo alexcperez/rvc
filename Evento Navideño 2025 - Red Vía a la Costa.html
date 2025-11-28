@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento Navideño 2025 | Red Vía a la Costa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: white;
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Cronograma Styles */
+        .timeline-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-preview {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .timeline-icon {
+            font-size: 3rem;
+            color: #1a2a6c;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-preview-text {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .view-timeline-btn {
+            background: #1a2a6c;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            font-size: 1rem;
+        }
+        
+        .view-timeline-btn:hover {
+            background: #0d1a4d;
+            transform: translateY(-2px);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            color: #1a2a6c;
+        }
+        
+        .close-btn {
+            background: #b21f1f;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .close-btn:hover {
+            background: #8a1919;
+            transform: rotate(90deg);
+        }
+        
+        .timeline-content {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .timeline-event {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .event-time {
+            font-weight: bold;
+            color: #1a2a6c;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .event-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #b21f1f;
+            font-size: 1.2rem;
+        }
+        
+        .event-details {
+            margin-bottom: 8px;
+        }
+        
+        .event-responsible {
+            font-style: italic;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .event-icon {
+            margin-right: 10px;
+            color: #fdbb2d;
+        }
+        
+        /* Comisiones Grid */
+        .commissions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .commission-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .commission-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .commission-preview {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .commission-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1a2a6c;
+        }
+        
+        .commission-description {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .commission-members {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .view-commission-btn {
+            background: #1a2a6c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .view-commission-btn:hover {
+            background: #0d1a4d;
+            transform: translateY(-2px);
+        }
+        
+        /* Commission Modal */
+        .commission-modal-content {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .commission-details {
+            margin-bottom: 20px;
+        }
+        
+        .commission-full-description {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .functions-list {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        .function-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .function-item:last-child {
+            border-bottom: none;
+        }
+        
+        .function-icon {
+            margin-right: 15px;
+            color: #fdbb2d;
+            font-size: 1.2rem;
+            min-width: 24px;
+            margin-top: 2px;
+        }
+        
+        /* Scrollbar personalizado */
+        .timeline-content::-webkit-scrollbar,
+        .commission-modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .timeline-content::-webkit-scrollbar-track,
+        .commission-modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        
+        .timeline-content::-webkit-scrollbar-thumb,
+        .commission-modal-content::-webkit-scrollbar-thumb {
+            background: #fdbb2d;
+            border-radius: 3px;
+        }
+        
+        .timeline-content::-webkit-scrollbar-thumb:hover,
+        .commission-modal-content::-webkit-scrollbar-thumb:hover {
+            background: #e6a917;
+        }
+        
+        @media (max-width: 768px) {
+            .commissions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Evento Navideño 2025 | Red Vía a la Costa</h1>
+            <p class="subtitle">Una noche para reír, agradecer, compartir y celebrar juntos el verdadero motivo de la Navidad: Jesús</p>
+        </header>
+        
+        <!-- Cronograma Section -->
+        <div class="timeline-container" id="timelineContainer">
+            <div class="timeline-preview">
+                <div class="timeline-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="timeline-preview-text">
+                    <p><strong>Viernes, 5 de diciembre de 2025</strong></p>
+                    <p>Casa Familia Delgado Valladares</p>
+                    <p>Hora: 8:00 p.m.</p>
+                </div>
+                <button class="view-timeline-btn" id="viewTimelineBtn">Ver Cronograma Completo</button>
+            </div>
+        </div>
+        
+        <!-- Comisiones Section -->
+        <h2 class="section-title">Comisiones del Evento</h2>
+        <div class="commissions-grid" id="commissionsGrid">
+            <!-- Las comisiones se generarán con JavaScript -->
+        </div>
+        
+        <!-- Modal del Cronograma -->
+        <div class="modal" id="timelineModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">CRONOGRAMA OFICIAL – CELEBRACIÓN NAVIDEÑA</h2>
+                    <button class="close-btn" id="closeTimelineModal">&times;</button>
+                </div>
+                <div class="timeline-content" id="timelineContent">
+                    <!-- El contenido del cronograma se generará con JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal de Comisiones -->
+        <div class="modal" id="commissionModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="commissionModalTitle">Comisión</h2>
+                    <button class="close-btn" id="closeCommissionModal">&times;</button>
+                </div>
+                <div class="commission-modal-content" id="commissionModalContent">
+                    <!-- El contenido de la comisión se generará con JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de las comisiones
+        const commissions = [
+            {
+                id: "hormigas",
+                name: "Las Hormigas",
+                description: "Organización de mesas y asignación de familias",
+                fullDescription: "Esta comisión se enfoca en organizar el espacio físico para que las familias se sientan cómodas y ubicadas desde el inicio.",
+                members: "Priscila, Marcela, Bito",
+                functions: [
+                    "Recibir el listado completo de familias asistentes, incluyendo el número exacto de personas por familia, proporcionado por la Comisión de 'Los Inspectores' Confirmación y asistencia.",
+                    "Planificar la distribución de mesas con anticipación, considerando el total de asistentes y el espacio disponible en el lugar del evento.",
+                    "Asignar mesas específicas a cada familia, priorizando grupos grandes en mesas completas y agrupando familias pequeñas (de 2 o 3 personas) con otras similares para optimizar el uso de espacio y fomentar interacciones.",
+                    "Colocar carteles o etiquetas con los nombres de las familias en cada mesa para indicar claramente las ubicaciones y evitar confusiones al ingreso.",
+                    "Verificar que las asignaciones sean equilibradas, asegurando que no haya mesas sobrecargadas o subutilizadas, y ajustando si surgen cambios de última hora en las confirmaciones.",
+                    "Coordinar con la Comisión de 'Los Elfos' Decoración y ambiente visual para que las mesas estén listas antes de colocar las etiquetas, integrando la decoración en el proceso.",
+                    "Durante el evento, asistir brevemente en la bienvenida si es necesario, guiando a familias rezagadas a sus mesas asignadas.",
+                    "Al final del evento, ayudar en la recolección de etiquetas y mesas para facilitar la limpieza, asegurando que todo quede ordenado.",
+                    "Consultar en el INAMHI el pronóstico del tiempo para el 5 de diciembre, especialmente las probabilidades de lluvia, para definir cómo prepararnos."
+                ],
+                color: "#1a2a6c"
+            },
+            {
+                id: "elfos",
+                name: "Los Elfos",
+                description: "Decoración y ambiente visual",
+                fullDescription: "Esta comisión transforma el espacio en un ambiente festivo, iluminando el lugar con elementos navideños o fiesta.",
+                members: "Alfredo, María, Lucy, Joffre, Marcela",
+                functions: [
+                    "Preparar el ambiente general con luces navideñas, un árbol de Navidad (opcional) y otros adornos temáticos para crear una atmósfera alegre y acogedora.",
+                    "Seleccionar y colocar una frase bíblica prominente, como 'Nos ha nacido un Salvador' (Lucas 2:11), en un lugar visible para reforzar el mensaje espiritual del evento.",
+                    "Crear un área dedicada para fotos familiares, decorándola con elementos navideños que inviten a posar, como guirnaldas o fondos temáticos.",
+                    "(Opcional) Buscar y obtener una cámara Polaroid (o similar) para capturar fotos instantáneas y entregarlas como obsequio a las familias durante el evento.",
+                    "Coordinar con la Comisión 'Las Hormigas' Organización de mesas y asignación de familias para integrar la decoración en las mesas, como centros de mesa simples o luces suaves.",
+                    "Verificar la iluminación y los adornos con anticipación para asegurar que todo funcione (por ejemplo, probar luces y baterías) y evitar problemas técnicos.",
+                    "Durante el evento, monitorear que la decoración se mantenga intacta, ajustando si algo se desordena (como luces que se apagan).",
+                    "Al finalizar, desmontar los adornos de manera organizada, guardando elementos reutilizables para futuros eventos."
+                ],
+                color: "#b21f1f"
+            },
+            {
+                id: "duendes",
+                name: "Los Duendes",
+                description: "Alimentos",
+                fullDescription: "Esta comisión maneja la logística de la comida, asegurando que la cena sea un momento compartido y fluido, distribuyendo con rapidez y encanto.",
+                members: "Yesenia, Carlos, Daniel",
+                functions: [
+                    "Coordinar la preparación y adquisición de los alimentos para la cena, basándose en el número de asistentes confirmado por la Comisión 'Los Inspectores' Confirmación y asistencia.",
+                    "Organizar la repartición de bocaditos (si es que hay).",
+                    "Durante la cena principal, distribuir los alimentos de manera ordenada, asegurando porciones equitativas y atendiendo a todas las mesas eficientemente.",
+                    "Cuidar la presentación y decoración de las mesas durante la cena, integrando elementos como servilletas temáticas o arreglos simples para mantener el ambiente festivo.",
+                    "Coordinar con la Comisión 'Los Trotamúsicos' Música y ambientación general para que haya música de fondo suave durante la cena, sin interrupciones.",
+                    "Al final de la cena, asistir en la recolección de platos y residuos para facilitar la transición a las actividades siguientes."
+                ],
+                color: "#fdbb2d"
+            },
+            {
+                id: "trotamusicos",
+                name: "Los Trotamúsicos",
+                description: "Música y ambientación general",
+                fullDescription: "Esta comisión ambienta el evento con sonidos celestiales, manejando la música de fondo y los momentos musicales para elevar el espíritu navideño.",
+                members: "David, Priscilla",
+                functions: [
+                    "Seleccionar y preparar música navideña cristiana alegre para el fondo durante la bienvenida y otras secciones, usando playlists como la sugerida.",
+                    "Obtener y configurar equipos como parlantes (proporcionado por Carlitos) y pendrives para evitar problemas de conexión a internet.",
+                    "Durante el momento musical principal, interpretar un popurrí de coritos cristianos, proyectando las letras para que todos participen.",
+                    "Proporcionar música suave de fondo durante la lectura bíblica, la cena y otras secciones, ajustando el volumen para no interferir con las conversaciones.",
+                    "Actuar como músicos en vivo para los coros, asegurando que el repertorio sea variado.",
+                    "Coordinar con la Comisión 'Los Presenta Show' Moderación y conducción del evento para sincronizar la música con el flujo del cronograma, pausando o iniciando según sea necesario.",
+                    "Verificar el equipo técnico con antelación (pruebas de sonido) y tener planes de contingencia, como música pregrabada si falla algo.",
+                    "Al final, desmontar los equipos."
+                ],
+                color: "#1a2a6c"
+            },
+            {
+                id: "inspectores",
+                name: "Los Inspectores",
+                description: "Confirmación y asistencia",
+                fullDescription: "Esta comisión reúne al 'rebaño' confirmando presencias y motivando la participación, asegurando que todos se sientan invitados y comprometidos.",
+                members: "Esperanza, Mirian",
+                functions: [
+                    "Llamar o contactar a todas las personas invitadas para confirmar su asistencia, registrando respuestas de manera organizada.",
+                    "Elaborar un listado detallado por familia, incluyendo el número exacto de integrantes, y compartirlo con la Comisión de Distribución de Mesas y la Comisión de la Cena.",
+                    "Motivar a los asistentes confirmados a realizar la transferencia de dinero para la comida, explicando cómo contribuye al evento y recordándoles los detalles de pago a la Comisión 'Los Duendes' Alimentos.",
+                    "Manejar actualizaciones de última hora, como cancelaciones o adiciones, y notificar a las comisiones relevantes para ajustes."
+                ],
+                color: "#b21f1f"
+            },
+            {
+                id: "presentashow",
+                name: "Los Presenta Show",
+                description: "Moderación y conducción del evento",
+                fullDescription: "Esta comisión dirige el flujo del evento como guías sabios, manteniendo el orden con un toque divertido y relajado, sin ser solemnes ni vulgares, para que todo fluya con alegría natural.",
+                members: "Fiorella, Adrián, Víctor",
+                functions: [
+                    "Apoyar a 'La Estrella Polar' Directora del Cronograma en supervisar que cada sección del programa se inicie y termine a tiempo, sin ser metódicos o rígidos.",
+                    "Anunciar transiciones entre actividades de manera ligera y entretenida, incorporando toques de humor navideño para mantener el ambiente alegre (por ejemplo, chistes suaves sobre la Navidad).",
+                    "Interactuar con los participantes durante el evento para fomentar la participación.",
+                    "Resolver imprevistos menores (como retrasos cortos) con creatividad y positividad, evitando un tono solemne como en una iglesia formal.",
+                    "Coordinar con otras comisiones para asegurar sincronía, como señalando a la Comisión 'Los Trotamúsicos' Música y ambientación cuándo empezar o pausar.",
+                    "Monitorear el ambiente general, ajustando el ritmo si el grupo parece aburrido, con intervenciones divertidas pero respetuosas (nada relajoso o vulgar).",
+                    "Al final del evento, ayudar en el cierre suave, agradeciendo a todos con un toque de calidez y humor."
+                ],
+                color: "#fdbb2d"
+            },
+            {
+                id: "estrellapolar",
+                name: "La Estrella Polar",
+                description: "Directora del Cronograma",
+                fullDescription: "Este rol guía todo el evento como una estrella brillante, supervisando el cumplimiento general con liderazgo central.",
+                members: "Andreina, Mirian",
+                functions: [
+                    "Revisar el cronograma completo con antelación, asegurando que todas las comisiones estén alineadas y preparadas.",
+                    "Supervisar durante el evento que cada sección (desde la bienvenida hasta las fotos) se cumpla en secuencia, coordinando con los moderadores para ajustes.",
+                    "Resolver imprevistos mayores, como cambios en el horario o problemas técnicos, manteniendo la calma y el enfoque en la celebración.",
+                    "Comunicar con las comisiones en tiempo real para confirmar avances, usando señales discretas o reuniones breves si es necesario.",
+                    "Asegurar que el tema espiritual (celebrar a Jesús) se integre en todo, recordando a los responsables cuando sea relevante.",
+                    "Monitorear el tiempo total para que el evento no se extienda innecesariamente, priorizando momentos clave como la cena y la reflexión."
+                ],
+                color: "#1a2a6c"
+            },
+            {
+                id: "guachimanes",
+                name: "Los Guachimanes",
+                description: "Parqueo",
+                fullDescription: "Esta comisión se encarga de orientar con amabilidad a los hermanos e invitados sobre los lugares adecuados donde pueden estacionar, cuidando que el acceso a las casas vecinas y al espacio del evento se mantenga libre y seguro.",
+                members: "Alex, Cristian, Ilter",
+                functions: [
+                    "Recibir a los invitados y sugerir los espacios más convenientes para estacionar (veredas, calles o zonas libres permitidas).",
+                    "Asegurar que los vehículos queden bien ubicados, sin bloquear el paso de otros autos ni entradas de viviendas.",
+                    "Verificar que no se usen espacios reservados o pertenecientes a los dueños de casa.",
+                    "Mantener la comunicación entre los miembros de la comisión para orientar a los vehículos conforme lleguen más invitados.",
+                    "Ofrecer una bienvenida cálida y alegre, marcando el inicio de la experiencia festiva desde el momento en que los invitados llegan."
+                ],
+                color: "#b21f1f"
+            }
+        ];
+
+        // Datos del cronograma
+        const timelineEvents = [
+            {
+                time: "8:00 p.m. – 8:30 p.m. | 30 minutos",
+                title: "Bienvenida alegre y ambiente navideño",
+                details: [
+                    "Ambientación musical: Playlist navideña alegre (Responsable: David).",
+                    "Recepción: Priscilla e hijos reciben con sonrisas, cariño y asignación de mesas.",
+                    "Bocaditos iniciales: Chocolate caliente, galletas y ponche."
+                ],
+                responsible: "Responsables: Comisión de comida – Yesenia, Daniel, Carlitos."
+            },
+            {
+                time: "8:30 p.m. – 8:35 p.m. | 5 minutos",
+                title: "Oración de gratitud y apertura",
+                details: [
+                    "Oración inicial por la familia anfitriona y por la unidad del grupo.",
+                    "Acción de gracias por la vida, la amistad y la salvación en Cristo."
+                ],
+                responsible: ""
+            },
+            {
+                time: "8:35 p.m. – 8:40 p.m. | 5 minutos",
+                title: "Lectura bíblica especial",
+                details: [
+                    "Responsable: Comisión Presenta Show.",
+                    "Pasaje sugerido: Lucas 2:10–14.",
+                    "Lectura con entusiasmo y música suave de fondo."
+                ],
+                responsible: ""
+            },
+            {
+                time: "8:40 p.m. – 9:20 p.m. | 40 minutos",
+                title: "Momento musical especial",
+                details: [
+                    "Responsables: David & Priscilla.",
+                    "Popurrí de coritos navideños.",
+                    "Letras proyectadas y sonido preparado con anticipación."
+                ],
+                responsible: ""
+            },
+            {
+                time: "9:20 p.m. – 9:40 p.m. | 20 minutos",
+                title: "Dinámicas divertidas",
+                details: [
+                    "Responsables: Alex & Betzabeth.",
+                    "Juegos breves, alegres y participativos para romper el hielo y reír juntos."
+                ],
+                responsible: ""
+            },
+            {
+                time: "9:40 p.m. – 10:00 p.m. | 20 minutos",
+                title: "✝️ Momento de reflexión",
+                details: [
+                    "Responsable: Ángel Manzo.",
+                    "Breve mensaje sobre el verdadero significado de la Navidad."
+                ],
+                responsible: ""
+            },
+            {
+                time: "10:00 p.m. – 10:40 p.m. | 40 minutos",
+                title: "Cena compartida & Brindis",
+                details: [
+                    "Responsables de comida: Yesenia, Daniel y Carlos.",
+                    "Cuidado de la presentación y decoración de mesas.",
+                    "Música suave de fondo (Responsable: David).",
+                    "Brindis especial: a cargo de Jofre, dando gracias por el año."
+                ],
+                responsible: ""
+            },
+            {
+                time: "10:40 p.m. – 10:45 p.m. | 5 minutos",
+                title: "Agradecimientos",
+                details: [
+                    "Responsables: Carlos y Tammy.",
+                    "Palabras finales de gratitud a los participantes y anfitriones."
+                ],
+                responsible: ""
+            },
+            {
+                time: "10:45 p.m. – 10:50 p.m. | 5 minutos",
+                title: "Oración de despedida",
+                details: [
+                    "Responsable: Xavier.",
+                    "Bendición final y envío."
+                ],
+                responsible: ""
+            },
+            {
+                time: "Durante toda la noche | Foto grupal al final",
+                title: "Fotos navideñas de recuerdo",
+                details: [
+                    "Responsables: Marcela & Daniel.",
+                    "Photobooth con frases como:",
+                    "  • 'Navidad con propósito'",
+                    "  • 'Dios con nosotros'", 
+                    "  • 'Familia en Cristo'",
+                    "Fotos por familias y foto grupal para cerrar la noche."
+                ],
+                responsible: ""
+            }
+        ];
+
+        // Función para generar las comisiones en la cuadrícula
+        function generateCommissionsGrid() {
+            const container = document.getElementById('commissionsGrid');
+            
+            commissions.forEach(commission => {
+                const commissionItem = document.createElement('div');
+                commissionItem.className = 'commission-item';
+                commissionItem.dataset.id = commission.id;
+                
+                commissionItem.innerHTML = `
+                    <div class="commission-preview">
+                        <div class="commission-name">${commission.name}</div>
+                        <div class="commission-description">${commission.description}</div>
+                        <div class="commission-members">
+                            <strong>Integrantes:</strong> ${commission.members}
+                        </div>
+                        <button class="view-commission-btn" data-id="${commission.id}">Ver Funciones</button>
+                    </div>
+                `;
+                
+                container.appendChild(commissionItem);
+                
+                // Añadir evento al botón "Ver Funciones"
+                const viewButton = commissionItem.querySelector('.view-commission-btn');
+                viewButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openCommissionModal(commission.id);
+                });
+                
+                // Añadir evento a la tarjeta completa
+                commissionItem.addEventListener('click', () => {
+                    openCommissionModal(commission.id);
+                });
+            });
+        }
+
+        // Función para generar el contenido del cronograma
+        function generateTimelineContent() {
+            const container = document.getElementById('timelineContent');
+            
+            timelineEvents.forEach(event => {
+                const eventElement = document.createElement('div');
+                eventElement.className = 'timeline-event';
+                
+                eventElement.innerHTML = `
+                    <div class="event-time">${event.time}</div>
+                    <div class="event-title">${event.title}</div>
+                    <div class="event-details">
+                        ${event.details.map(detail => `
+                            <div><i class="fas fa-circle event-icon" style="font-size: 0.5rem;"></i>${detail}</div>
+                        `).join('')}
+                    </div>
+                    ${event.responsible ? `<div class="event-responsible">${event.responsible}</div>` : ''}
+                `;
+                
+                container.appendChild(eventElement);
+            });
+        }
+
+        // Función para abrir el modal del cronograma
+        function openTimelineModal() {
+            document.getElementById('timelineModal').style.display = 'block';
+        }
+
+        // Función para cerrar el modal del cronograma
+        function closeTimelineModal() {
+            document.getElementById('timelineModal').style.display = 'none';
+        }
+
+        // Función para abrir el modal de una comisión
+        function openCommissionModal(commissionId) {
+            const commission = commissions.find(c => c.id === commissionId);
+            const modalTitle = document.getElementById('commissionModalTitle');
+            const modalContent = document.getElementById('commissionModalContent');
+            
+            modalTitle.textContent = commission.name;
+            
+            modalContent.innerHTML = `
+                <div class="commission-details">
+                    <p class="commission-full-description">${commission.fullDescription}</p>
+                    <div class="commission-members" style="margin-bottom: 20px;">
+                        <strong>Integrantes:</strong> ${commission.members}
+                    </div>
+                </div>
+                <h3 style="margin-bottom: 15px; color: ${commission.color}">Funciones:</h3>
+                <ul class="functions-list">
+                    ${commission.functions.map(func => `
+                        <li class="function-item">
+                            <span class="function-icon">✓</span>
+                            <span>${func}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            
+            document.getElementById('commissionModal').style.display = 'block';
+        }
+
+        // Función para cerrar el modal de comisiones
+        function closeCommissionModal() {
+            document.getElementById('commissionModal').style.display = 'none';
+        }
+
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', () => {
+            generateCommissionsGrid();
+            generateTimelineContent();
+            
+            // Eventos para el cronograma
+            document.getElementById('viewTimelineBtn').addEventListener('click', openTimelineModal);
+            document.getElementById('closeTimelineModal').addEventListener('click', closeTimelineModal);
+            document.getElementById('timelineContainer').addEventListener('click', openTimelineModal);
+            
+            // Eventos para las comisiones
+            document.getElementById('closeCommissionModal').addEventListener('click', closeCommissionModal);
+            
+            // Cerrar modales al hacer clic fuera del contenido
+            window.addEventListener('click', (e) => {
+                if (e.target === document.getElementById('timelineModal')) {
+                    closeTimelineModal();
+                }
+                if (e.target === document.getElementById('commissionModal')) {
+                    closeCommissionModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
