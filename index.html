@@ -364,7 +364,7 @@
                 </div>
                 <div class="timeline-preview-text">
                     <p><strong>Viernes, 5 de diciembre de 2025</strong></p>
-                    <p>Casa Familia Delgado Valladares</p>
+                    <p>Casa Familia Delgado Balladares</p>
                     <p>Hora: 8:00 p.m.</p>
                 </div>
                 <button class="view-timeline-btn" id="viewTimelineBtn">Ver Cronograma Completo</button>
@@ -405,7 +405,7 @@
     </div>
 
     <script>
-        // Datos de las comisiones
+        // Datos de las comisiones (MANTENIDO SIN CAMBIOS)
         const commissions = [
             {
                 id: "hormigas",
@@ -542,108 +542,125 @@
             }
         ];
 
-        // Datos del cronograma
+        // ============ NUEVO CRONOGRAMA ACTUALIZADO ============
         const timelineEvents = [
             {
                 time: "8:00 p.m. – 8:30 p.m. | 30 minutos",
-                title: "Bienvenida alegre y ambiente navideño",
+                title: "✨ Bienvenida alegre y ambiente navideño",
                 details: [
-                    "Ambientación musical: Playlist navideña alegre (Responsable: David).",
-                    "Recepción: Priscilla e hijos reciben con sonrisas, cariño y asignación de mesas.",
-                    "Bocaditos iniciales: Chocolate caliente, galletas y ponche."
+                    "Ambientación musical: Reproduce música navideña alegre de fondo (responsable: David).",
+                    "Bienvenida e ingreso: Saluda a los invitados con sonrisas y emoción (responsables: Priscilla e hijos).",
+                    "Asigna puestos en las mesas, permitiendo que se muevan para saludar, pero enfatizando que no cambien de lugar asignado.",
+                    "Bocaditos iniciales: Ofrece chocolate caliente, galletas navideñas o ponche al llegar (coordinado por la comisión de comida: Yesenia, Daniel, Carlitos)."
                 ],
-                responsible: "Responsables: Comisión de comida – Yesenia, Daniel, Carlitos."
+                responsible: "Sugerencia playlist: https://www.youtube.com/watch?v=5tXht-NGmc0&list=RD5tXht-NGmc0&start_radio=1"
             },
             {
                 time: "8:30 p.m. – 8:35 p.m. | 5 minutos",
-                title: "Oración de gratitud y apertura",
+                title: "🎶 Especial música 1",
                 details: [
-                    "Oración inicial por la familia anfitriona y por la unidad del grupo.",
-                    "Acción de gracias por la vida, la amistad y la salvación en Cristo."
+                    "Interpretación con instrumento musical."
                 ],
-                responsible: ""
+                responsible: "Responsable: Isaac Delgado Balladares"
             },
             {
                 time: "8:35 p.m. – 8:40 p.m. | 5 minutos",
-                title: "Lectura bíblica especial",
+                title: "🙏 Oración de gratitud y alegría",
                 details: [
-                    "Responsable: Comisión Presenta Show.",
-                    "Pasaje sugerido: Lucas 2:10–14.",
-                    "Lectura con entusiasmo y música suave de fondo."
+                    "Bienvenida y oración de apertura.",
+                    "Familia Delgado Balladares (por abrir su casa y servir esa noche).",
+                    "Dar gracias por la vida, la amistad y la salvación en Jesús."
                 ],
-                responsible: ""
+                responsible: "Responsable: Familia Delgado Balladares"
             },
             {
-                time: "8:40 p.m. – 9:20 p.m. | 40 minutos",
-                title: "Momento musical especial",
+                time: "8:40 p.m. – 8:45 p.m. | 5 minutos",
+                title: "📖 Lectura bíblica",
                 details: [
-                    "Responsables: David & Priscilla.",
-                    "Popurrí de coritos navideños.",
-                    "Letras proyectadas y sonido preparado con anticipación."
+                    "Pasaje clave, como Lucas 2:10–14.",
+                    "Lea con entusiasmo, con música suave de fondo."
                 ],
-                responsible: ""
+                responsible: "Responsable: alguien de la comisión de Presenta Show"
             },
             {
-                time: "9:20 p.m. – 9:40 p.m. | 20 minutos",
-                title: "Dinámicas divertidas",
+                time: "8:45 p.m. – 9:00 p.m. | 15 minutos",
+                title: "🎶 Momento musical PARTE 1",
                 details: [
-                    "Responsables: Alex & Betzabeth.",
-                    "Juegos breves, alegres y participativos para romper el hielo y reír juntos."
+                    "Interpreta un popurrí de coritos.",
+                    "Proyecta las letras de las canciones y prepara los equipos musicales."
                 ],
-                responsible: ""
+                responsible: "Responsables: David, Priscilla"
             },
             {
-                time: "9:40 p.m. – 10:00 p.m. | 20 minutos",
+                time: "9:00 p.m. – 9:15 p.m. | 15 minutos",
+                title: "😄 Dinámicas",
+                details: [
+                    "Realiza actividades divertidas."
+                ],
+                responsible: "Responsables: Alex, Betzabeth"
+            },
+            {
+                time: "9:15 p.m. – 9:20 p.m. | 5 minutos",
+                title: "🎶 Especial música 2",
+                details: [
+                    "Interpretación navideña."
+                ],
+                responsible: "Responsables: Jonathan y Dayanara"
+            },
+            {
+                time: "9:20 p.m. – 9:35 p.m. | 15 minutos",
+                title: "🎶 Momento musical PARTE 2",
+                details: [
+                    "Música Navideña; continúa de corrido después del especial de Jonathan y Dayanara.",
+                    "Se suman David y Priscila."
+                ],
+                responsible: "Responsables: David, Priscila, Jonathan, Dayanara"
+            },
+            {
+                time: "9:35 p.m. – 9:55 p.m. | 20 minutos",
                 title: "✝️ Momento de reflexión",
                 details: [
-                    "Responsable: Ángel Manzo.",
-                    "Breve mensaje sobre el verdadero significado de la Navidad."
+                    "Dedica un tiempo breve para una reflexión espiritual sobre el significado de la Navidad."
                 ],
-                responsible: ""
+                responsible: "Responsable: Angel Manzo"
             },
             {
                 time: "10:00 p.m. – 10:40 p.m. | 40 minutos",
-                title: "Cena compartida & Brindis",
+                title: "🍽️ Cena compartida",
                 details: [
-                    "Responsables de comida: Yesenia, Daniel y Carlos.",
-                    "Cuidado de la presentación y decoración de mesas.",
-                    "Música suave de fondo (Responsable: David).",
-                    "Brindis especial: a cargo de Jofre, dando gracias por el año."
+                    "Coordina la distribución de alimentos, cuidando la decoración de las mesas.",
+                    "Mantén música de fondo suave.",
+                    "Brindis: Dar gracias por las bendiciones del año."
                 ],
-                responsible: ""
+                responsible: "Responsables: Yesenia, Daniel, Carlos (comida), David (música), Jofre (brindis)"
             },
             {
                 time: "10:40 p.m. – 10:45 p.m. | 5 minutos",
-                title: "Agradecimientos",
+                title: "🎉 Agradecimiento",
                 details: [
-                    "Responsables: Carlos y Tammy.",
-                    "Palabras finales de gratitud a los participantes y anfitriones."
+                    "Palabras de agradecimiento a todos los participantes."
                 ],
-                responsible: ""
+                responsible: "Responsables: Carlos y Tammy"
             },
             {
                 time: "10:45 p.m. – 10:50 p.m. | 5 minutos",
-                title: "Oración de despedida",
+                title: "🎉 Oración de despedida",
                 details: [
-                    "Responsable: Xavier.",
-                    "Bendición final y envío."
+                    "Cierra con una oración breve de bendición y despedida."
                 ],
-                responsible: ""
+                responsible: "Responsable: Xavier"
             },
             {
-                time: "Durante toda la noche | Foto grupal al final",
-                title: "Fotos navideñas de recuerdo",
+                time: "Al finalizar todas las actividades",
+                title: "📸 Fotos navideñas de recuerdo",
                 details: [
-                    "Responsables: Marcela & Daniel.",
-                    "Photobooth con frases como:",
-                    "  • 'Navidad con propósito'",
-                    "  • 'Dios con nosotros'", 
-                    "  • 'Familia en Cristo'",
-                    "Fotos por familias y foto grupal para cerrar la noche."
+                    "Crea un photobooth con frases como 'Navidad con propósito' o 'Dios con nosotros'.",
+                    "Toma fotos familiares y una grupal al final."
                 ],
-                responsible: ""
+                responsible: "Responsable: Marcela y Daniel para la foto grupal | Duración flexible: Lo que se lleve"
             }
         ];
+        // ============ FIN DEL NUEVO CRONOGRAMA ============
 
         // Función para generar las comisiones en la cuadrícula
         function generateCommissionsGrid() {
