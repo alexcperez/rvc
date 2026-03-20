@@ -3,634 +3,495 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Dinámicas para Redes en Casa</title>
+    <title>Diagnóstico Voluntariado · Familia de Dios 2026</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Arial', sans-serif;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
         }
-        
         body {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            background: #f0f5fa;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 2rem 1.5rem;
         }
-        
-        .folleto {
-            background: white;
+        .main-container {
+            max-width: 1300px;
             width: 100%;
-            max-width: 900px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            padding: 40px 50px;
-            margin: 20px auto;
-            position: relative;
         }
-        
-        /* Encabezado estilizado */
-        .encabezado {
-            text-align: center;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            position: relative;
+        /* tarjeta principal (intro) */
+        .intro-card {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(3px);
+            border-radius: 2.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 25px 45px -15px #1a3e5050, 0 8px 20px -8px #1a3e5040;
+            border: 1px solid #ffffffd0;
+            margin-bottom: 2.5rem;
         }
-        
-        .encabezado::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 20%;
-            width: 60%;
-            height: 4px;
-            background: linear-gradient(90deg, #4A90E2, #50C878, #FF6B6B);
-            border-radius: 2px;
-        }
-        
-        .titulo-principal {
-            color: #2c3e50;
-            font-size: 2.4rem;
-            margin-bottom: 15px;
+        h1 {
+            font-size: 2.2rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
+            color: #0b2b3b;
+            letter-spacing: -0.02em;
+            border-left: 8px solid #1a3e50;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
         }
-        
         .subtitulo {
-            color: #7f8c8d;
+            color: #1e4f6b;
             font-size: 1.2rem;
+            margin-bottom: 2rem;
             font-weight: 400;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
         }
-        
-        /* Sistema de secciones mejorado */
-        .seccion {
-            margin-bottom: 45px;
-            position: relative;
-        }
-        
-        .titulo-seccion {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        
-        .numero-seccion {
-            background: linear-gradient(135deg, #4A90E2, #50C878);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        
-        .texto-titulo-seccion {
-            color: #2c3e50;
-            font-size: 1.5rem;
-            font-weight: 600;
-            flex-grow: 1;
-        }
-        
-        /* Contenido mejor organizado */
-        .contenido {
-            color: #444;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-        
-        .parrafo {
-            margin-bottom: 22px;
-            padding-left: 10px;
-            text-align: justify;
-            position: relative;
-        }
-        
-        .parrafo::before {
-            content: "•";
-            color: #4A90E2;
-            font-size: 1.5rem;
-            position: absolute;
-            left: -10px;
-            top: 0;
-        }
-        
-        /* Lista mejorada */
-        .lista-mejorada {
-            margin: 20px 0 25px 20px;
-        }
-        
-        .item-lista {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 16px;
-            padding-left: 5px;
-        }
-        
-        .item-lista::before {
-            content: "✓";
-            background: #50C878;
-            color: white;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            margin-right: 12px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        
-        /* Ejemplo mejorado */
-        .ejemplo-mejorado {
-            background: linear-gradient(135deg, #F0F7FF, #E3F2FD);
-            border-left: 4px solid #4A90E2;
-            padding: 20px 25px;
-            margin: 25px 0;
-            border-radius: 0 12px 12px 0;
-            position: relative;
-            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.1);
-        }
-        
-        .ejemplo-mejorado::before {
-            content: "📋 EJEMPLO";
-            display: block;
-            color: #4A90E2;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-        }
-        
-        .ejemplo-mejorado p {
-            margin: 0;
-            color: #2c3e50;
-            line-height: 1.6;
-        }
-        
-        /* Destacado mejorado */
-        .destacado-mejorado {
-            background: linear-gradient(135deg, #FFF9E6, #FFF3CD);
-            border: 1px solid #FFD166;
-            padding: 22px;
-            margin: 25px 0;
-            border-radius: 12px;
-            position: relative;
-        }
-        
-        .destacado-mejorado::before {
-            content: "💡";
-            position: absolute;
-            left: -12px;
-            top: -12px;
-            background: white;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #FFD166;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Tarjetas de puntos clave mejoradas */
-        .puntos-clave-container {
+        .ficha-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+            gap: 1.8rem;
+            background: #e1eef9;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            margin: 2rem 0 1.5rem 0;
+            border-left: 6px solid #1a3e50;
         }
-        
-        .tarjeta-punto-clave {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            border-top: 4px solid;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .ficha-item {
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
-        
-        .tarjeta-punto-clave:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-        }
-        
-        .icono-tarjeta {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .titulo-tarjeta {
-            color: #2c3e50;
-            font-size: 1.2rem;
+        .ficha-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1e4f6b;
             font-weight: 600;
-            margin-bottom: 12px;
-            text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
         }
-        
-        .contenido-tarjeta {
-            color: #555;
-            line-height: 1.6;
-            flex-grow: 1;
+        .ficha-valor {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b2b3b;
+            line-height: 1.2;
         }
-        
-        /* Separadores más sutiles */
-        .separador-sutil {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #ddd, transparent);
-            margin: 40px 0;
+        .ficha-detalle {
+            color: #1d5b7a;
         }
-        
-        /* Botón mejorado */
-        .btn-herramientas {
-            background: linear-gradient(135deg, #4A90E2, #50C878);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 8px;
-            cursor: pointer;
+        .cobertura-badge {
+            background: white;
+            border-radius: 40px;
+            padding: 0.5rem 1.2rem;
             font-weight: 600;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
+            color: #0b2b3b;
+            display: inline-block;
+            margin: 0.3rem 0;
+            box-shadow: 0 2px 8px #00000010;
+        }
+        .resumen-ejecutivo {
+            background: #ffffffd0;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            border: 1px solid #c5d9e8;
+            margin: 2rem 0;
+        }
+        .resumen-ejecutivo h2 {
+            color: #1a3e50;
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+        .resumen-ejecutivo ul {
+            list-style: none;
+        }
+        .resumen-ejecutivo li {
+            margin-bottom: 1rem;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 1.05rem;
+            color: #0d2c3b;
+        }
+        .resumen-ejecutivo li::before {
+            content: "▹";
+            color: #1a3e50;
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+        /* botonera secciones */
+        .secciones-nav {
+            display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(74, 144, 226, 0.2);
+            gap: 1rem;
+            margin: 2.5rem 0 1rem;
         }
-        
-        .btn-herramientas:hover {
+        .seccion-btn {
+            background: white;
+            border: none;
+            padding: 1rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #1a3e50;
+            box-shadow: 0 8px 18px -8px #1a3e5040;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            border: 1px solid #c5d9e8;
+            flex: 0 1 auto;
+        }
+        .seccion-btn:hover {
+            background: #1a3e50;
+            color: white;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(74, 144, 226, 0.3);
+            border-color: #1a3e50;
         }
-        
-        /* Footer actualizado */
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 2px solid #f0f0f0;
-            color: #7f8c8d;
-            font-size: 0.95rem;
-        }
-        
-        /* Popup mejorado */
-        .popup {
+        /* modal overlay */
+        .modal-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #0b2b3be0;
+            backdrop-filter: blur(6px);
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(5px);
+            z-index: 1000;
+            padding: 1.5rem;
         }
-        
-        .popup-contenido {
-            background: white;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 16px;
-            padding: 35px;
+        .modal-content {
+            background: #f3f9ff;
+            border-radius: 3rem;
+            max-width: 1100px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            box-shadow: 0 40px 70px #00000050;
+            border: 2px solid white;
             position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            animation: popupAppear 0.3s ease;
         }
-        
-        @keyframes popupAppear {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        .cerrar-popup {
+        .modal-close {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2rem;
+            top: 1.5rem; right: 2rem;
+            background: #1a3e50;
+            color: white;
+            border: none;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            font-size: 1.8rem;
             cursor: pointer;
-            color: #FF6B6B;
-            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
         }
-        
-        .cerrar-popup:hover {
-            transform: rotate(90deg);
+        .modal-close:hover { background: #b14432; transform: scale(1.1);}
+        .modal-titulo {
+            color: #1a3e50;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            border-left: 8px solid #1a3e50;
+            padding-left: 1.5rem;
         }
-        
-        .popup-titulo {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            text-align: center;
+        /* tablas estadísticas (mismo estilo histórico) */
+        .stat-table {
+            border-collapse: collapse;
+            width: 100%;
+            box-shadow: 0 4px 14px rgba(0, 21, 41, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            background-color: white;
+            font-size: 0.98rem;
+            margin: 1.5rem 0;
         }
-        
-        .popup-texto {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 15px;
+        .stat-table thead tr {
+            background: #1a3e50;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .folleto {
-                padding: 30px;
-            }
-            
-            .titulo-principal {
-                font-size: 2rem;
-            }
-            
-            .puntos-clave-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .texto-titulo-seccion {
-                font-size: 1.3rem;
-            }
+        .stat-table th {
+            padding: 1rem 1.2rem;
+            border-right: 1px solid #2e5a70;
         }
-        
-        @media (max-width: 480px) {
-            .folleto {
-                padding: 20px;
-            }
-            
-            .titulo-principal {
-                font-size: 1.7rem;
-            }
-            
-            .btn-herramientas {
-                width: 100%;
-                padding: 16px;
-            }
-            
-            .popup-contenido {
-                padding: 25px;
-                width: 95%;
-            }
+        .stat-table td {
+            padding: 0.9rem 1.2rem;
+            border-bottom: 1px solid #dde7ed;
         }
+        .stat-table tbody tr:nth-child(even) td {
+            background-color: #f8fbfd;
+        }
+        .stat-table td strong { color:#0d2c3b; }
+        .stat-table td:nth-child(2), .stat-table td:nth-child(3), 
+        .stat-table th:nth-child(2), .stat-table th:nth-child(3) { text-align: right; }
+        .stat-table td:first-child { text-align: left; font-weight: 500; }
+        .stat-table tfoot tr { background: #e1eef9; border-top: 2px solid #9bb8d0; }
+        .stat-table tfoot td { font-weight: 600; color: #0b3142; }
+        .mini-chart {
+            background: white; border-radius: 20px; padding: 1.2rem; margin: 1rem 0;
+            border: 1px solid #c5d9e8;
+        }
+        .bar-container {
+            display: flex; height: 30px; border-radius: 20px; overflow: hidden; margin: 1rem 0;
+        }
+        .bar-segment { display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.85rem;}
+        .grid-2 {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;
+        }
+        @media (max-width:700px){ .grid-2{ grid-template-columns:1fr; } }
+        .badge {
+            background: #1a3e50; color: white; padding: 0.3rem 1rem; border-radius: 40px; display: inline-block; margin: 0.2rem;
+        }
+        .conclusion-block {
+            background: #d9e6f2; border-radius: 20px; padding: 1.5rem; border-left: 8px solid #1a3e50; margin-top: 1.5rem;
+        }
+        hr { border: 1px solid #c5d9e8; margin: 1.5rem 0; }
     </style>
 </head>
 <body>
-    <div class="folleto">
-        <div class="encabezado">
-            <h1 class="titulo-principal">Guía para Dinámicas en Redes en Casa</h1>
-            <p class="subtitulo">Estrategias prácticas para fortalecer la comunidad a través de actividades participativas</p>
-        </div>
-        
-        <!-- Sección 1 -->
-        <div class="seccion">
-            <div class="titulo-seccion">
-                <div class="numero-seccion">1</div>
-                <div class="texto-titulo-seccion">Importancia de las Dinámicas en Red</div>
-            </div>
-            <div class="contenido">
-                <div class="parrafo">Las dinámicas dentro de la red son fundamentales para la integración y conexión entre miembros. Facilitan el conocimiento mutuo y crean un ambiente de confianza que impacta positivamente todas las actividades del grupo.</div>
-                <div class="parrafo">Estas actividades fortalecen la unidad desde el primer contacto, promoviendo un sentido de pertenencia y familiaridad que es esencial para el crecimiento espiritual y comunitario.</div>
-            </div>
-        </div>
-        
-        <div class="separador-sutil"></div>
-        
-        <!-- Sección 2 -->
-        <div class="seccion">
-            <div class="titulo-seccion">
-                <div class="numero-seccion">2</div>
-                <div class="texto-titulo-seccion">Consideraciones Generales</div>
-            </div>
-            <div class="contenido">
-                <div class="parrafo">Adapta las dinámicas a la realidad específica de tu grupo, considerando el nivel bíblico y las características físicas de los participantes.</div>
-                
-                <div class="lista-mejorada">
-                    <div class="item-lista">Equilibra actividades físicas según las capacidades del grupo, utilizando representantes juveniles cuando sea necesario.</div>
-                    <div class="item-lista">Incluye variedad: no todas las dinámicas deben ser exclusivamente bíblicas.</div>
-                    <div class="item-lista">Forma equipos equilibrados para competencias prolongadas, distribuyendo habilidades uniformemente.</div>
-                </div>
-                
-                <div class="ejemplo-mejorado">
-                    <p>Si tu grupo incluye personas con mayor conocimiento bíblico, distribúyelas estratégicamente entre los equipos para mantener competencias justas y motivadoras.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="separador-sutil"></div>
-        
-        <!-- Sección 3 -->
-        <div class="seccion">
-            <div class="titulo-seccion">
-                <div class="numero-seccion">3</div>
-                <div class="texto-titulo-seccion">Contenido de las Dinámicas</div>
-            </div>
-            <div class="contenido">
-                <div class="parrafo">El objetivo principal es el aprendizaje significativo. Diseña preguntas y desafíos que sean accesibles, con un balance adecuado entre preguntas básicas y algunas más desafiantes.</div>
-                
-                <div class="destacado-mejorado">
-                    Enfócate en preguntas relevantes y útiles que promuevan el conocimiento bíblico práctico en lugar de detalles técnicos o memorísticos sin aplicación práctica.
-                </div>
-                
-                <div class="ejemplo-mejorado">
-                    <p>En lugar de: "¿Cuántos versículos tiene el Salmo 119?"<br>
-                    Mejor pregunta: "¿Cuáles son los 5 libros de la Biblia conocidos como 'libros de sabiduría'?"</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="separador-sutil"></div>
-        
-        <!-- Sección 4 -->
-        <div class="seccion">
-            <div class="titulo-seccion">
-                <div class="numero-seccion">4</div>
-                <div class="texto-titulo-seccion">Organización y Sistema de Puntos</div>
-            </div>
-            <div class="contenido">
-                <div class="parrafo">Establece reglas claras desde el inicio para mantener el orden y un ambiente respetuoso durante las actividades.</div>
-                
-                <div class="lista-mejorada">
-                    <div class="item-lista">Implementa puntajes acumulativos semana a semana para mantener el interés continuo.</div>
-                    <div class="item-lista">Permite que los equipos elijan sus nombres, fomentando identidad grupal.</div>
-                    <div class="item-lista">Utiliza sistemas visuales (pizarrones, papelógrafos) para mostrar puntajes en tiempo real.</div>
-                </div>
-                
-                <div class="puntos-clave-container">
-                    <div class="tarjeta-punto-clave" style="border-top-color: #4A90E2;">
-                        <div class="icono-tarjeta">🎯</div>
-                        <div class="titulo-tarjeta">Puntaje Variable</div>
-                        <div class="contenido-tarjeta">Permite que los equipos apuesten puntos antes de conocer la pregunta, aumentando la emoción y participación estratégica.</div>
-                    </div>
-                    
-                    <div class="tarjeta-punto-clave" style="border-top-color: #50C878;">
-                        <div class="icono-tarjeta">⚖️</div>
-                        <div class="titulo-tarjeta">Sistema +/-</div>
-                        <div class="contenido-tarjeta">Implementa puntaje positivo/negativo para mantener la competencia equilibrada hasta el final.</div>
-                    </div>
-                    
-                    <div class="tarjeta-punto-clave" style="border-top-color: #FF6B6B;">
-                        <div class="icono-tarjeta">👥</div>
-                        <div class="titulo-tarjeta">Participación Inclusiva</div>
-                        <div class="contenido-tarjeta">Asegura que todos los miembros tengan oportunidades de participación activa en las dinámicas.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="separador-sutil"></div>
-        
-        <!-- Sección 5 -->
-        <div class="seccion">
-            <div class="titulo-seccion">
-                <div class="numero-seccion">5</div>
-                <div class="texto-titulo-seccion">Apoyo y Herramientas</div>
-            </div>
-            <div class="contenido">
-                <div class="parrafo">Comparte curiosidades bíblicas semanales en el chat grupal, siempre con referencias bíblicas. Este material servirá como base para futuras dinámicas.</div>
-                
-                <button class="btn-herramientas" onclick="mostrarPopup()">
-                    <span>🛠️</span>
-                    Ver Herramientas Digitales Recomendadas
-                </button>
-            </div>
-        </div>
-        
-        <div class="separador-sutil"></div>
-        
-        <!-- Sección 6 -->
-        <div class="seccion">
-            <div class="titulo-seccion">
-                <div class="numero-seccion">6</div>
-                <div class="texto-titulo-seccion">Variedad y Flexibilidad</div>
-            </div>
-            <div class="contenido">
-                <div class="parrafo">Mantén la variedad en las actividades. Alterna entre concursos bíblicos, juegos recreativos y dinámicas de integración para mantener el interés de todos los participantes.</div>
-                
-                <div class="puntos-clave-container">
-                    <div class="tarjeta-punto-clave" style="border-top-color: #9B59B6;">
-                        <div class="icono-tarjeta">🔍</div>
-                        <div class="titulo-tarjeta">Verificación de Fuentes</div>
-                        <div class="contenido-tarjeta">Asegura la precisión bíblica de todo material antes de utilizarlo en dinámicas.</div>
-                    </div>
-                    
-                    <div class="tarjeta-punto-clave" style="border-top-color: #F39C12;">
-                        <div class="icono-tarjeta">🎯</div>
-                        <div class="titulo-tarjeta">Claridad en Objetivos</div>
-                        <div class="contenido-tarjeta">Define objetivos claros de aprendizaje y diversión para cada actividad.</div>
-                    </div>
-                    
-                    <div class="tarjeta-punto-clave" style="border-top-color: #1ABC9C;">
-                        <div class="icono-tarjeta">🔄</div>
-                        <div class="titulo-tarjeta">Adaptabilidad</div>
-                        <div class="contenido-tarjeta">Personaliza las dinámicas según las necesidades y características específicas de tu grupo.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="separador-sutil"></div>
-        
-        <!-- Sección 7 -->
-        <div class="seccion">
-            <div class="titulo-seccion">
-                <div class="numero-seccion">7</div>
-                <div class="texto-titulo-seccion">Consideraciones Finales</div>
-            </div>
-            <div class="contenido">
-                <div class="lista-mejorada">
-                    <div class="item-lista">Fomenta el uso de Biblias físicas otorgando puntos adicionales.</div>
-                    <div class="item-lista">Establece tiempos definidos pero sé flexible según la respuesta del grupo.</div>
-                    <div class="item-lista">Evalúa el ambiente antes de cada dinámica y ajusta según sea necesario.</div>
-                    <div class="item-lista">Reconoce el esfuerzo de los equipos con premios simbólicos al finalizar.</div>
-                    <div class="item-lista">Distribuye responsabilidades: idealmente, quien dirige la reflexión no debería preparar también las dinámicas.</div>
-                </div>
-                
-                <div class="destacado-mejorado" style="margin-top: 25px;">
-                    Recuerda que el propósito principal es crear un ambiente de aprendizaje y compañerismo donde todos se sientan valorados y parte de la comunidad.
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>Guía práctica para el fortalecimiento de redes comunitarias | © 2026</p>
-        </div>
-    </div>
-    
-    <!-- Popup -->
-    <div id="popup-herramientas" class="popup">
-        <div class="popup-contenido">
-            <span class="cerrar-popup" onclick="cerrarPopup()">&times;</span>
-            <h3 class="popup-titulo">Herramientas Digitales Recomendadas</h3>
+    <div class="main-container">
+        <!-- TARJETA PRINCIPAL (introducción, ficha técnica, resumen ejecutivo) según primeras páginas del doc -->
+        <div class="intro-card">
+            <h1>INFORME DE DIAGNÓSTICO DEL VOLUNTARIADO</h1>
+            <div class="subtitulo">Iglesia Familia de Dios · 2026</div>
+            <p style="font-size:1.1rem; margin-bottom:2rem; color:#0b2b3b;">Este estudio ofrece una visión clara del estado actual del voluntariado, su perfil, participación, formación y conexión comunitaria. Busca generar información útil para fortalecer el acompañamiento y el desarrollo del servicio.</p>
             
-            <div class="popup-texto">
-                <strong>Kahoot:</strong> Ideal para crear cuestionarios interactivos. Los participantes responden desde sus celulares en tiempo real.
+            <!-- FICHA TÉCNICA -->
+            <div class="ficha-grid">
+                <div class="ficha-item"><span class="ficha-label">universo</span><span class="ficha-valor">593</span><span class="ficha-detalle">voluntarios activos (listados)</span></div>
+                <div class="ficha-item"><span class="ficha-label">muestra</span><span class="ficha-valor">495</span><span class="ficha-detalle">respuestas válidas · 83% participación</span></div>
+                <div class="ficha-item"><span class="ficha-label">levantamiento</span><span class="ficha-valor">24 feb - 12 mar 2026</span></div>
             </div>
             
-            <div class="popup-texto">
-                <strong>Mentimeter:</strong> Perfecto para encuestas, nubes de palabras y preguntas abiertas durante las reuniones.
+            <!-- COBERTURA POR CAMPUS Y NOTA DE REGISTROS -->
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; margin: 1.5rem 0;">
+                <div><span class="badge">📌 Campus Norte: 380 (77%)</span> <span class="badge">📍 Campus Sur: 111 (22%)</span> <span class="badge">🌱 Babahoyo: 4 (1%)</span></div>
+                <div style="font-size:0.95rem; background:white; border-radius:40px; padding:0.5rem 1.5rem;">📋 102 voluntarios no respondieron (17%) · oportunidad en actualización de bases</div>
             </div>
             
-            <div class="popup-texto">
-                <strong>Wordwall:</strong> Ofrece múltiples formatos de juegos educativos que puedes personalizar con contenido bíblico.
+            <!-- RESUMEN EJECUTIVO (6 puntos clave) -->
+            <div class="resumen-ejecutivo">
+                <h2>🔍 Resumen ejecutivo · hallazgos clave</h2>
+                <ul>
+                    <li><strong>Voluntariado mayoritariamente joven y femenino:</strong> 61% mujeres, edad promedio 26.8 años.</li>
+                    <li><strong>Núcleo altamente comprometido:</strong> 32% sirve en más de un equipo (posible sobrecarga).</li>
+                    <li><strong>Alta disposición a formación, pero baja participación real:</strong> 87% quiere capacitarse, 59% no ha cursado FDSchool.</li>
+                    <li><strong>Conexión comunitaria fuerte, no siempre profunda:</strong> 85% en red en casa, pero participación en encuentros solo 47%.</li>
+                    <li><strong>Oportunidad de reubicar talento:</strong> 29% desea cambiar de área; 277 menciones de habilidades no usadas.</li>
+                    <li><strong>Crecimiento más rápido que la estructura de desarrollo:</strong> 71% llegó entre 2022-2025.</li>
+                </ul>
             </div>
-            
-            <div class="popup-texto">
-                <strong>Google Forms:</strong> Para crear cuestionarios más extensos o recopilar información del grupo.
-            </div>
-            
-            <div class="destacado-mejorado" style="margin-top: 20px;">
-                <strong>Consejo:</strong> Comunica con anticipación cuando usarán herramientas digitales para que los participantes preparen sus dispositivos.
+            <p style="color:#1e4f6b; font-style:italic;">⬇️ Las secciones detalladas están disponibles en los botones inferiores ⬇️</p>
+        </div>
+
+        <!-- BOTONERA DE SECCIONES -->
+        <div class="secciones-nav" id="seccionBotonera">
+            <button class="seccion-btn" data-seccion="1">📍 Sección 1 · Panorama general y perfil demográfico</button>
+            <button class="seccion-btn" data-seccion="2">🛠️ Sección 2 · Perfil del servicio</button>
+            <button class="seccion-btn" data-seccion="3">📘 Sección 3 · Formación y educación bíblica</button>
+            <button class="seccion-btn" data-seccion="4">🤝 Sección 4 · Conectividad y vida comunitaria</button>
+            <button class="seccion-btn" data-seccion="5">✨ Sección 5 · Potencial ministerial y movilidad</button>
+            <button class="seccion-btn" data-seccion="6">📌 Sección 6 · Conclusiones y recomendaciones</button>
+        </div>
+
+        <!-- MODAL (único, contenido dinámico) -->
+        <div class="modal-overlay" id="modal">
+            <div class="modal-content" id="modalContent">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <div id="modalDinamico"></div>
             </div>
         </div>
     </div>
-    
+
     <script>
-        function mostrarPopup() {
-            document.getElementById('popup-herramientas').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function cerrarPopup() {
-            document.getElementById('popup-herramientas').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Cerrar popup al hacer clic fuera
-        window.onclick = function(event) {
-            const popup = document.getElementById('popup-herramientas');
-            if (event.target === popup) {
-                cerrarPopup();
+        (function() {
+            const modal = document.getElementById('modal');
+            const modalDinamico = document.getElementById('modalDinamico');
+            const modalClose = document.getElementById('modalClose');
+            const botones = document.querySelectorAll('.seccion-btn');
+
+            function cerrarModal() { modal.style.display = 'none'; }
+            modalClose.addEventListener('click', cerrarModal);
+            window.addEventListener('click', (e) => { if (e.target === modal) cerrarModal(); });
+
+            // ---------- CONTENIDO DE CADA SECCIÓN (extraído del documento) ----------
+            function contenidoSeccion(id) {
+                switch(id) {
+                    case '1': return `
+                        <h2 class="modal-titulo">📍 Sección 1: Panorama general y perfil demográfico</h2>
+                        <p><strong>Distribución por edad · 495 voluntarios</strong> (datos corregidos)</p>
+                        <table class="stat-table">
+                            <thead><tr><th>Rango</th><th>Cantidad</th><th>%</th><th>Promedio</th></tr></thead>
+                            <tbody>
+                                <tr><td>Adolescentes (13-17)</td><td><strong>45</strong></td><td>9%</td><td>15 años</td></tr>
+                                <tr><td>Jóvenes (18-25)</td><td><strong>125</strong></td><td>25%</td><td>22 años</td></tr>
+                                <tr><td>Adultos jóvenes (26-35)</td><td><strong>162</strong></td><td>33%</td><td>31 años</td></tr>
+                                <tr><td>Adultos (36-50)</td><td><strong>114</strong></td><td>23%</td><td>43 años</td></tr>
+                                <tr><td>Adultos mayores (51+)</td><td><strong>49</strong></td><td>10%</td><td>56 años</td></tr>
+                            </tbody>
+                            <tfoot><tr><td>Total</td><td>495</td><td>100%</td><td>media 26.8</td></tr></tfoot>
+                        </table>
+                        <div class="mini-chart">
+                            <div style="font-weight:700; margin-bottom:10px;">⚥ Género:</div>
+                            <span class="badge">Mujeres 303 (61%)</span> <span class="badge">Hombres 192 (39%)</span>
+                        </div>
+                        <h3>📅 Antigüedad en la iglesia (año de llegada)</h3>
+                        <table class="stat-table">
+                            <thead><tr><th>Período</th><th>Voluntarios</th><th>%</th></tr></thead>
+                            <tbody>
+                                <tr><td>2016-2017</td><td>13</td><td>3%</td></tr>
+                                <tr><td>2018-2019</td><td>31</td><td>6%</td></tr>
+                                <tr><td>2020-2021</td><td>93</td><td>19%</td></tr>
+                                <tr><td>2022-2023</td><td>162</td><td>33%</td></tr>
+                                <tr><td>2024-2025</td><td>190</td><td>38%</td></tr>
+                                <tr><td>2026</td><td>6</td><td>1%</td></tr>
+                            </tbody>
+                        </table>
+                        <p>🔹 El 71% llegó entre 2022 y 2025 · crecimiento reciente.  🔹 9% antes de 2020 (grupo experiencia).</p>
+                        <p><strong>Distribución por campus:</strong> Norte 77% (380), Sur 22% (111), Babahoyo 1% (4).</p>
+                    `;
+                    case '2': return `
+                        <h2 class="modal-titulo">🛠️ Sección 2: Perfil del servicio</h2>
+                        <h3>⏳ Antigüedad en el servicio</h3>
+                        <table class="stat-table">
+                            <thead><tr><th>Período inicio</th><th>Voluntarios</th><th>%</th></tr></thead>
+                            <tbody>
+                                <tr><td>2024-2026</td><td><strong>321</strong></td><td>65%</td></tr>
+                                <tr><td>2022-2023</td><td>115</td><td>23%</td></tr>
+                                <tr><td>antes 2022</td><td>59</td><td>12%</td></tr>
+                            </tbody>
+                        </table>
+                        <p>🔸 2 de cada 3 voluntarios tienen menos de 3 años sirviendo. El período 2024-2025 concentra el 55%.</p>
+                        <h3>📋 Participación en múltiples equipos</h3>
+                        <table class="stat-table">
+                            <tr><td>Un solo equipo</td><td><strong>338</strong></td><td>68%</td></tr>
+                            <tr><td>Más de un equipo</td><td><strong>157</strong></td><td>32%</td></tr>
+                        </table>
+                        <p>⚡ 1 de cada 3 voluntarios sirve en múltiples áreas (compromiso alto, riesgo de sobrecarga).</p>
+                        <h3>📆 Frecuencia de servicio mensual</h3>
+                        <table class="stat-table">
+                            <thead><tr><th>Frecuencia</th><th>%</th><th>Personas</th></tr></thead>
+                            <tbody>
+                                <tr><td>Ocasional (1 vez)</td><td>15%</td><td>74</td></tr>
+                                <tr><td>Regular (2-3 veces)</td><td><strong>68%</strong></td><td>336</td></tr>
+                                <tr><td>Activo (4 veces)</td><td>13%</td><td>65</td></tr>
+                                <tr><td>Alta frecuencia (5+)</td><td>4%</td><td>20</td></tr>
+                            </tbody>
+                        </table>
+                        <p>Promedio: mujeres 2.4/mes · hombres 2.7/mes.</p>
+                        <h3>📊 Ministerios con mayor concentración de género</h3>
+                        <ul style="columns:2;">
+                            <li><strong>Herederos:</strong> 85% mujeres</li>
+                            <li><strong>Consolidación:</strong> 79% mujeres</li>
+                            <li><strong>Fam Coffee:</strong> 89% mujeres</li>
+                            <li><strong>Seguridad:</strong> 100% hombres</li>
+                            <li><strong>Producción-Sonido:</strong> 100% hombres</li>
+                            <li><strong>Banda del Hijo:</strong> 67% hombres</li>
+                        </ul>
+                    `;
+                    case '3': return `
+                        <h2 class="modal-titulo">📘 Sección 3: Formación y educación bíblica</h2>
+                        <p><strong>Actualmente cursando FDSchool:</strong></p>
+                        <table class="stat-table"><tr><td>Sí</td><td>123</td><td>25%</td></tr><tr><td>No</td><td>372</td><td>75%</td></tr></table>
+                        <p><strong>Nivel de avance en FDSchool:</strong></p>
+                        <table class="stat-table">
+                            <tr><td>No lo he cursado</td><td>293</td><td>59%</td></tr>
+                            <tr><td>Cursando 1er año</td><td>68</td><td>14%</td></tr>
+                            <tr><td>Cursando 2do año</td><td>33</td><td>7%</td></tr>
+                            <tr><td>Sí, primer año (completo)</td><td>45</td><td>9%</td></tr>
+                            <tr><td>Sí, segundo año (completo)</td><td>56</td><td>11%</td></tr>
+                        </table>
+                        <h3>🚧 Motivos para no cursar actualmente</h3>
+                        <div class="bar-container" style="margin:1rem 0;">
+                            <div class="bar-segment" style="width:38.5%; background:#1a3e50;">tiempo 38.5%</div>
+                            <div class="bar-segment" style="width:19.2%; background:#2c5a72;">completado 19%</div>
+                            <div class="bar-segment" style="width:15.9%; background:#3a6e8c;">espera 16%</div>
+                            <div class="bar-segment" style="width:9.6%; background:#4a82a0;">distancia 10%</div>
+                        </div>
+                        <ul>
+                            <li>Falta de tiempo: 38.5% (principal barrera)</li>
+                            <li>Ya completó: 19.2%</li>
+                            <li>Espera inscripción: 15.9%</li>
+                            <li>Distancia: 9.6% · Costo: 7.5%</li>
+                            <li>No se siente llamado/preparado: 5%</li>
+                        </ul>
+                        <p>✧ El 87% quiere capacitarse, pero sólo el 40% ha tenido contacto con FDSchool.</p>
+                    `;
+                    case '4': return `
+                        <h2 class="modal-titulo">🤝 Sección 4: Conectividad y vida comunitaria</h2>
+                        <h3>🏠 Asistencia a red en casa</h3>
+                        <table class="stat-table"><tr><td>Sí</td><td>422</td><td>85%</td></tr><tr><td>No</td><td>73</td><td>15%</td></tr></table>
+                        <h3>⛪ Asistencia a Encuentro (Familia de Dios)</h3>
+                        <table class="stat-table">
+                            <tr><td>Sí</td><td>235</td><td>47%</td></tr>
+                            <tr><td>Aún no</td><td>184</td><td>37%</td></tr>
+                            <tr><td>Sí, en otra iglesia</td><td>76</td><td>15%</td></tr>
+                        </table>
+                        <h3>📋 Pertenencia a D12</h3>
+                        <table class="stat-table"><tr><td>Sí</td><td>372</td><td>75%</td></tr><tr><td>Aún no</td><td>123</td><td>25%</td></tr></table>
+                        <p>🔹 Alta conexión relacional (85% red, 75% D12), pero sólo 47% ha participado en encuentro. Brecha en profundidad espiritual.</p>
+                    `;
+                    case '5': return `
+                        <h2 class="modal-titulo">✨ Sección 5: Potencial ministerial y movilidad</h2>
+                        <p><strong>Talento no utilizado · 277 menciones</strong></p>
+                        <div class="grid-2">
+                            <div>
+                                <table class="stat-table">
+                                    <thead><tr><th>Categoría</th><th>%</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Artes visuales/diseño</td><td>23.5%</td></tr>
+                                        <tr><td>Música</td><td>21.1%</td></tr>
+                                        <tr><td>Artes escénicas</td><td>16.6%</td></tr>
+                                        <tr><td>Comunicación/oratoria</td><td>15.8%</td></tr>
+                                        <tr><td>Organización/liderazgo</td><td>11.3%</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mini-chart">
+                                <span class="badge">🎨 61% talento artístico</span>
+                                <span class="badge">🗣️ 16% comunicación</span>
+                                <p style="margin-top:1rem;"><strong>Deseo de cambiar de área:</strong> 29% (aprox 144 voluntarios).</p>
+                            </div>
+                        </div>
+                        <p>Existe una reserva significativa de habilidades creativas y comunicacionales no aprovechadas plenamente.</p>
+                    `;
+                    case '6': return `
+                        <h2 class="modal-titulo">📌 Sección 6: Conclusiones y recomendaciones estratégicas</h2>
+                        <div class="conclusion-block">
+                            <h3>✅ 6.1 Conclusiones clave</h3>
+                            <ul>
+                                <li><strong>Crecimiento acelerado no consolidado:</strong> 71% llegó en últimos 3 años, sin formación paralela.</li>
+                                <li><strong>Alta conexión relacional, menor profundidad espiritual:</strong> 85% red vs 47% encuentro.</li>
+                                <li><strong>Desconexión servicio-formación:</strong> 59% sin FDSchool.</li>
+                                <li><strong>Concentración de carga:</strong> 32% en múltiples equipos.</li>
+                                <li><strong>Talento disponible subutilizado:</strong> 277 menciones.</li>
+                            </ul>
+                            <h3>📌 6.2 Recomendaciones</h3>
+                            <ol style="margin-left:1.2rem;">
+                                <li>Integrar servicio y formación en un mismo proceso.</li>
+                                <li>Establecer ruta clara: Red → Encuentro → Formación → Discipulado → Liderazgo.</li>
+                                <li>Flexibilizar horarios y comunicación de FDSchool.</li>
+                                <li>Gestionar carga y redistribuir responsabilidades.</li>
+                                <li>Activar banco de talentos y reasignar habilidades.</li>
+                                <li>Desarrollar liderazgo intermedio.</li>
+                                <li>Fortalecer seguimiento por líderes de ministerio.</li>
+                            </ol>
+                            <p style="margin-top:1rem;"><em>El desafío no es crecer más, sino consolidar, formar y sostener.</em></p>
+                        </div>
+                    `;
+                    default: return '<p>Contenido no disponible</p>';
+                }
             }
-        }
-        
-        // Cerrar con tecla ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                cerrarPopup();
-            }
-        });
+
+            botones.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const seccion = e.target.getAttribute('data-seccion');
+                    modalDinamico.innerHTML = contenidoSeccion(seccion);
+                    modal.style.display = 'flex';
+                });
+            });
+        })();
     </script>
 </body>
 </html>
