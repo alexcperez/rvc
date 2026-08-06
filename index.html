@@ -123,7 +123,6 @@
             margin-top: 8px;
         }
 
-        /* Modal */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -305,7 +304,6 @@
     <div id="cardsGrid" class="grid"></div>
 </div>
 
-<!-- Modal -->
 <div id="modal" class="modal-overlay">
     <div class="modal">
         <div class="modal-header">
@@ -322,9 +320,6 @@
 </div>
 
 <script>
-    // ============================================================
-    // 1. DATA – Extraída EXCLUSIVAMENTE del Excel (versión actualizada)
-    // ============================================================
     const volunteersData = {
         "5s": {
             days: {
@@ -335,8 +330,8 @@
         },
         "acomodadores": {
             days: {
-                jueves: ["Anderson Shiki", "Andrea Flores", "Andrea Y Walter", "Carla Flores", "César Cedeño", "Connie Delgado", "Erika Perraño", "Gabriela Lua", "Gina Sellan", "Glenda Sanchez", "Jaime Yagual", "Janick Herdoiza", "Jelena Lainez", "Jessica Cuenca", "Jilly Rendon", "Jose Alvarado", "Jose Fienco", "Karla Mite", "Lady Vizueta", "Lorena Aguirre", "Lucia Briones", "Luis Calderon", "Mady Noguera", "Marcela Leon", "Marjorie Conrade", "Mayra Cervantes", "Omar Rincon", "Roberto Mendoza", "Stalin Chocho", "Veronica Pompo", "Xavier Rincon"],
-                viernes: ["Alexander", "Amy Quimi", "Anderson Shiki", "Andrea Flores", "Andrea Y Walter", "Annabelle Flores", "Carla Flores", "César Cedeño", "Connie Delgado", "Erick Berzosa", "Evelyn Matamoros", "Gabriela Lua", "Gina Sellan", "Janick Herdoiza", "Jelena Lainez", "Jilly Rendon", "Jose Alvarado", "Jose Fienco", "Lady Vizueta", "Lilibeth", "Lorena Aguirre", "Lucia Briones", "Luis Calderon", "Mady Noguera", "Marcela Leon", "Marjorie Conrade", "Melisa Castro", "Omar Rincon", "Roberto Mendoza", "Stalin Chocho", "Stefania Ganchoso", "Veronica Pompo"],
+                jueves: ["Anderson Shiki", "Andrea Flores", "Andrea Y Walter", "Carla Flores", "César Cedeño", "Connie Delgado", "Erika Perraño", "Féliz Chocho", "Gabriela Lua", "Gina Sellan", "Glenda Sanchez", "Iris Veliz", "Jaime Yagual", "Janick Herdoiza", "Jelena Lainez", "Jessica Cuenca", "Jilly Rendon", "Jose Alvarado", "Jose Fienco", "Karla Mite", "Lady Vizueta", "Lorena Aguirre", "Lucia Briones", "Luis Calderon", "Mady Noguera", "Marcela Leon", "Marjorie Conrade", "Mayra Cervantes", "Omar Rincon", "Roberto Mendoza", "Stalin Chocho", "Veronica Pompo", "Xavier Rincon"],
+                viernes: ["Alexander", "Amy Quimi", "Anderson Shiki", "Andrea Flores", "Andrea Y Walter", "Annabelle Flores", "Carla Flores", "César Cedeño", "Connie Delgado", "Erick Berzosa", "Evelyn Matamoros", "Féliz Chocho", "Gabriela Lua", "Gina Sellan", "Iris Veliz", "Janick Herdoiza", "Jelena Lainez", "Jilly Rendon", "Jose Alvarado", "Jose Fienco", "Lady Vizueta", "Lilibeth", "Lorena Aguirre", "Lucia Briones", "Luis Calderon", "Mady Noguera", "Marcela Leon", "Marjorie Conrade", "Melisa Castro", "Omar Rincon", "Paola Oquendo", "Roberto Mendoza", "Stalin Chocho", "Stefania Ganchoso", "Veronica Pompo"],
                 sábado: ["Amy Quimi", "Annabelle Flores", "Annie Martillo", "Carla Flores", "César Cedeño", "Connie Delgado", "Dennys Alburqueque", "Evelyn Matamoros", "Flor Carderon", "Gabriela Lua", "Gina Sellan", "Glenda Sanchez", "Janick Herdoiza", "Jessica Cuenca", "Josefina Tumbaco", "Lorena Aguirre", "Lucia Briones", "Luis Calderon", "Mady Noguera", "Marjorie Rugel", "Nelita Ortiz", "Omar Rincon", "Patricia Pilalo", "Priscilla Bermeo", "Stefania Ganchoso", "Xavier Augusto", "Xavier Rincon", "Yris Piña"]
             }
         },
@@ -425,8 +420,8 @@
         },
         "staff": {
             days: {
-                jueves: ["Andrea Morán", "Dilan Coello", "Edison Livicota", "Janeth P", "Kevin Herrera", "María Luisa Vera", "Mariela Dimetrakis", "Yulissa Caba"],
-                viernes: ["Diego Tobar", "José Peralta", "Karla Rodríguez", "Saul Merchan", "Suanny Chóez", "Vanessa Romo"],
+                jueves: ["Andrea Morán", "Dilan Coello", "Edison Livicota", "Janeth P", "Kevin Herrera", "María Luisa Vera", "Mariela Dimetrakis", "Saúl Merchán", "Yulissa Caba"],
+                viernes: ["Diego Tobar", "José Peralta", "Karla Rodríguez", "Saúl Merchán", "Suanny Chóez", "Vanessa Romo"],
                 sábado: ["Ana Montes de Oca", "Andrea Morán", "Camila Yepez", "Natalia Navarro", "Romina Caiza", "Santiago Moya", "Valentina Moya"]
             }
         },
@@ -438,10 +433,6 @@
             }
         }
     };
-
-    // ============================================================
-    // 2. LÓGICA DE RENDERIZADO (sin cambios)
-    // ============================================================
 
     const grid = document.getElementById('cardsGrid');
     const modal = document.getElementById('modal');
@@ -541,7 +532,6 @@
             .join(' ');
     }
 
-    // Eventos de los días
     dayButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             dayButtons.forEach(b => b.classList.remove('active'));
