@@ -297,7 +297,7 @@
 <div class="container">
     <div class="header">
         <h1>🏃 Run to Win</h1>
-        <p>Voluntarios · Conferencia 2026</p>
+        <p>Voluntarios · Viernes y Sábado</p>
         <span class="badge-conference">Familia de Dios</span>
     </div>
 
@@ -311,7 +311,6 @@
             <button class="modal-close" id="modalCloseBtn">✕</button>
         </div>
         <div class="day-selector" id="daySelector">
-            <button class="day-btn" data-day="jueves">Jueves</button>
             <button class="day-btn" data-day="viernes">Viernes</button>
             <button class="day-btn" data-day="sábado">Sábado</button>
         </div>
@@ -323,118 +322,101 @@
     const volunteersData = {
         "5s": {
             days: {
-                jueves: ["Aarón Abel Mendoza Mite", "Fanny Borja", "Hipatia Priscela Pinto Muñoz", "Iker Contreras", "Israel", "Javier", "Jean Paúl Sornoza", "Mario Contreras", "Martha", "Noemí Rodríguez Bodero"],
                 viernes: ["Carlos Damián Padilla Moran", "Carlos Oñate", "Fanny", "Iker", "Israel", "Javier", "Margarita Albuja", "Mario", "Martha"],
                 sábado: ["Aarón Abel Mendoza Mite", "Carlos Oñate", "David Rincon", "Fanny", "Iker", "Israel", "Javier", "Margarita Albuja", "Mario", "Noemí Rodríguez Bodero", "Jean Paúl Sornoza"]
             }
         },
         "acomodadores": {
             days: {
-                jueves: ["Anderson Shiki", "Andrea Flores", "Andrea Y Walter", "Carla Flores", "César Cedeño", "Connie Delgado", "Erika Perraño", "Féliz Chocho", "Gabriela Lua", "Gina Sellan", "Glenda Sanchez", "Iris Veliz", "Jaime Yagual", "Janick Herdoiza", "Jelena Lainez", "Jessica Cuenca", "Jilly Rendon", "Jose Alvarado", "Jose Fienco", "Karla Mite", "Lady Vizueta", "Lorena Aguirre", "Lucia Briones", "Luis Calderon", "Mady Noguera", "Marcela Leon", "Marjorie Conrade", "Mayra Cervantes", "Omar Rincon", "Roberto Mendoza", "Stalin Chocho", "Veronica Pompo", "Xavier Rincon"],
                 viernes: ["Alexander", "Amy Quimi", "Anderson Shiki", "Andrea Flores", "Andrea Y Walter", "Annabelle Flores", "Carla Flores", "César Cedeño", "Connie Delgado", "Erick Berzosa", "Evelyn Matamoros", "Féliz Chocho", "Gabriela Lua", "Gina Sellan", "Iris Veliz", "Janick Herdoiza", "Jelena Lainez", "Jilly Rendon", "Jose Alvarado", "Jose Fienco", "Lady Vizueta", "Lilibeth", "Lorena Aguirre", "Lucia Briones", "Luis Calderon", "Mady Noguera", "Marcela Leon", "Marjorie Conrade", "Melisa Castro", "Omar Rincon", "Paola Oquendo", "Roberto Mendoza", "Stalin Chocho", "Stefania Ganchoso", "Veronica Pompo"],
                 sábado: ["Amy Quimi", "Annabelle Flores", "Annie Martillo", "Carla Flores", "César Cedeño", "Connie Delgado", "Dennys Alburqueque", "Evelyn Matamoros", "Flor Carderon", "Gabriela Lua", "Gina Sellan", "Glenda Sanchez", "Janick Herdoiza", "Jessica Cuenca", "Josefina Tumbaco", "Lorena Aguirre", "Lucia Briones", "Luis Calderon", "Mady Noguera", "Marjorie Rugel", "Nelita Ortiz", "Omar Rincon", "Patricia Pilalo", "Priscilla Bermeo", "Stefania Ganchoso", "Xavier Augusto", "Xavier Rincon", "Yris Piña"]
             }
         },
         "backstage": {
             days: {
-                jueves: ["Carlos Köcher", "Carlos Sánchez", "Cris Vega", "David Fuentes", "José Guerrero", "Ney benalcazar"],
                 viernes: ["Alejandro Icaza", "Amy Gonzales", "David Fuentes", "Honey Lalon", "Jeremy cabrera", "José Guerrero", "Tyron Chávez"],
                 sábado: ["Camilla Tomala", "David Fuentes", "Johanna Yepez", "Jorge palacios", "José Guerrero", "Marlon caisaguano", "Ronny Vásquez"]
             }
         },
         "banda del hijo": {
             days: {
-                jueves: ["Diego Vásquez", "Gabriela Guaigua", "Jael Román", "Jair Parreño", "Joel Pluas", "Katty Elisa", "Kike Bravo", "Roberto Guerrero", "Roy Quirola"],
                 viernes: ["Ashlye Vinatea", "Byron Valencia", "Diego Vásquez", "Jael Román", "Joel Pluas", "Mario Arreaga", "Raquel Cuenca", "Roberto Guerrero", "Serwin Suazo", "Wesley Uwaoma"],
                 sábado: ["Cristhian Canelos", "David Criollo", "Diego Vásquez", "Emily Peñafiel", "Joel Pluas", "Keyla Guerra", "Liliana Figueroa", "Mario Arreaga", "Mayerli Palacios", "Roy Quirola"]
             }
         },
         "dance crew": {
             days: {
-                jueves: ["Adrian Vivar", "Cristhopher Campoverde", "Cristina Silva", "Fernanda Villalba", "Jenny Males", "Josue Sellán", "Martina Saresin", "Nia Rivas", "Paula Mariscal", "Salomé Morán", "Santiago Cañarte", "Sara Menendez", "Tatiana Hidalgo", "Viviana Haro"],
                 sábado: ["Adrian Vivar", "Cristhopher Campoverde", "Cristina Silva", "Fernanda Villalba", "Jenny Males", "Josue Sellán", "Nia Rivas", "Salomé Morán", "Santiago Cañarte", "Tatiana Hidalgo", "Viviana Haro"]
             }
         },
         "dirección de experiencia": {
             days: {
-                jueves: ["Anna Saresin", "Emily Muñoz", "Jairo", "Karelys Rincón", "Keyla Guerra", "Majo Gavilanes", "Melody Cuenca", "Milton", "Peggy Segura"],
                 viernes: ["Ana Saresin", "Charlie", "Chris", "Emily Muñoz", "Evelyn", "Ginger", "Jairo", "Karelys Rincón", "Majo Gavilanes", "Melody", "Peggy Segura"],
                 sábado: ["Ana Saresin", "Charlie", "Chris", "Emily Muñoz", "Ginger", "Jairo", "Karelys Rincón", "Majo Morante", "Milton", "Vicky"]
             }
         },
         "fam coffee": {
             days: {
-                jueves: ["Alexandra María Espinoza Loza", "Ambar Nieto Pìnela", "Francisca del Rocío Pin Vasquez", "Gabriela Mercedes Vera Almea", "Karina Caicedo", "Martha Judith Jara Romero", "Sofía Elizabeth Castillo Viteri"],
                 viernes: ["Alexandra María Espinoza Loza", "Ambar Nieto Pìnela", "Cristina Isabel Ahtty Pilozo", "Karina Caicedo", "Leonela Abigail Espinoza Eugenio", "Verónica"],
                 sábado: ["Francisca del Rocío Pin Vasquez", "Maritza Celeste Marazita Cevallos"]
             }
         },
         "foto y video": {
             days: {
-                jueves: ["Allison Mero", "Anderson Asistimbay", "Andrés Vélez", "Daniel Peñafiel", "Frangelo", "Génesis Fienco", "Isaac Peñafiel", "Ismael Moncada", "Joseph Rincón", "Yemima Elizabeth Lopez Dumes"],
                 viernes: ["Allison Mero", "Anderson Asistimbay", "Andrés Vélez", "Daniel Peñafiel", "Frangelo", "Isaac Peñafiel", "Joseph Rincón", "Keiko Armas", "Keyla Castro", "Viviana Campo"],
                 sábado: ["Allison Mero", "Anderson Asistimbay", "Andrés Vélez", "Daniel Peñafiel", "Frangelo", "Génesis Fienco", "Isaac Peñafiel", "Ismael Moncada", "Joseph Rincón", "Valeria Castañeda"]
             }
         },
         "herederos": {
             days: {
-                jueves: ["Adriana Isabela Rivas Saenz", "Annia Arce", "Belen Segarra", "Danna Arce", "Isabel Cristina Montesdeoca Castro", "Jared Romo", "Jessica Elvay", "Kenia Mieles Flores", "Magaly Mendoza", "Mayerli kristel Palacios Solórzano", "Miguel García", "Mirian Yolanda Valero", "Nasly Torres (maestra sombra)", "Víctor Valdez", "Zoila Franco"],
                 viernes: ["Antonella Burgos", "Diana Carolina López Ulloa", "Jessica Cuenca", "Jordana Silva", "Juan Alava", "Kathy Vernaza", "Mabel Chila", "Marílena Mera", "Melany", "Mía Espinoza", "Miguel Gracia", "Nasly Torres (maestra sombra)", "Nathaly Párraga", "Paula Mirelha Castillo Segura", "Paulo José Espinoza Anchundia", "Rashid Torres", "Rocío Delgado", "Ruth Cortes", "Tamy Cardenas", "Zoilita Franco"],
                 sábado: ["Alicia Banchon", "Daniela Jama", "Dora Canga", "Emily Quiñónez", "Eunice", "Janella Paulette Orrala Flores", "Jessica Cuenca", "Joan Maquilon", "Jordana Silva", "José Luis Arce", "Mariuxi Vasquez", "Miguel Gracia", "Nancy Velez", "Nasly Torres (maestra sombra)", "Rocío Delgado", "Wendy Vera", "Zoilita Franco"]
             }
         },
         "historias": {
             days: {
-                jueves: ["Angie Lilibeth Sevillano Peralta", "Eliana Andrea Yaucan Mejía", "Emily Gardenia Rodríguez German", "Ivana Rafaella Ramírez Vélez", "Ivette Madeleine Patiño Ruano", "Leslye Bravo", "Paula Daniela Delgado Heras"],
                 viernes: ["Andrea Jacqueline Regatto Gavilanes", "Diana Elizabeth Parrales Rosales", "Eliana Andrea Yaucan Mejía", "Ivana Rafaella Ramírez Vélez", "Leslye Bravo", "Paula Daniela Delgado Heras", "Pilar Ramírez"],
                 sábado: ["Byron Ernesto Valencia Valdiviezo", "Diana Elizabeth Parrales Rosales", "Eliana Andrea Yaucan Mejía", "Emily Jazmin Aguaiza Brunett", "Leslye Bravo", "Luis Eduardo Alvarado Ayauca", "Paula Daniela Delgado Heras"]
             }
         },
         "pantalla y luces": {
             days: {
-                jueves: ["Daniel torres", "Daniela Lisbeth Solano Moncada", "Josué Mathias Alvarado Pombo", "María José Navarro", "Ricardo"],
                 viernes: ["Daniel torres", "Daniela Lisbeth Solano Moncada", "Génesis Dianne Fienco Porras", "Josué Mathias Alvarado Pombo", "María José Navarro", "Ricardo"],
                 sábado: ["Daniel torres", "Daniela Lisbeth Solano Moncada", "Dayana Noemi López Merchán", "Josué Mathias Alvarado Pombo", "Ricardo"]
             }
         },
         "producción - transmisión": {
             days: {
-                jueves: ["Andrés Alberto Aparicio Castillo", "Andrés Augusto Bravo Rodriguez", "Gonzalo Alberto Aparicio Torres", "Juan José Aparicio Castillo", "Pablo Steeven Peñaherrera Uscocovich"],
                 viernes: ["Allison Domenica Alvarado Ayauca", "Andrés Alberto Aparicio Castillo", "César Israel Ronquillo Avilés", "Gonzalo Alberto Aparicio Torres"],
                 sábado: ["Gonzalo Alberto Aparicio Torres", "Nicole Estefanía Alvarado Pinto"]
             }
         },
         "protocolo": {
             days: {
-                jueves: ["Cristina ahtty", "Marlyn Machuca", "MIOSOTTY de Köcher", "Mónica Mora"],
                 viernes: ["Jasmin Duarte", "Marlyn Machuca", "MIOSOTTY de Köcher", "Mónica Mora"],
                 sábado: ["Mónica Mora", "Sofía de Aparicio"]
             }
         },
         "seguridad": {
             days: {
-                jueves: ["Adrian Perlaza", "Bito Ponce", "Carlos Avecillas", "Christian Llaguno", "Henry López", "Manuel Carpio", "Oswaldo Chica", "Stalyn Cedeño"],
                 viernes: ["Adrian Perlaza", "Andrés Pulido", "Bito Ponce", "Christian Llaguno", "Henry López", "Joa Alex", "Oswaldo Chica", "Ricardo González"],
                 sábado: ["Angel López", "Bito Ponce", "Christian Llaguno", "Henry López"]
             }
         },
         "sonido": {
             days: {
-                jueves: ["Jeffry Luna Muñoz", "Jonathan Arreaga", "Omar Navarrete"],
                 viernes: ["Fernando Guaman Manzaba", "Jonathan Arreaga", "Maykel Jiménez Rodríguez"],
                 sábado: ["Angel Mendoza Mite", "Gabriel Pin López", "Jonathan Arreaga"]
             }
         },
         "staff": {
             days: {
-                jueves: ["Andrea Morán", "Dilan Coello", "Edison Livicota", "Janeth Paguay", "Kevin Herrera", "María Luisa Vera", "Mariela Dimetrakis", "Saúl Merchán", "Yulissa Caba"],
                 viernes: ["Diego Tobar", "José Peralta", "Karla Rodríguez", "Saúl Merchán", "Scarlett Ordóñez", "Suanny Chóez", "Vanessa Romo"],
                 sábado: ["Ana Montes de Oca", "Andrea Morán", "Camila Yepez", "Natalia Navarro", "Romina Caiza", "Santiago Moya", "Scarlett Ordóñez", "Valentina Moya"]
             }
         },
         "wake up": {
             days: {
-                jueves: ["Fernando Isaac Quintana Verá", "Fiorella de los Angeles Castillo Perelli", "Jam", "Martina Gabriela Saresin Lituma"],
                 viernes: ["Fernando Isaac Quintana Verá", "Jam", "Martina Gabriela Saresin Lituma", "Oscar Mathias Burgos Gutierrez"],
                 sábado: ["Fernando Isaac Quintana Verá", "Fiorella de los Angeles Castillo Perelli", "Jam", "Martina Gabriela Saresin Lituma"]
             }
@@ -449,7 +431,7 @@
     const closeBtn = document.getElementById('modalCloseBtn');
 
     let currentTeam = '';
-    let currentDay = 'jueves';
+    let currentDay = 'viernes';
 
     const sortedTeams = Object.keys(volunteersData).sort((a, b) => a.localeCompare(b));
 
@@ -478,7 +460,7 @@
     function openModal(team) {
         currentTeam = team;
         modalTeamName.textContent = formatTeamName(team);
-        currentDay = 'jueves';
+        currentDay = 'viernes';
         dayButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.day === currentDay));
         renderVolunteers(team, currentDay);
         modal.classList.add('active');
