@@ -1,546 +1,1333 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Run to Win - Voluntarios</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Day | Redes Familiares — Iglesia Familia de Dios</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #f4f7fb;
+            background: linear-gradient(145deg, #eef2f7 0%, #dce4ed 100%);
             min-height: 100vh;
-            padding: 40px 20px;
-            background-image: radial-gradient(circle at 10% 30%, rgba(17, 24, 39, 0.03) 0%, transparent 60%);
+            padding: 30px 20px 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
+            max-width: 1200px;
+            width: 100%;
         }
 
+        /* ===== ENCABEZADO ===== */
         .header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 30px;
+        }
+
+        .header .iglesia {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: #ffffffcc;
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-bottom: 12px;
         }
 
         .header h1 {
-            font-size: 2.8rem;
+            font-size: 42px;
             font-weight: 800;
-            letter-spacing: -0.02em;
-            background: linear-gradient(145deg, #0f172a, #1e293b);
+            color: #1a2634;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .header h1 span {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 8px;
         }
 
-        .header p {
-            color: #64748b;
-            font-size: 1.1rem;
+        .header .sub {
+            font-size: 18px;
             font-weight: 500;
-        }
-
-        .badge-conference {
-            display: inline-block;
-            background: #e2e8f0;
-            padding: 6px 20px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #1e293b;
+            color: #4a5a6e;
             margin-top: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        .grid {
+        .header .sub .badge {
+            background: #2563eb;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* ===== ESTADÍSTICAS ===== */
+        .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 14px;
+            margin-bottom: 30px;
         }
 
-        .card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 24px 20px 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
-            border: 1px solid #f1f5f9;
-            transition: all 0.2s ease;
-            cursor: pointer;
+        .stat-item {
+            background: white;
+            padding: 14px 16px;
+            border-radius: 18px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            border: 1px solid #e9edf2;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
+            align-items: center;
+            text-align: center;
+            transition: 0.15s;
         }
 
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 30px -8px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.02);
-            border-color: #cbd5e1;
+        .stat-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
         }
 
-        .card .emoji-badge {
-            font-size: 1.8rem;
-            line-height: 1;
-            margin-bottom: 4px;
+        .stat-item .emoji-stat { font-size: 22px; margin-bottom: 2px; }
+        .stat-item .num { font-size: 26px; font-weight: 800; color: #1e293b; line-height: 1.1; }
+        .stat-item .num.verde { color: #16a34a; }
+        .stat-item .num.rojo { color: #dc2626; }
+        .stat-item .num.azul { color: #2563eb; }
+        .stat-item .num.naranja { color: #ea580c; }
+        .stat-item .label { font-size: 12px; color: #64748b; font-weight: 500; margin-top: 2px; line-height: 1.3; }
+
+        /* ===== BUSCADOR DE REDES ===== */
+        .buscador-redes {
+            background: white;
+            border-radius: 20px;
+            padding: 14px 20px;
+            margin-bottom: 26px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            border: 2px solid #e9edf2;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.15s;
         }
 
-        .card h3 {
-            font-size: 1.2rem;
+        .buscador-redes:focus-within {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+        }
+
+        .buscador-redes .icono {
+            font-size: 20px;
+            color: #94a3b8;
+            flex-shrink: 0;
+        }
+
+        .buscador-redes input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            background: transparent;
+            color: #1e293b;
+        }
+
+        .buscador-redes input::placeholder {
+            color: #94a3b8;
+        }
+
+        .buscador-redes .contador {
+            font-size: 12px;
             font-weight: 600;
+            color: #2563eb;
+            background: #eef2ff;
+            padding: 4px 12px;
+            border-radius: 40px;
+            flex-shrink: 0;
+        }
+
+        .sin-resultados-redes {
+            text-align: center;
+            padding: 50px 20px;
+            color: #94a3b8;
+            font-size: 15px;
+            background: white;
+            border-radius: 20px;
+            border: 2px dashed #e2e8f0;
+        }
+
+        .sin-resultados-redes .emoji {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* ===== SECCIONES POR LETRA ===== */
+        .seccion {
+            margin-bottom: 36px;
+        }
+
+        .seccion-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding: 12px 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--seccion-color, #2563eb);
+        }
+
+        .seccion-header .letra {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--seccion-color, #2563eb);
+            background: var(--seccion-bg, #eef2ff);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .seccion-header .titulo {
+            font-size: 16px;
+            font-weight: 700;
             color: #0f172a;
         }
 
-        .card .days-tag {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 6px;
-        }
-
-        .card .day-pill {
-            background: #eef2ff;
-            color: #4f46e5;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 3px 12px;
-            border-radius: 30px;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-        }
-
-        .card .count {
-            color: #94a3b8;
-            font-size: 0.8rem;
+        .seccion-header .titulo small {
+            display: block;
+            font-size: 12px;
+            color: #64748b;
             font-weight: 500;
-            margin-top: 8px;
+            margin-top: 2px;
         }
 
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            display: none;
+        .seccion-header .count-seccion {
+            margin-left: auto;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--seccion-color, #2563eb);
+            background: var(--seccion-bg, #eef2ff);
+            padding: 4px 14px;
+            border-radius: 40px;
+        }
+
+        /* ===== GRID DE TARJETAS ===== */
+        .redes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 22px;
+        }
+
+        .red-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px 18px 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+            border: 2px solid #eef2f7;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
+            user-select: none;
+        }
+
+        .red-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent, #2563eb), var(--accent2, #7c3aed));
+            border-radius: 24px 24px 0 0;
+        }
+
+        .red-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent, #2563eb);
+        }
+
+        .red-card:active { transform: scale(0.97); }
+
+        .red-card .emoji-grande {
+            font-size: 48px;
+            margin-bottom: 6px;
+            display: block;
+            line-height: 1;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
+        }
+
+        .red-card .nombre-red {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .red-card .miembros-count {
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 500;
+            background: #f1f5f9;
+            padding: 3px 14px;
+            border-radius: 40px;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        .red-card .miembros-count .num { font-weight: 700; color: #2563eb; }
+
+        .red-card .mini-stats {
+            display: flex;
+            gap: 6px;
+            margin-top: 10px;
+            flex-wrap: wrap;
             justify-content: center;
-            padding: 24px;
+        }
+
+        .red-card .mini-stats .mini {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        .red-card .mini-stats .mini.pagado { background: #dcfce7; color: #166534; }
+        .red-card .mini-stats .mini.pendiente { background: #fee2e2; color: #991b1b; }
+        .red-card .mini-stats .mini.bus { background: #dbeafe; color: #1e40af; }
+        .red-card .mini-stats .mini.carro { background: #fef3c7; color: #92400e; }
+
+        .red-card .hint {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-top: 10px;
+            font-weight: 400;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .red-card:hover .hint { opacity: 1; }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10, 20, 35, 0.6);
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
             z-index: 1000;
             animation: fadeIn 0.25s ease;
         }
 
-        .modal-overlay.active {
-            display: flex;
+        .modal-overlay.active { display: flex; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp {
+            from { transform: translateY(30px) scale(0.96); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
         }
 
         .modal {
-            background: #ffffff;
-            border-radius: 32px;
+            background: white;
+            border-radius: 28px;
             max-width: 720px;
             width: 100%;
-            max-height: 90vh;
-            padding: 32px 28px;
-            box-shadow: 0 40px 80px -16px rgba(0, 0, 0, 0.25);
-            animation: slideUp 0.3s ease;
+            max-height: 88vh;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
         }
 
         .modal-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            padding: 20px 24px 16px;
+            border-bottom: 2px solid #f1f5f9;
+            background: #fafbfc;
             flex-shrink: 0;
         }
 
-        .modal-header h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #0f172a;
-        }
+        .modal-header .left { display: flex; align-items: center; gap: 14px; }
+        .modal-header .left .emoji { font-size: 36px; line-height: 1; }
+        .modal-header .left .info h3 { font-size: 20px; font-weight: 700; color: #0f172a; line-height: 1.2; }
+        .modal-header .left .info .count { font-size: 13px; color: #64748b; font-weight: 500; }
 
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 1.6rem;
-            cursor: pointer;
-            color: #94a3b8;
-            transition: color 0.2s;
-            padding: 4px 8px;
-            border-radius: 12px;
-        }
-
-        .modal-close:hover {
-            color: #0f172a;
+        .modal-header .close-btn {
             background: #f1f5f9;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            transition: 0.2s;
+            flex-shrink: 0;
         }
 
-        .day-selector {
+        .modal-header .close-btn:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+            transform: rotate(90deg);
+        }
+
+        /* ===== RESUMEN DEL MODAL ===== */
+        .modal-resumen {
             display: flex;
-            gap: 12px;
-            margin-bottom: 28px;
+            gap: 10px;
+            padding: 12px 24px;
+            background: #f8fafc;
+            border-bottom: 1px solid #eef2f7;
             flex-wrap: wrap;
             flex-shrink: 0;
         }
 
-        .day-btn {
-            flex: 1;
-            min-width: 80px;
-            padding: 12px 8px;
-            border: 2px solid #e2e8f0;
-            background: #f8fafc;
-            border-radius: 16px;
+        .modal-resumen .chip {
+            font-size: 12px;
             font-weight: 600;
-            font-size: 1rem;
-            color: #475569;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            text-align: center;
+            padding: 4px 14px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        .day-btn:hover {
-            border-color: #94a3b8;
-            background: #f1f5f9;
+        .modal-resumen .chip.pagado { background: #dcfce7; color: #166534; }
+        .modal-resumen .chip.pendiente { background: #fee2e2; color: #991b1b; }
+        .modal-resumen .chip.bus { background: #dbeafe; color: #1e40af; }
+        .modal-resumen .chip.carro { background: #fef3c7; color: #92400e; }
+        .modal-resumen .chip.infantil { background: #f3e8ff; color: #6b21a8; }
+
+        /* ===== BUSCADOR ===== */
+        .modal-search {
+            padding: 12px 24px 8px;
+            flex-shrink: 0;
         }
 
-        .day-btn.active {
-            border-color: #4f46e5;
-            background: #eef2ff;
-            color: #4f46e5;
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
+        .modal-search input {
+            width: 100%;
+            padding: 11px 16px;
+            border: 2px solid #e9edf2;
+            border-radius: 14px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.15s;
+            background: #f8fafc;
         }
 
-        .volunteer-list {
+        .modal-search input:focus {
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+        }
+
+        .modal-search input::placeholder { color: #94a3b8; }
+
+        /* ===== CUERPO DEL MODAL ===== */
+        .modal-body {
+            padding: 8px 20px 20px;
             overflow-y: auto;
             flex: 1;
-            padding-right: 4px;
+            position: relative;
         }
 
-        .volunteer-list::-webkit-scrollbar {
-            width: 5px;
+        .modal-body::-webkit-scrollbar { width: 6px; }
+        .modal-body::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+        .modal-body::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .modal-body::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* ===== TABLA DE PERSONAS ===== */
+        .tabla-personas {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
         }
 
-        .volunteer-list::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-
-        .volunteer-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 16px;
-            border-radius: 14px;
-            background: #f8fafc;
-            margin-bottom: 8px;
-            border: 1px solid #f1f5f9;
-            transition: background 0.1s ease;
-        }
-
-        .volunteer-item:hover {
-            background: #f1f5f9;
-        }
-
-        .volunteer-name {
-            font-weight: 500;
-            color: #0f172a;
-        }
-
-        .volunteer-phone {
+        /* Encabezado sticky con fondo opaco real */
+        .tabla-personas thead th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: #ffffff;
+            text-align: left;
+            padding: 12px 12px;
+            font-size: 11px;
+            font-weight: 700;
             color: #64748b;
-            font-size: 0.85rem;
-            font-weight: 500;
-            background: white;
-            padding: 3px 12px;
-            border-radius: 30px;
-            border: 1px solid #e2e8f0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #eef2f7;
+            /* Sombra que se proyecta sobre las filas al hacer scroll */
+            box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.15);
         }
 
-        .empty-state {
-            color: #94a3b8;
+        /* Escudo adicional: cada th tiene su propio fondo sólido */
+        .tabla-personas thead th::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -2px;
+            height: 2px;
+            background: #eef2f7;
+        }
+
+        .tabla-personas thead th.col-num { width: 44px; text-align: center; }
+        .tabla-personas thead th.col-cuota { width: 120px; text-align: center; }
+        .tabla-personas thead th.col-bus { width: 130px; text-align: center; }
+
+        .tabla-personas tbody tr {
+            border-bottom: 1px solid #f1f5f9;
+            transition: 0.12s;
+        }
+
+        .tabla-personas tbody tr:hover { background: #f8fafc; }
+        .tabla-personas tbody tr:last-child { border-bottom: none; }
+
+        .tabla-personas tbody td {
+            padding: 10px 12px;
+            vertical-align: middle;
+            background: #ffffff;
+        }
+
+        .tabla-personas tbody tr:hover td { background: #f8fafc; }
+
+        .tabla-personas tbody td.col-num {
             text-align: center;
-            padding: 40px 0;
-            font-weight: 500;
+            font-size: 12px;
+            font-weight: 600;
+            color: #94a3b8;
+            font-variant-numeric: tabular-nums;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        .tabla-personas tbody td.col-nombre {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+            text-transform: uppercase;
+            letter-spacing: 0.2px;
         }
 
-        @keyframes slideUp {
-            0% { opacity: 0; transform: translateY(20px) scale(0.98); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+        .tabla-personas tbody td.col-nombre .badge-menor {
+            display: inline-block;
+            font-size: 10px;
+            background: #f3e8ff;
+            color: #6b21a8;
+            padding: 1px 8px;
+            border-radius: 40px;
+            font-weight: 700;
+            margin-left: 6px;
+            text-transform: none;
+            letter-spacing: 0;
         }
 
-        @media (max-width: 600px) {
-            body { padding: 20px 12px; }
-            .header h1 { font-size: 2rem; }
-            .grid { grid-template-columns: 1fr; }
-            .modal { padding: 24px 18px; }
-            .day-btn { min-width: 60px; font-size: 0.9rem; padding: 10px 6px; }
+        .tabla-personas tbody td.col-cuota,
+        .tabla-personas tbody td.col-bus { text-align: center; }
+
+        .tabla-personas .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 40px;
+            white-space: nowrap;
+        }
+
+        .tabla-personas .tag.pagado { background: #dcfce7; color: #166534; }
+        .tabla-personas .tag.pendiente { background: #fee2e2; color: #991b1b; }
+        .tabla-personas .tag.bus { background: #dbeafe; color: #1e40af; }
+        .tabla-personas .tag.carro { background: #fef3c7; color: #92400e; }
+
+        /* ===== SIN RESULTADOS ===== */
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: #94a3b8;
+            font-size: 15px;
+        }
+
+        .no-results .emoji { font-size: 40px; display: block; margin-bottom: 10px; }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
+            padding: 20px;
+        }
+
+        .footer strong { color: #475569; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .header h1 { font-size: 30px; }
+            .header .sub { font-size: 15px; }
+            .stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .stat-item .num { font-size: 22px; }
+            .buscador-redes { padding: 12px 16px; }
+            .buscador-redes input { font-size: 14px; }
+            .seccion-header { padding: 10px 14px; }
+            .seccion-header .letra { width: 38px; height: 38px; font-size: 18px; }
+            .seccion-header .titulo { font-size: 14px; }
+            .redes-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+            .red-card { padding: 18px 12px 16px; }
+            .red-card .emoji-grande { font-size: 36px; }
+            .red-card .nombre-red { font-size: 14px; }
+            .red-card .miembros-count { font-size: 11px; padding: 2px 10px; }
+            .red-card .mini-stats .mini { font-size: 10px; padding: 1px 6px; }
+            .modal { max-height: 92vh; border-radius: 20px; }
+            .modal-header { padding: 16px 18px 12px; }
+            .modal-header .left .emoji { font-size: 28px; }
+            .modal-header .left .info h3 { font-size: 17px; }
+            .modal-resumen { padding: 10px 16px; gap: 6px; }
+            .modal-resumen .chip { font-size: 11px; padding: 3px 10px; }
+            .modal-search { padding: 10px 16px 6px; }
+            .modal-body { padding: 6px 12px 16px; }
+            .tabla-personas thead th { font-size: 10px; padding: 10px 8px; }
+            .tabla-personas tbody td { padding: 8px 8px; }
+            .tabla-personas tbody td.col-nombre { font-size: 12px; }
+            .tabla-personas thead th.col-cuota { width: 90px; }
+            .tabla-personas thead th.col-bus { width: 100px; }
+            .tabla-personas .tag { font-size: 10px; padding: 2px 8px; }
+        }
+
+        @media (max-width: 400px) {
+            .stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .stat-item { padding: 10px 8px; }
+            .stat-item .num { font-size: 18px; }
+            .stat-item .label { font-size: 10px; }
+            .redes-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .red-card .emoji-grande { font-size: 30px; }
+            .red-card .nombre-red { font-size: 12px; }
+            .red-card .miembros-count { font-size: 10px; padding: 2px 8px; }
+            .red-card .mini-stats { gap: 3px; }
+            .red-card .mini-stats .mini { font-size: 9px; padding: 1px 5px; }
+            .tabla-personas thead th.col-cuota { width: 70px; }
+            .tabla-personas thead th.col-bus { width: 80px; }
+            .tabla-personas .tag { font-size: 9px; padding: 2px 6px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <h1>🏃 Run to Win</h1>
-        <p>Voluntarios · Viernes y Sábado</p>
-        <span class="badge-conference">Familia de Dios</span>
+    <div class="container">
+
+        <header class="header">
+            <div class="iglesia">⛪ Iglesia Familia de Dios</div>
+            <h1><span>Full Day</span> | Redes Familiares</h1>
+            <div class="sub">
+                <span class="badge">📋 Listado completo</span>
+                <span>Toca una red para ver sus miembros</span>
+            </div>
+        </header>
+
+        <div class="stats" id="stats"></div>
+
+        <!-- Buscador de redes -->
+        <div class="buscador-redes">
+            <span class="icono">🔍</span>
+            <input type="text" id="buscadorRedes" placeholder="Buscar red... (ej. KENNEDY, GUASMO, VILLA)" />
+            <span class="contador" id="contadorRedes">21 redes</span>
+        </div>
+
+        <!-- Contenedor de secciones + tarjetas -->
+        <div id="contenedorRedes"></div>
+
+        <footer class="footer">
+            <strong>Full Day</strong> · Redes Familiares · Iglesia Familia de Dios
+        </footer>
+
     </div>
 
-    <div id="cardsGrid" class="grid"></div>
-</div>
-
-<div id="modal" class="modal-overlay">
-    <div class="modal">
-        <div class="modal-header">
-            <h2 id="modalTeamName">Equipo</h2>
-            <button class="modal-close" id="modalCloseBtn">✕</button>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div class="left">
+                    <span class="emoji" id="modalEmoji">🏠</span>
+                    <div class="info">
+                        <h3 id="modalTitle">Red</h3>
+                        <div class="count" id="modalCount">0 miembros</div>
+                    </div>
+                </div>
+                <button class="close-btn" id="closeModal" aria-label="Cerrar">✕</button>
+            </div>
+            <div class="modal-resumen" id="modalResumen"></div>
+            <div class="modal-search">
+                <input type="text" id="searchInput" placeholder="🔍 Buscar persona..." />
+            </div>
+            <div class="modal-body" id="modalBody"></div>
         </div>
-        <div class="day-selector" id="daySelector">
-            <button class="day-btn" data-day="viernes">Viernes</button>
-            <button class="day-btn" data-day="sábado">Sábado</button>
-        </div>
-        <div id="volunteerListContainer" class="volunteer-list"></div>
     </div>
-</div>
 
-<script>
-    const volunteersData = {
-        "5s": {
-            days: {
-                viernes: ["Carlos Damián Padilla Moran", "Carlos Oñate", "Fanny", "Iker", "Israel", "Javier", "Margarita Albuja", "Mario", "Martha"],
-                sábado: ["Aarón Abel Mendoza Mite", "Carlos Oñate", "David Rincon", "Fanny", "Iker", "Israel", "Javier", "Margarita Albuja", "Mario", "Noemí Rodríguez Bodero", "Jean Paúl Sornoza"]
-            }
-        },
-        "acomodadores": {
-            days: {
-                viernes: ["Alexander", "Amy Quimi", "Anderson Shiki", "Andrea Flores", "Andrea Y Walter", "Annabelle Flores", "Carla Flores", "César Cedeño", "Connie Delgado", "Erick Berzosa", "Evelyn Matamoros", "Féliz Chocho", "Gabriela Lua", "Gina Sellan", "Iris Veliz", "Janick Herdoiza", "Jelena Lainez", "Jilly Rendon", "Jose Alvarado", "Jose Fienco", "Lady Vizueta", "Lilibeth", "Lorena Aguirre", "Lucia Briones", "Luis Calderon", "Mady Noguera", "Marcela Leon", "Marjorie Conrade", "Melisa Castro", "Omar Rincon", "Paola Oquendo", "Roberto Mendoza", "Stalin Chocho", "Stefania Ganchoso", "Veronica Pompo"],
-                sábado: ["Amy Quimi", "Annabelle Flores", "Annie Martillo", "Carla Flores", "César Cedeño", "Connie Delgado", "Dennys Alburqueque", "Evelyn Matamoros", "Flor Carderon", "Gabriela Lua", "Gina Sellan", "Glenda Sanchez", "Janick Herdoiza", "Jessica Cuenca", "Josefina Tumbaco", "Lorena Aguirre", "Lucia Briones", "Luis Calderon", "Mady Noguera", "Marjorie Rugel", "Nelita Ortiz", "Omar Rincon", "Patricia Pilalo", "Priscilla Bermeo", "Stefania Ganchoso", "Xavier Augusto", "Xavier Rincon", "Yris Piña"]
-            }
-        },
-        "backstage": {
-            days: {
-                viernes: ["Alejandro Icaza", "Amy Gonzales", "David Fuentes", "Honey Lalon", "Jeremy cabrera", "José Guerrero", "Tyron Chávez"],
-                sábado: ["Camilla Tomala", "David Fuentes", "Johanna Yepez", "Jorge palacios", "José Guerrero", "Marlon caisaguano", "Ronny Vásquez"]
-            }
-        },
-        "banda del hijo": {
-            days: {
-                viernes: ["Ashlye Vinatea", "Byron Valencia", "Diego Vásquez", "Jael Román", "Joel Pluas", "Mario Arreaga", "Raquel Cuenca", "Roberto Guerrero", "Serwin Suazo", "Wesley Uwaoma"],
-                sábado: ["Cristhian Canelos", "David Criollo", "Diego Vásquez", "Emily Peñafiel", "Joel Pluas", "Keyla Guerra", "Liliana Figueroa", "Mario Arreaga", "Mayerli Palacios", "Roy Quirola"]
-            }
-        },
-        "dance crew": {
-            days: {
-                sábado: ["Adrian Vivar", "Cristhopher Campoverde", "Cristina Silva", "Fernanda Villalba", "Jenny Males", "Josue Sellán", "Nia Rivas", "Salomé Morán", "Santiago Cañarte", "Tatiana Hidalgo", "Viviana Haro"]
-            }
-        },
-        "dirección de experiencia": {
-            days: {
-                viernes: ["Ana Saresin", "Charlie", "Chris", "Emily Muñoz", "Evelyn", "Ginger", "Jairo", "Karelys Rincón", "Majo Gavilanes", "Melody", "Peggy Segura"],
-                sábado: ["Ana Saresin", "Charlie", "Chris", "Emily Muñoz", "Ginger", "Jairo", "Karelys Rincón", "Majo Morante", "Milton", "Vicky"]
-            }
-        },
-        "fam coffee": {
-            days: {
-                viernes: ["Alexandra María Espinoza Loza", "Ambar Nieto Pìnela", "Cristina Isabel Ahtty Pilozo", "Karina Caicedo", "Leonela Abigail Espinoza Eugenio", "Verónica"],
-                sábado: ["Francisca del Rocío Pin Vasquez", "Maritza Celeste Marazita Cevallos"]
-            }
-        },
-        "foto y video": {
-            days: {
-                viernes: ["Allison Mero", "Anderson Asistimbay", "Andrés Vélez", "Daniel Peñafiel", "Frangelo", "Isaac Peñafiel", "Joseph Rincón", "Keiko Armas", "Keyla Castro", "Viviana Campo"],
-                sábado: ["Allison Mero", "Anderson Asistimbay", "Andrés Vélez", "Daniel Peñafiel", "Frangelo", "Génesis Fienco", "Isaac Peñafiel", "Ismael Moncada", "Joseph Rincón", "Valeria Castañeda"]
-            }
-        },
-        "herederos": {
-            days: {
-                viernes: ["Antonella Burgos", "Diana Carolina López Ulloa", "Jessica Cuenca", "Jordana Silva", "Juan Alava", "Kathy Vernaza", "Mabel Chila", "Marílena Mera", "Melany", "Mía Espinoza", "Miguel Gracia", "Nasly Torres (maestra sombra)", "Nathaly Párraga", "Paula Mirelha Castillo Segura", "Paulo José Espinoza Anchundia", "Rashid Torres", "Rocío Delgado", "Ruth Cortes", "Tamy Cardenas", "Zoilita Franco"],
-                sábado: ["Alicia Banchon", "Daniela Jama", "Dora Canga", "Emily Quiñónez", "Eunice", "Janella Paulette Orrala Flores", "Jessica Cuenca", "Joan Maquilon", "Jordana Silva", "José Luis Arce", "Mariuxi Vasquez", "Miguel Gracia", "Nancy Velez", "Nasly Torres (maestra sombra)", "Rocío Delgado", "Wendy Vera", "Zoilita Franco"]
-            }
-        },
-        "historias": {
-            days: {
-                viernes: ["Andrea Jacqueline Regatto Gavilanes", "Diana Elizabeth Parrales Rosales", "Eliana Andrea Yaucan Mejía", "Ivana Rafaella Ramírez Vélez", "Leslye Bravo", "Paula Daniela Delgado Heras", "Pilar Ramírez"],
-                sábado: ["Byron Ernesto Valencia Valdiviezo", "Diana Elizabeth Parrales Rosales", "Eliana Andrea Yaucan Mejía", "Emily Jazmin Aguaiza Brunett", "Leslye Bravo", "Luis Eduardo Alvarado Ayauca", "Paula Daniela Delgado Heras"]
-            }
-        },
-        "pantalla y luces": {
-            days: {
-                viernes: ["Daniel torres", "Daniela Lisbeth Solano Moncada", "Génesis Dianne Fienco Porras", "Josué Mathias Alvarado Pombo", "María José Navarro", "Ricardo"],
-                sábado: ["Daniel torres", "Daniela Lisbeth Solano Moncada", "Dayana Noemi López Merchán", "Josué Mathias Alvarado Pombo", "Ricardo"]
-            }
-        },
-        "producción - transmisión": {
-            days: {
-                viernes: ["Allison Domenica Alvarado Ayauca", "Andrés Alberto Aparicio Castillo", "César Israel Ronquillo Avilés", "Gonzalo Alberto Aparicio Torres"],
-                sábado: ["Gonzalo Alberto Aparicio Torres", "Nicole Estefanía Alvarado Pinto"]
-            }
-        },
-        "protocolo": {
-            days: {
-                viernes: ["Jasmin Duarte", "Marlyn Machuca", "MIOSOTTY de Köcher", "Mónica Mora"],
-                sábado: ["Mónica Mora", "Sofía de Aparicio"]
-            }
-        },
-        "seguridad": {
-            days: {
-                viernes: ["Adrian Perlaza", "Andrés Pulido", "Bito Ponce", "Christian Llaguno", "Henry López", "Joa Alex", "Oswaldo Chica", "Ricardo González"],
-                sábado: ["Angel López", "Bito Ponce", "Christian Llaguno", "Henry López"]
-            }
-        },
-        "sonido": {
-            days: {
-                viernes: ["Fernando Guaman Manzaba", "Jonathan Arreaga", "Maykel Jiménez Rodríguez"],
-                sábado: ["Angel Mendoza Mite", "Gabriel Pin López", "Jonathan Arreaga"]
-            }
-        },
-        "staff": {
-            days: {
-                viernes: ["Diego Tobar", "José Peralta", "Karla Rodríguez", "Saúl Merchán", "Scarlett Ordóñez", "Suanny Chóez", "Vanessa Romo"],
-                sábado: ["Ana Montes de Oca", "Andrea Morán", "Camila Yepez", "Natalia Navarro", "Romina Caiza", "Santiago Moya", "Scarlett Ordóñez", "Valentina Moya"]
-            }
-        },
-        "wake up": {
-            days: {
-                viernes: ["Fernando Isaac Quintana Verá", "Jam", "Martina Gabriela Saresin Lituma", "Oscar Mathias Burgos Gutierrez"],
-                sábado: ["Fernando Isaac Quintana Verá", "Fiorella de los Angeles Castillo Perelli", "Jam", "Martina Gabriela Saresin Lituma"]
-            }
-        }
-    };
+    <script>
+        // ============================================================
+        // DATOS
+        // ============================================================
+        const personas = [
+            { id: 1, red: "RED SAN FELIPE", nombre: "Willian Castro", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 2, red: "RED SAN FELIPE", nombre: "Virginia Obando", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 3, red: "RED SAN FELIPE", nombre: "Fiorella Castro", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 4, red: "RED SAN FELIPE", nombre: "Melida Guambaña", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 5, red: "RED SAN FELIPE", nombre: "Tiffany Briones", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 6, red: "RED SAN FELIPE", nombre: "Jonathan Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 7, red: "RED SAN FELIPE", nombre: "Amanda Campoverde", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 8, red: "RED SAN FELIPE", nombre: "Emanuel Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 9, red: "RED SAN FELIPE", nombre: "Lemuel Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 10, red: "RED SAN FELIPE", nombre: "Zuri Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 11, red: "RED SAN FELIPE", nombre: "Grabriel Pin", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 12, red: "RED SAN FELIPE", nombre: "Liliana Figueroa", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 13, red: "RED SAN FELIPE", nombre: "Juan Pablo Castro", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 14, red: "RED SAN FELIPE", nombre: "Valeria Minaya", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 15, red: "RED SAN FELIPE", nombre: "Camila Castro", infante: "MENOR", cuota: "Pendiente", bus: "Bus" },
+            { id: 16, red: "RED SAN FELIPE", nombre: "Emanuel Castro", infante: "MENOR", cuota: "Pendiente", bus: "Bus" },
+            { id: 17, red: "RED SAN FELIPE", nombre: "Dario Cabello", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 18, red: "RED SAN FELIPE", nombre: "Erlinda Mayor", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 19, red: "RED SAN FELIPE", nombre: "Enrique Avilés", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 20, red: "RED SAN FELIPE", nombre: "Marjorie Fajardo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 21, red: "RED SAN FELIPE", nombre: "Jorge López", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 22, red: "RED SAN FELIPE", nombre: "Karina Merchán", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 23, red: "RED KENNEDY", nombre: "Oscar burgos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 24, red: "RED KENNEDY", nombre: "Roxana Gutierrez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 25, red: "RED KENNEDY", nombre: "Jorge Farad", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 26, red: "RED KENNEDY", nombre: "Tanya Obando", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 27, red: "RED KENNEDY", nombre: "Lionel Espinoza", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 28, red: "RED KENNEDY", nombre: "Esther Eugenio", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 29, red: "RED KENNEDY", nombre: "Gonzalo Aparicio", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 30, red: "RED KENNEDY", nombre: "Sofia Castillo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 31, red: "RED KENNEDY", nombre: "Mariuxi Davila", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 32, red: "RED KENNEDY", nombre: "José Luis Rosales", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 33, red: "RED KENNEDY", nombre: "Samy Pazmiño", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 34, red: "RED KENNEDY", nombre: "Patricia MIranda", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 35, red: "RED KENNEDY", nombre: "Gustavo Burgos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 36, red: "RED KENNEDY", nombre: "Gabriela Panta", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 37, red: "RED KENNEDY", nombre: "Antonela Burgos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 38, red: "RED KENNEDY", nombre: "Vanesa Castro", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 39, red: "RED KENNEDY", nombre: "José Veliz", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 40, red: "RED KENNEDY", nombre: "Mariuxi Chávez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 41, red: "RED KENNEDY", nombre: "Iris Véliz", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 42, red: "RED KENNEDY", nombre: "Amaia Véliz", infante: "MENOR", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 43, red: "RED KENNEDY", nombre: "Jairo Poso", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 44, red: "RED KENNEDY", nombre: "Matias Poso C.", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 45, red: "RED KENNEDY", nombre: "Jacob Poso C", infante: "MENOR", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 46, red: "RED ORELLANA", nombre: "Jessy Rodriguez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 47, red: "RED ORELLANA", nombre: "Evelyn Mina", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 48, red: "RED ORELLANA", nombre: "Flor de la Rosa", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 49, red: "RED ORELLANA", nombre: "Camila Cruz", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 50, red: "RED ORELLANA", nombre: "Daniel Solano", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 51, red: "RED ORELLANA", nombre: "Katty Moncada", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 52, red: "RED ORELLANA", nombre: "Roberto Rodriguez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 53, red: "RED ORELLANA", nombre: "Jaqueline de Rodriguez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 54, red: "RED SAMANES", nombre: "Antony Andrade", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 55, red: "RED SAMANES", nombre: "Liliana de Andrade", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 56, red: "RED SAMANES", nombre: "Edwin Cuadrado", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 57, red: "RED SAMANES", nombre: "Erika de Cuadrado", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 58, red: "RED SAMANES", nombre: "Fmla. Cuadrado", infante: "MENOR", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 59, red: "RED SAMANES", nombre: "Fmla. Cuadrado", infante: "MENOR", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 60, red: "RED SAMANES", nombre: "Carlos Gutierrez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 61, red: "RED SAMANES", nombre: "Verónica de Gutierrez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 62, red: "RED SAMANES", nombre: "Alexis Torres", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 63, red: "RED SAMANES", nombre: "Lilian Gutiérrez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 64, red: "RED SAMANES", nombre: "Jorge Véliz", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 65, red: "RED SAMANES", nombre: "Cecilia", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 66, red: "RED SAMANES", nombre: "Rolando Zevallos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 67, red: "RED SAMANES", nombre: "Teresa Alcívar", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 68, red: "RED ALBORADA", nombre: "MAFER QUINTERO", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 69, red: "RED ALBORADA", nombre: "EDUARDO NAVARRO", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 70, red: "RED ALBORADA", nombre: "KATHERINE BOZADA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 71, red: "RED ALBORADA", nombre: "RAFAEL RANGEL", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 72, red: "RED ALBORADA", nombre: "ENRIQUE MORAN", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 73, red: "RED ALBORADA", nombre: "EMILIANO MORAN", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 74, red: "RED SAUCES", nombre: "ALEXANDRA YAGUAL", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 75, red: "RED SAUCES", nombre: "KAREN BARZOLA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 76, red: "RED 9 DE OCTUBRE", nombre: "DANA ARCE", infante: "17 AÑOS", cuota: "Pagado", bus: "Bus" },
+            { id: 77, red: "RED 9 DE OCTUBRE", nombre: "ANNIA ARCE", infante: "13 AÑOS", cuota: "Pagado", bus: "Bus" },
+            { id: 78, red: "RED 9 DE OCTUBRE", nombre: "RAQUEL ARCE", infante: "10 AÑOS", cuota: "Pagado", bus: "Bus" },
+            { id: 79, red: "RED 9 DE OCTUBRE", nombre: "JOSE LUIS ARCE", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 80, red: "RED 9 DE OCTUBRE", nombre: "SINDIA FERIGRA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 81, red: "RED 9 DE OCTUBRE", nombre: "MANUEL VILLON", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 82, red: "RED 9 DE OCTUBRE", nombre: "GERMANIA DE VILLON", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 83, red: "RED 9 DE OCTUBRE", nombre: "MAYRA CERVANTE", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 84, red: "RED 9 DE OCTUBRE", nombre: "Abdías Santiago Cervantes Bravo", infante: "MENOR", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 85, red: "RED 9 DE OCTUBRE", nombre: "CARLOS SANCHEZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 86, red: "RED 9 DE OCTUBRE", nombre: "PEDRO BADILLO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 87, red: "RED 9 DE OCTUBRE", nombre: "CIRA RIVERA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 88, red: "RED BATALLON", nombre: "ALEX CRESPIN", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 89, red: "RED BATALLON", nombre: "PATRICIA VACA", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 90, red: "RED BATALLON", nombre: "JUAN CARLOS PADILLA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 91, red: "RED BATALLON", nombre: "NANCY MORAN", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 92, red: "RED BATALLON", nombre: "JESSICA CUENCA", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 93, red: "RED BATALLON", nombre: "RUTH CORTEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 94, red: "RED BATALLON", nombre: "NIÑA 9 AÑOS", infante: "MENOR", cuota: "Pendiente", bus: "Bus" },
+            { id: 95, red: "RED RIOJA", nombre: "ANITA DAVILA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 96, red: "RED RIOJA", nombre: "LIBIA CAMPUZANO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 97, red: "RED RIOJA", nombre: "PATRICIA NAVARRETE", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 98, red: "RED RIOJA", nombre: "WENDY RODRIGUEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 99, red: "RED RIOJA", nombre: "CRISTHIAN BERMEO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 100, red: "RED RIOJA", nombre: "ANDREA AVILA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 101, red: "RED RIOJA", nombre: "VERONICA DE RIONCON", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 102, red: "RED RIOJA", nombre: "ALEXANDRA REDROVAN", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 103, red: "RED RIOJA", nombre: "XAVIER NEIRA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 104, red: "RED RIOJA", nombre: "JAVIER RINCON", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 105, red: "RED RIOJA", nombre: "ROCIO FLOR", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 106, red: "RED RIOJA", nombre: "FATIMA ORTIZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 107, red: "RED PADRE SOLANO", nombre: "JAVIER GUERRERO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 108, red: "RED PADRE SOLANO", nombre: "ROSY DE GUERRERO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 109, red: "RED PADRE SOLANO", nombre: "JOSUE GUERRERO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 110, red: "RED PADRE SOLANO", nombre: "MARTHA PAMPLONA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 111, red: "RED PADRE SOLANO", nombre: "JEREMY PAMPLONA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 112, red: "RED PADRE SOLANO", nombre: "MARTHA YAGUAL", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 113, red: "RED PADRE SOLANO", nombre: "MERCEDES CANDELARIO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 114, red: "RED PADRE SOLANO", nombre: "MARVIN CABEZAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 115, red: "RED PADRE SOLANO", nombre: "FIORELLA CABEZAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 116, red: "RED PADRE SOLANO", nombre: "MARVIN CABEZAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 117, red: "RED PADRE SOLANO", nombre: "LUIS ORDOÑES", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 118, red: "RED PADRE SOLANO", nombre: "FERNANDA DE ORDOÑEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 119, red: "RED PADRE SOLANO", nombre: "SANTIAGO ORDOÑEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 120, red: "RED PADRE SOLANO", nombre: "ROBERTO PINTO", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 121, red: "RED PADRE SOLANO", nombre: "MARIO MENOSCAL", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 122, red: "RED PADRE SOLANO", nombre: "OTTO JIMENEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 123, red: "RED PADRE SOLANO", nombre: "JOHANNA RODRIGUEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 124, red: "RED PADRE SOLANO", nombre: "MA. DE LOS ANGELES JIMENES", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 125, red: "RED PADRE SOLANO", nombre: "ELISEO JIMENEZ", infante: "MENOR", cuota: "Pendiente", bus: "Bus" },
+            { id: 126, red: "RED SUR OESTE", nombre: "MARIUXI VASQUEZ", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 127, red: "RED SUR OESTE", nombre: "JUAN ALAVA", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 128, red: "RED SUR OESTE", nombre: "PALMIRA VALLADOLID", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 129, red: "RED SUR OESTE", nombre: "ELIZABETH RUIZ", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 130, red: "RED SUR OESTE", nombre: "ROBERTO TIGUA", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 131, red: "RED SUR OESTE", nombre: "YAZMIN BOHORQUEZ", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 132, red: "RED GUASMO SUR", nombre: "LILIA CRESPIN", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 133, red: "RED GUASMO SUR", nombre: "EDGAR FLORES", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 134, red: "RED GUASMO SUR", nombre: "ELSY TORRES", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 135, red: "RED GUASMO SUR", nombre: "MARCIA TORRES", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 136, red: "RED GUASMO SUR", nombre: "MARIUXI CHIGUANO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 137, red: "RED GUASMO SUR", nombre: "GUSTAVO DAVILA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 138, red: "RED GUASMO SUR", nombre: "ASLEY BURGOS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 139, red: "RED GUASMO SUR", nombre: "DOUGLAS DELGADO", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 140, red: "RED GUASMO SUR", nombre: "STEPHANIA GANCHOZO", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 141, red: "RED GUASMO SUR", nombre: "RAFAELLA DELGADO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 142, red: "RED GUASMO SUR", nombre: "MARLON PINCAY", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 143, red: "RED GUASMO SUR", nombre: "LADY MENDEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 144, red: "RED GUASMO SUR", nombre: "ANGIE SANCHEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 145, red: "RED GUASMO SUR", nombre: "MARIA SANCHEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 146, red: "RED GUASMO SUR", nombre: "BYRON DAVILA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 147, red: "RED GUASMO SUR", nombre: "MOISES DAVILA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 148, red: "RED GUASMO SUR", nombre: "DEYSI AVENGO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 149, red: "RED GUASMO SUR", nombre: "ANDRES FLORES", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 150, red: "RED GUASMO SUR", nombre: "DAYANA SANCHEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 151, red: "RED GUASMO SUR", nombre: "MADELEINE OCHOA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 152, red: "RED GUASMO SUR", nombre: "ARLETH OCHOA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 153, red: "RED GUASMO SUR", nombre: "NOEMI OCHOA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 154, red: "RED GUASMO SUR", nombre: "ANTHONY ARREAGA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 155, red: "RED GUASMO SUR", nombre: "NOEMI ALVAREZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 156, red: "RED GUASMO SUR", nombre: "LUCINDA CAÑARTE", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 157, red: "RED GUASMO SUR", nombre: "BRIGITTE CAÑARTE", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 158, red: "RED GUASMO SUR", nombre: "JAZMIN CAÑARTE", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 159, red: "RED GUASMO SUR", nombre: "THYZ QUIROZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 160, red: "RED GUASMO SUR", nombre: "NICOLAS MACIAS", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 161, red: "RED ROMAREDA", nombre: "ROSA PALACIOS MEZA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 162, red: "RED ROMAREDA", nombre: "CAMILA AGUIRRE", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 163, red: "RED ROMAREDA", nombre: "MELANIE AGUIRRE", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 164, red: "RED ROMAREDA", nombre: "ANDREA IBARRA HOLGUIN", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 165, red: "RED ROMAREDA", nombre: "KAREN SUASTI IBARRA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 166, red: "RED ROMAREDA", nombre: "ELVIRA SEGARRA UBILLA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 167, red: "RED ROMAREDA", nombre: "EDITHZA FALQUEZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 168, red: "RED ROMAREDA", nombre: "ROBERTO JEREZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 169, red: "RED ROMAREDA", nombre: "CRISTINA AHT", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 170, red: "RED ROMAREDA", nombre: "ERIKAFLORES", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 171, red: "RED ROMAREDA", nombre: "JAIRO TUMBACO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 172, red: "RED ROMAREDA", nombre: "DOMENICA TUMBACO F.", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 173, red: "RED ROMAREDA", nombre: "VICTOR VERA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 174, red: "RED ROMAREDA", nombre: "ARACELY BAQUERIZO", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 175, red: "RED ROMAREDA", nombre: "LAURENT VERA B.", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 176, red: "RED ROMAREDA", nombre: "JOUSTIN VERA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 177, red: "RED ROMAREDA", nombre: "SOFIA VERA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 178, red: "RED PUNTILLA", nombre: "WILLIAM HERRERA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 179, red: "RED PUNTILLA", nombre: "PAMELA GARCÍA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 180, red: "RED PUNTILLA", nombre: "CHARYTO ROMERO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 181, red: "RED PUNTILLA", nombre: "MANUEL BENALCAZAR", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 182, red: "RED LA JOYA", nombre: "OSCAR ORDOÑEZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 183, red: "RED LA JOYA", nombre: "RITA AGUILERA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 184, red: "RED LA JOYA", nombre: "NATASHA ORDOÑEZ (10 años)", infante: "MENOR", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 185, red: "RED LA JOYA", nombre: "ROXANA ORTEGA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 186, red: "RED LA JOYA", nombre: "DAYSI GOMEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 187, red: "RED LA JOYA", nombre: "JOYCE TUMBACO", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 188, red: "RED LA JOYA", nombre: "LIA BOZADA (menor de 10 años)", infante: "MENOR", cuota: "Pendiente", bus: "Bus" },
+            { id: 189, red: "RED LA JOYA", nombre: "VICTORIA YELA (menor de 10 años)", infante: "MENOR", cuota: "Pendiente", bus: "Bus" },
+            { id: 190, red: "RED LA JOYA", nombre: "EVELYN FAJARDO", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 191, red: "RED LA JOYA", nombre: "MATTHEWS PILAMUNGA FAJARDO", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 192, red: "RED LA JOYA", nombre: "GABRIELA PILAMUNGA FAJARDO", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 193, red: "RED LA JOYA", nombre: "MILTON ALVARADO CARRIEL", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 194, red: "RED LA JOYA", nombre: "HIPATIA PINTO MUÑOZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 195, red: "RED LA JOYA", nombre: "ROSA REYNA ALCIVAR", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 196, red: "RED LA JOYA", nombre: "DANIEL PESANTES REYNA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 197, red: "RED LA JOYA", nombre: "CARLOS SUAREZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 198, red: "RED LA JOYA", nombre: "ILIANA SALINAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 199, red: "RED LA JOYA", nombre: "CARLY SUAREZ SALINAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 200, red: "RED LA JOYA", nombre: "CHARLIZE SUAREZ SALINAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 201, red: "RED LA JOYA", nombre: "JAVIER SAN MARTIN", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 202, red: "RED LA JOYA", nombre: "YINIRIDA DIAGO TORRES", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 203, red: "RED LA JOYA", nombre: "LEONOR SACOTO ARGUDO", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 204, red: "RED LA JOYA", nombre: "JORGE MALDONADO", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 205, red: "RED LA JOYA", nombre: "MICHELLE OCHOA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 206, red: "RED LA JOYA", nombre: "MIGUEL RINCONES", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 207, red: "RED LA JOYA", nombre: "ELSA UBE PAREDES", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 208, red: "RED LA JOYA", nombre: "ADRIAN SORNOZA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 209, red: "RED LA JOYA", nombre: "ADRIANA SORNOZA UBE", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 210, red: "RED LA JOYA", nombre: "PAMELA SORNOZA UBE", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 211, red: "VILLA DEL REY", nombre: "JOSE ALVARADO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 212, red: "VILLA DEL REY", nombre: "VERONICA POMBO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 213, red: "VILLA DEL REY", nombre: "EDUARDO SALAZAR", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 214, red: "VILLA DEL REY", nombre: "MARTINA MORENO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 215, red: "VILLA DEL REY", nombre: "JAVIER MORAN", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 216, red: "VILLA DEL REY", nombre: "WENDY ESPINOZA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 217, red: "VILLA DEL REY", nombre: "LEXIDA BRACHO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 218, red: "VILLA DEL REY", nombre: "LILIANA MARQUEZ", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 219, red: "VILLA DEL REY", nombre: "DANIEL TELLO", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 220, red: "VILLA DEL REY", nombre: "CINTHIA JUANAZO", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 221, red: "VILLA DEL REY", nombre: "RICARDO MEJIA", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 222, red: "VILLA DEL REY", nombre: "MARITZA RAMIREZ", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 223, red: "VILLA DEL REY", nombre: "MAGALY NARANJO", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 224, red: "RED MUCHO LOTE", nombre: "JOSE POLO", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 225, red: "RED MUCHO LOTE", nombre: "KERLY HUERTA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 226, red: "RED MUCHO LOTE", nombre: "MARIANA BORJA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 227, red: "RED MUCHO LOTE", nombre: "VIVIANA BASQUEZ", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 228, red: "RED MUCHO LOTE", nombre: "MONICA MORA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 229, red: "RED MUCHO LOTE", nombre: "MELISSA AGUIRRE", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 230, red: "RED MUCHO LOTE", nombre: "CAMILITA AGUIRRE", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 231, red: "RED MUCHO LOTE", nombre: "CHARITO MOLINA DE URQUIZA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 232, red: "RED MUCHO LOTE", nombre: "CARLOS URQUIZA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 233, red: "RED MUCHO LOTE", nombre: "DANIEL URQUIZA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 234, red: "RED MUCHO LOTE", nombre: "IRIS PIÑA", infante: "MENOR", cuota: "Pendiente", bus: "Bus" },
+            { id: 235, red: "RED MUCHO LOTE", nombre: "HIJO DE CHARITO", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 236, red: "RED MUCHO LOTE", nombre: "NANCY VELEZ", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 237, red: "RED MUCHO LOTE", nombre: "MARIA REBECA GOMEZ", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 238, red: "RED MUCHO LOTE", nombre: "LUZ CHERREZ", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 239, red: "RED MUCHO LOTE", nombre: "RUTH PAZMIÑO", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 240, red: "RED FERROVIARIA", nombre: "MAIDA PAREJA", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 241, red: "RED FERROVIARIA", nombre: "PEDRO PAREJA", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 242, red: "RED FERROVIARIA", nombre: "PEDRO PAREJA JR.", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 243, red: "RED FERROVIARIA", nombre: "ABEL DELGADO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 244, red: "RED FERROVIARIA", nombre: "SANDRA BRAVO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 245, red: "RED FERROVIARIA", nombre: "MARTHITA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 246, red: "RED FERROVIARIA", nombre: "GIOVANNY PILOZO", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 247, red: "RED FERROVIARIA", nombre: "ILIANA ANCHUNDIA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 248, red: "RED FERROVIARIA", nombre: "PAULO ESPINOZA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 249, red: "RED FERROVIARIA", nombre: "MIA ESPINIOZA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 250, red: "RED SIMON BOLIVAR", nombre: "MARCELA MOLINA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 251, red: "RED SIMON BOLIVAR", nombre: "YOHANNA BARRERA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 252, red: "RED SIMON BOLIVAR", nombre: "STALIN CEDEÑO", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 253, red: "RED SIMON BOLIVAR", nombre: "BETTY VILLACRES", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 254, red: "RED CONDOR", nombre: "SANTIAGO CAÑARTE", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 255, red: "RED CONDOR", nombre: "XAVIER CAÑARTE", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 256, red: "RED CONDOR", nombre: "LISSETT VERA", infante: "", cuota: "Pagado", bus: "Bus" },
+            { id: 257, red: "RED CONDOR", nombre: "ABEL QUIMI", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 258, red: "RED CONDOR", nombre: "GINA SELLAN", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 259, red: "RED CONDOR", nombre: "JAIME NUÑEZ", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { id: 260, red: "RED CONDOR", nombre: "WLADIMIR PAREDES", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { id: 261, red: "RED VIA A LA COSTA", nombre: "ALEX CANTOS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 262, red: "RED VIA A LA COSTA", nombre: "BETZABETH MERCHAN", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 263, red: "RED VIA A LA COSTA", nombre: "YESENIA VARGAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 264, red: "RED VIA A LA COSTA", nombre: "JOFFRE CASTAÑEDA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 265, red: "RED VIA A LA COSTA", nombre: "VALERIA CASTAÑEDA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 266, red: "RED VIA A LA COSTA", nombre: "ARIANNA LAMBERTUCCI", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 267, red: "RED VIA A LA COSTA", nombre: "PEDRO TRIVIÑO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 268, red: "RED VIA A LA COSTA", nombre: "HERMANO DE ARIANNA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 269, red: "RED VIA A LA COSTA", nombre: "KELLY VARAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { id: 270, red: "RED VIA A LA COSTA", nombre: "MIRIAN VALERO", infante: "", cuota: "Pagado", bus: "Bus" }
+        ];
 
-    const grid = document.getElementById('cardsGrid');
-    const modal = document.getElementById('modal');
-    const modalTeamName = document.getElementById('modalTeamName');
-    const volunteerListContainer = document.getElementById('volunteerListContainer');
-    const dayButtons = document.querySelectorAll('.day-btn');
-    const closeBtn = document.getElementById('modalCloseBtn');
-
-    let currentTeam = '';
-    let currentDay = 'viernes';
-
-    const sortedTeams = Object.keys(volunteersData).sort((a, b) => a.localeCompare(b));
-
-    function renderCards() {
-        grid.innerHTML = '';
-        sortedTeams.forEach(team => {
-            const data = volunteersData[team];
-            const days = Object.keys(data.days).filter(d => data.days[d].length > 0);
-            const total = days.reduce((acc, d) => acc + data.days[d].length, 0);
-
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-                <div class="emoji-badge">${getEmoji(team)}</div>
-                <h3>${formatTeamName(team)}</h3>
-                <div class="days-tag">
-                    ${days.map(d => `<span class="day-pill">${d}</span>`).join('')}
-                </div>
-                <div class="count">${total} voluntario${total !== 1 ? 's' : ''}</div>
-            `;
-            card.addEventListener('click', () => openModal(team));
-            grid.appendChild(card);
-        });
-    }
-
-    function openModal(team) {
-        currentTeam = team;
-        modalTeamName.textContent = formatTeamName(team);
-        currentDay = 'viernes';
-        dayButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.day === currentDay));
-        renderVolunteers(team, currentDay);
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    function renderVolunteers(team, day) {
-        const data = volunteersData[team];
-        const list = data.days[day] || [];
-        const sortedList = [...list].sort((a, b) => a.localeCompare(b));
-
-        if (sortedList.length === 0) {
-            volunteerListContainer.innerHTML = `<div class="empty-state">No hay voluntarios para este día.</div>`;
-            return;
-        }
-
-        volunteerListContainer.innerHTML = sortedList.map(name => {
-            return `
-                <div class="volunteer-item">
-                    <span class="volunteer-name">${name}</span>
-                    <span class="volunteer-phone">📱 ---</span>
-                </div>
-            `;
-        }).join('');
-    }
-
-    function getEmoji(team) {
-        const map = {
-            '5s': '🧹',
-            'acomodadores': '🪑',
-            'backstage': '🎭',
-            'banda del hijo': '🎸',
-            'dance crew': '💃',
-            'dirección de experiencia': '🎯',
-            'fam coffee': '☕',
-            'foto y video': '📸',
-            'herederos': '👨‍👩‍👧‍👦',
-            'historias': '📖',
-            'pantalla y luces': '💡',
-            'producción - transmisión': '📡',
-            'protocolo': '🎤',
-            'seguridad': '🛡️',
-            'sonido': '🔊',
-            'staff': '🧑‍💼',
-            'wake up': '🛍️'
+        // ============================================================
+        // EMOJIS Y COLORES POR RED
+        // ============================================================
+        const redInfo = {
+            "RED SAN FELIPE":       { emoji: "🏔️", color: "#2563eb", color2: "#7c3aed" },
+            "RED KENNEDY":          { emoji: "🏙️", color: "#0891b2", color2: "#06b6d4" },
+            "RED ORELLANA":         { emoji: "🌳", color: "#16a34a", color2: "#22c55e" },
+            "RED SAMANES":          { emoji: "🌾", color: "#ca8a04", color2: "#eab308" },
+            "RED ALBORADA":         { emoji: "🌅", color: "#ea580c", color2: "#f97316" },
+            "RED SAUCES":           { emoji: "🌿", color: "#059669", color2: "#10b981" },
+            "RED 9 DE OCTUBRE":     { emoji: "🎯", color: "#dc2626", color2: "#ef4444" },
+            "RED BATALLON":         { emoji: "🛡️", color: "#4f46e5", color2: "#6366f1" },
+            "RED RIOJA":            { emoji: "🍇", color: "#9333ea", color2: "#a855f7" },
+            "RED PADRE SOLANO":     { emoji: "⛪", color: "#0d9488", color2: "#14b8a6" },
+            "RED SUR OESTE":        { emoji: "🧭", color: "#0284c7", color2: "#0ea5e9" },
+            "RED GUASMO SUR":       { emoji: "🌵", color: "#65a30d", color2: "#84cc16" },
+            "RED ROMAREDA":         { emoji: "🌸", color: "#db2777", color2: "#ec4899" },
+            "RED PUNTILLA":         { emoji: "🏖️", color: "#0e7490", color2: "#06b6d4" },
+            "RED LA JOYA":          { emoji: "💎", color: "#7c3aed", color2: "#a78bfa" },
+            "VILLA DEL REY":        { emoji: "👑", color: "#b45309", color2: "#f59e0b" },
+            "RED MUCHO LOTE":       { emoji: "🌻", color: "#d97706", color2: "#fbbf24" },
+            "RED FERROVIARIA":      { emoji: "🚂", color: "#475569", color2: "#64748b" },
+            "RED SIMON BOLIVAR":    { emoji: "🗽", color: "#1d4ed8", color2: "#3b82f6" },
+            "RED CONDOR":           { emoji: "🦅", color: "#b91c1c", color2: "#dc2626" },
+            "RED VIA A LA COSTA":   { emoji: "🛣️", color: "#0369a1", color2: "#0ea5e9" }
         };
-        return map[team] || '📋';
-    }
 
-    function formatTeamName(str) {
-        return str
-            .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-    }
+        // ============================================================
+        // SECCIONES POR LETRA INICIAL
+        // ============================================================
+        // Cada red se clasifica según la primera letra significativa,
+        // ignorando el prefijo "RED " cuando existe.
+        function letraSignificativa(nombreRed) {
+            let n = nombreRed.toUpperCase().trim();
+            if (n.startsWith("RED ")) n = n.substring(4).trim();
+            // Si empieza con número, usamos "0-9"
+            const primera = n.charAt(0);
+            if (/[0-9]/.test(primera)) return "0-9";
+            return primera;
+        }
 
-    dayButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            dayButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentDay = btn.dataset.day;
-            renderVolunteers(currentTeam, currentDay);
+        const seccionesDef = [
+            { id: "A-C",  titulo: "A – C",  letras: ["A", "B", "C"],          color: "#2563eb", bg: "#eef2ff" },
+            { id: "F-K",  titulo: "F – K",  letras: ["F", "G", "J", "K"],    color: "#16a34a", bg: "#dcfce7" },
+            { id: "M-O",  titulo: "M – O",  letras: ["M", "O", "0-9"],       color: "#ca8a04", bg: "#fef9c3" },
+            { id: "P-R",  titulo: "P – R",  letras: ["P", "R"],              color: "#9333ea", bg: "#f3e8ff" },
+            { id: "S",    titulo: "S",      letras: ["S"],                    color: "#dc2626", bg: "#fee2e2" },
+            { id: "V",    titulo: "V",      letras: ["V"],                    color: "#ea580c", bg: "#ffedd5" }
+        ];
+
+        function seccionDe(nombreRed) {
+            const letra = letraSignificativa(nombreRed);
+            return seccionesDef.find(s => s.letras.includes(letra)) || seccionesDef[0];
+        }
+
+        // ============================================================
+        // AGRUPAR POR RED
+        // ============================================================
+        const redesMap = {};
+        personas.forEach(p => {
+            if (!redesMap[p.red]) redesMap[p.red] = [];
+            redesMap[p.red].push(p);
         });
-    });
 
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-    });
+        const redesOrdenadas = Object.keys(redesMap).sort((a, b) =>
+            a.localeCompare(b, "es")
+        );
 
-    renderCards();
-</script>
+        // ============================================================
+        // CÁLCULOS GLOBALES
+        // ============================================================
+        const totalPersonas = personas.length;
+        const totalRedes = redesOrdenadas.length;
+        const totalPagados = personas.filter(p => p.cuota === "Pagado").length;
+        const totalPendientes = personas.filter(p => p.cuota === "Pendiente").length;
+        const totalBus = personas.filter(p => p.bus === "Bus").length;
+        const totalCarro = personas.filter(p => p.bus === "Carro Propio").length;
+        const totalMenores = personas.filter(p => p.infante && p.infante !== "").length;
 
+        // ============================================================
+        // ESTADÍSTICAS
+        // ============================================================
+        const statsEl = document.getElementById('stats');
+        statsEl.innerHTML = `
+            <div class="stat-item">
+                <span class="emoji-stat">🏘️</span>
+                <span class="num azul">${totalRedes}</span>
+                <span class="label">Redes</span>
+            </div>
+            <div class="stat-item">
+                <span class="emoji-stat">👥</span>
+                <span class="num">${totalPersonas}</span>
+                <span class="label">Personas</span>
+            </div>
+            <div class="stat-item">
+                <span class="emoji-stat">✅</span>
+                <span class="num verde">${totalPagados}</span>
+                <span class="label">Cuotas pagadas</span>
+            </div>
+            <div class="stat-item">
+                <span class="emoji-stat">⏳</span>
+                <span class="num rojo">${totalPendientes}</span>
+                <span class="label">Cuotas pendientes</span>
+            </div>
+            <div class="stat-item">
+                <span class="emoji-stat">🚌</span>
+                <span class="num azul">${totalBus}</span>
+                <span class="label">Van en Bus</span>
+            </div>
+            <div class="stat-item">
+                <span class="emoji-stat">🚗</span>
+                <span class="num naranja">${totalCarro}</span>
+                <span class="label">Carro propio</span>
+            </div>
+            <div class="stat-item">
+                <span class="emoji-stat">👶</span>
+                <span class="num" style="color:#7c3aed;">${totalMenores}</span>
+                <span class="label">Menores</span>
+            </div>
+        `;
+
+        // ============================================================
+        // RENDERIZAR TARJETAS AGRUPADAS POR SECCIÓN
+        // ============================================================
+        const contenedor = document.getElementById('contenedorRedes');
+        const contadorRedes = document.getElementById('contadorRedes');
+        const buscadorRedes = document.getElementById('buscadorRedes');
+
+        function renderizarTarjeta(red) {
+            const info = redInfo[red] || { emoji: "🏠", color: "#2563eb", color2: "#7c3aed" };
+            const lista = redesMap[red];
+            const count = lista.length;
+            const pagados = lista.filter(p => p.cuota === "Pagado").length;
+            const pendientes = lista.filter(p => p.cuota === "Pendiente").length;
+            const bus = lista.filter(p => p.bus === "Bus").length;
+            const carro = lista.filter(p => p.bus === "Carro Propio").length;
+
+            return `
+                <div class="red-card"
+                     data-red="${red}"
+                     style="--accent: ${info.color}; --accent2: ${info.color2};">
+                    <span class="emoji-grande">${info.emoji}</span>
+                    <div class="nombre-red">${red}</div>
+                    <div class="miembros-count">
+                        <span class="num">${count}</span> ${count === 1 ? 'miembro' : 'miembros'}
+                    </div>
+                    <div class="mini-stats">
+                        <span class="mini pagado">✅ ${pagados}</span>
+                        ${pendientes > 0 ? `<span class="mini pendiente">⏳ ${pendientes}</span>` : ''}
+                        <span class="mini bus">🚌 ${bus}</span>
+                        <span class="mini carro">🚗 ${carro}</span>
+                    </div>
+                    <div class="hint">👆 Toca para ver</div>
+                </div>
+            `;
+        }
+
+        function renderizarTodo(filtro = "") {
+            const query = filtro.toLowerCase().trim();
+
+            // Filtrar redes por nombre
+            const redesFiltradas = redesOrdenadas.filter(red =>
+                red.toLowerCase().includes(query)
+            );
+
+            // Actualizar contador
+            contadorRedes.textContent = query
+                ? `${redesFiltradas.length} de ${totalRedes}`
+                : `${totalRedes} redes`;
+
+            // Si no hay resultados
+            if (redesFiltradas.length === 0) {
+                contenedor.innerHTML = `
+                    <div class="sin-resultados-redes">
+                        <span class="emoji">🔍</span>
+                        No se encontraron redes con "<strong>${filtro}</strong>"
+                    </div>
+                `;
+                return;
+            }
+
+            // Agrupar por sección
+            const seccionesConRedes = {};
+            seccionesDef.forEach(s => seccionesConRedes[s.id] = []);
+
+            redesFiltradas.forEach(red => {
+                const sec = seccionDe(red);
+                seccionesConRedes[sec.id].push(red);
+            });
+
+            // Renderizar secciones con contenido
+            let html = "";
+            seccionesDef.forEach(sec => {
+                const redesSec = seccionesConRedes[sec.id];
+                if (redesSec.length === 0) return;
+
+                html += `
+                    <div class="seccion">
+                        <div class="seccion-header" style="--seccion-color: ${sec.color}; --seccion-bg: ${sec.bg};">
+                            <span class="letra">${sec.titulo}</span>
+                            <div class="titulo">
+                                Sección ${sec.titulo}
+                                <small>Redes que empiezan con ${sec.titulo}</small>
+                            </div>
+                            <span class="count-seccion">${redesSec.length} ${redesSec.length === 1 ? 'red' : 'redes'}</span>
+                        </div>
+                        <div class="redes-grid">
+                            ${redesSec.map(renderizarTarjeta).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            contenedor.innerHTML = html;
+        }
+
+        // Render inicial
+        renderizarTodo();
+
+        // Buscador de redes
+        buscadorRedes.addEventListener('input', (e) => {
+            renderizarTodo(e.target.value);
+        });
+
+        // ============================================================
+        // MODAL — LÓGICA
+        // ============================================================
+        const overlay = document.getElementById('modalOverlay');
+        const modalEmoji = document.getElementById('modalEmoji');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalCount = document.getElementById('modalCount');
+        const modalResumen = document.getElementById('modalResumen');
+        const modalBody = document.getElementById('modalBody');
+        const closeBtn = document.getElementById('closeModal');
+        const searchInput = document.getElementById('searchInput');
+
+        let redActual = null;
+
+        function abrirModal(red) {
+            redActual = red;
+            const info = redInfo[red] || { emoji: "🏠", color: "#2563eb", color2: "#7c3aed" };
+            const lista = redesMap[red] || [];
+
+            modalEmoji.textContent = info.emoji;
+            modalTitle.textContent = red;
+            modalCount.textContent = `${lista.length} ${lista.length === 1 ? 'miembro' : 'miembros'}`;
+
+            const pagados = lista.filter(p => p.cuota === "Pagado").length;
+            const pendientes = lista.filter(p => p.cuota === "Pendiente").length;
+            const bus = lista.filter(p => p.bus === "Bus").length;
+            const carro = lista.filter(p => p.bus === "Carro Propio").length;
+            const menores = lista.filter(p => p.infante && p.infante !== "").length;
+
+            modalResumen.innerHTML = `
+                <span class="chip pagado">✅ ${pagados} pagados</span>
+                ${pendientes > 0 ? `<span class="chip pendiente">⏳ ${pendientes} pendientes</span>` : ''}
+                <span class="chip bus">🚌 ${bus} en bus</span>
+                <span class="chip carro">🚗 ${carro} carro propio</span>
+                ${menores > 0 ? `<span class="chip infantil">👶 ${menores} menores</span>` : ''}
+            `;
+
+            renderizarLista(lista);
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            searchInput.value = '';
+            searchInput.focus();
+        }
+
+        function cerrarModal() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            redActual = null;
+        }
+
+        function renderizarLista(lista) {
+            if (!lista.length) {
+                modalBody.innerHTML = `
+                    <div class="no-results">
+                        <span class="emoji">🔍</span>
+                        No se encontraron personas
+                    </div>
+                `;
+                return;
+            }
+
+            const filas = lista.map(p => {
+                const esMenor = p.infante && p.infante !== "";
+                const cuotaTag = p.cuota === "Pagado"
+                    ? '<span class="tag pagado">✅ Pagado</span>'
+                    : '<span class="tag pendiente">⏳ Pendiente</span>';
+                const busTag = p.bus === "Bus"
+                    ? '<span class="tag bus">🚌 Bus</span>'
+                    : '<span class="tag carro">🚗 Carro</span>';
+
+                return `
+                    <tr>
+                        <td class="col-num">${p.id}</td>
+                        <td class="col-nombre">
+                            ${p.nombre.toUpperCase()}
+                            ${esMenor ? `<span class="badge-menor">👶 ${p.infante}</span>` : ''}
+                        </td>
+                        <td class="col-cuota">${cuotaTag}</td>
+                        <td class="col-bus">${busTag}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            modalBody.innerHTML = `
+                <table class="tabla-personas">
+                    <thead>
+                        <tr>
+                            <th class="col-num">#</th>
+                            <th class="col-nombre">Nombre</th>
+                            <th class="col-cuota">Cuota</th>
+                            <th class="col-bus">Traslado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${filas}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // ============================================================
+        // EVENTOS
+        // ============================================================
+        contenedor.addEventListener('click', (e) => {
+            const card = e.target.closest('.red-card');
+            if (!card) return;
+            abrirModal(card.dataset.red);
+        });
+
+        closeBtn.addEventListener('click', cerrarModal);
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) cerrarModal(); });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) cerrarModal();
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            if (!redActual) return;
+            const query = e.target.value.toLowerCase().trim();
+            const lista = redesMap[redActual] || [];
+            const filtrada = lista.filter(p =>
+                p.nombre.toLowerCase().includes(query) ||
+                String(p.id).includes(query)
+            );
+            renderizarLista(filtrada);
+        });
+
+    </script>
 </body>
 </html>
