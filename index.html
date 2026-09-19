@@ -5,518 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Full Day | Redes Familiares — Iglesia Familia de Dios</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(145deg, #eef2f7 0%, #dce4ed 100%);
-            min-height: 100vh;
-            padding: 30px 20px 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        body { background: linear-gradient(145deg, #eef2f7 0%, #dce4ed 100%); min-height: 100vh; padding: 30px 20px 50px; display: flex; flex-direction: column; align-items: center; }
         .container { max-width: 1200px; width: 100%; }
 
-        /* ===== ENCABEZADO ===== */
         .header { text-align: center; margin-bottom: 30px; }
+        .header .iglesia { font-size: 18px; font-weight: 600; color: #2c3e50; letter-spacing: 2px; text-transform: uppercase; background: #ffffffcc; display: inline-block; padding: 6px 24px; border-radius: 40px; backdrop-filter: blur(4px); box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 12px; }
+        .header h1 { font-size: 42px; font-weight: 800; color: #1a2634; line-height: 1.2; letter-spacing: -1px; }
+        .header h1 span { background: linear-gradient(135deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .header .sub { font-size: 18px; font-weight: 500; color: #4a5a6e; margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .header .sub .badge { background: #2563eb; color: white; padding: 4px 16px; border-radius: 40px; font-size: 14px; font-weight: 600; }
 
-        .header .iglesia {
-            font-size: 18px; font-weight: 600; color: #2c3e50;
-            letter-spacing: 2px; text-transform: uppercase;
-            background: #ffffffcc; display: inline-block;
-            padding: 6px 24px; border-radius: 40px;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            margin-bottom: 12px;
-        }
+        .resumen { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 26px; }
+        .bloque { background: white; border-radius: 22px; padding: 18px 20px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); border: 1px solid #e9edf2; transition: 0.15s; }
+        .bloque:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(0,0,0,0.08); }
+        .bloque.ancho { grid-column: span 2; }
+        .bloque-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #f1f4f9; }
+        .bloque-header .emoji { font-size: 22px; }
+        .bloque-header .titulo { font-size: 15px; font-weight: 700; color: #0f172a; letter-spacing: 0.3px; text-transform: uppercase; }
+        .bloque-header .total { margin-left: auto; font-size: 12px; font-weight: 700; color: #64748b; background: #f1f5f9; padding: 3px 12px; border-radius: 40px; }
 
-        .header h1 {
-            font-size: 42px; font-weight: 800; color: #1a2634;
-            line-height: 1.2; letter-spacing: -1px;
-        }
-
-        .header h1 span {
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .header .sub {
-            font-size: 18px; font-weight: 500; color: #4a5a6e;
-            margin-top: 6px; display: flex; align-items: center;
-            justify-content: center; gap: 10px; flex-wrap: wrap;
-        }
-
-        .header .sub .badge {
-            background: #2563eb; color: white;
-            padding: 4px 16px; border-radius: 40px;
-            font-size: 14px; font-weight: 600;
-        }
-
-        /* ============================================================ */
-        /* ===== RESUMEN AGRUPADO POR CATEGORÍAS ===================== */
-        /* ============================================================ */
-        .resumen {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 26px;
-        }
-
-        .bloque {
-            background: white;
-            border-radius: 22px;
-            padding: 18px 20px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-            border: 1px solid #e9edf2;
-            transition: 0.15s;
-        }
-
-        .bloque:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 26px rgba(0,0,0,0.08);
-        }
-
-        .bloque.ancho {
-            grid-column: span 2;
-        }
-
-        .bloque-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 14px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f1f4f9;
-        }
-
-        .bloque-header .emoji {
-            font-size: 22px;
-        }
-
-        .bloque-header .titulo {
-            font-size: 15px;
-            font-weight: 700;
-            color: #0f172a;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-        }
-
-        .bloque-header .total {
-            margin-left: auto;
-            font-size: 12px;
-            font-weight: 700;
-            color: #64748b;
-            background: #f1f5f9;
-            padding: 3px 12px;
-            border-radius: 40px;
-        }
-
-        .metricas {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-        }
-
-        .bloque.ancho .metricas {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .metrica {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .metrica .icono {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .metrica .icono.verde  { background: #dcfce7; }
-        .metrica .icono.rojo   { background: #fee2e2; }
-        .metrica .icono.azul   { background: #dbeafe; }
-        .metrica .icono.naranja{ background: #ffedd5; }
-        .metrica .icono.violeta{ background: #f3e8ff; }
-        .metrica .icono.gris   { background: #f1f5f9; }
-
-        .metrica .info {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.15;
-            min-width: 0;
-        }
-
-        .metrica .info .valor {
-            font-size: 22px;
-            font-weight: 800;
-            color: #0f172a;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .metrica .info .valor.verde   { color: #16a34a; }
-        .metrica .info .valor.rojo    { color: #dc2626; }
-        .metrica .info .valor.azul    { color: #2563eb; }
+        .metricas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .metrica { display: flex; align-items: center; gap: 12px; }
+        .metrica .icono { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+        .metrica .icono.verde { background: #dcfce7; }
+        .metrica .icono.rojo { background: #fee2e2; }
+        .metrica .icono.azul { background: #dbeafe; }
+        .metrica .icono.naranja { background: #ffedd5; }
+        .metrica .icono.violeta { background: #f3e8ff; }
+        .metrica .icono.gris { background: #f1f5f9; }
+        .metrica .info { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+        .metrica .info .valor { font-size: 22px; font-weight: 800; color: #0f172a; font-variant-numeric: tabular-nums; }
+        .metrica .info .valor.verde { color: #16a34a; }
+        .metrica .info .valor.rojo { color: #dc2626; }
+        .metrica .info .valor.azul { color: #2563eb; }
         .metrica .info .valor.naranja { color: #ea580c; }
         .metrica .info .valor.violeta { color: #7c3aed; }
+        .metrica .info .etiqueta { font-size: 12px; font-weight: 600; color: #475569; margin-top: 2px; }
+        .metrica .info .porcentaje { font-size: 11px; font-weight: 600; color: #94a3b8; margin-top: 1px; }
 
-        .metrica .info .etiqueta {
-            font-size: 12px;
-            font-weight: 600;
-            color: #475569;
-            margin-top: 2px;
-        }
-
-        .metrica .info .porcentaje {
-            font-size: 11px;
-            font-weight: 600;
-            color: #94a3b8;
-            margin-top: 1px;
-        }
-
-        .barra-progreso {
-            grid-column: span 2;
-            height: 8px;
-            background: #f1f5f9;
-            border-radius: 10px;
-            overflow: hidden;
-            display: flex;
-            margin-top: 4px;
-        }
-
-        .barra-progreso .seg {
-            height: 100%;
-            transition: width 0.3s;
-        }
-
+        .barra-progreso { grid-column: span 2; height: 8px; background: #f1f5f9; border-radius: 10px; overflow: hidden; display: flex; margin-top: 4px; }
+        .barra-progreso .seg { height: 100%; transition: width 0.3s; }
         .barra-progreso .seg.pagado { background: #22c55e; }
         .barra-progreso .seg.pendiente { background: #ef4444; }
         .barra-progreso .seg.bus { background: #3b82f6; }
         .barra-progreso .seg.carro { background: #f59e0b; }
 
-        /* ===== BUSCADOR DE REDES ===== */
-        .buscador-redes {
-            background: white;
-            border-radius: 20px;
-            padding: 14px 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-            border: 2px solid #e9edf2;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: 0.15s;
-        }
-
-        .buscador-redes:focus-within {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
-        }
-
-        .buscador-redes .icono {
-            font-size: 20px; color: #94a3b8; flex-shrink: 0;
-        }
-
-        .buscador-redes input {
-            flex: 1; border: none; outline: none;
-            font-size: 15px; background: transparent; color: #1e293b;
-        }
-
+        .buscador-redes { background: white; border-radius: 20px; padding: 14px 20px; margin-bottom: 30px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 2px solid #e9edf2; display: flex; align-items: center; gap: 12px; transition: 0.15s; }
+        .buscador-redes:focus-within { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08); }
+        .buscador-redes .icono { font-size: 20px; color: #94a3b8; flex-shrink: 0; }
+        .buscador-redes input { flex: 1; border: none; outline: none; font-size: 15px; background: transparent; color: #1e293b; }
         .buscador-redes input::placeholder { color: #94a3b8; }
+        .buscador-redes .contador { font-size: 12px; font-weight: 600; color: #2563eb; background: #eef2ff; padding: 4px 12px; border-radius: 40px; flex-shrink: 0; }
 
-        .buscador-redes .contador {
-            font-size: 12px; font-weight: 600;
-            color: #2563eb; background: #eef2ff;
-            padding: 4px 12px; border-radius: 40px;
-            flex-shrink: 0;
-        }
+        .sin-resultados-redes { text-align: center; padding: 50px 20px; color: #94a3b8; font-size: 15px; background: white; border-radius: 20px; border: 2px dashed #e2e8f0; }
+        .sin-resultados-redes .emoji { font-size: 48px; display: block; margin-bottom: 12px; }
 
-        .sin-resultados-redes {
-            text-align: center; padding: 50px 20px;
-            color: #94a3b8; font-size: 15px;
-            background: white; border-radius: 20px;
-            border: 2px dashed #e2e8f0;
-        }
+        .seccion { margin-bottom: 44px; position: relative; }
+        .seccion-header { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; padding: 4px 0; position: relative; }
+        .seccion-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: linear-gradient(90deg, var(--seccion-color, #2563eb), transparent 80%); opacity: 0.25; border-radius: 2px; }
+        .seccion-header .letra-bloque { width: 62px; height: 62px; border-radius: 18px; background: var(--seccion-bg, #eef2ff); color: var(--seccion-color, #2563eb); display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800; letter-spacing: -1px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 2px solid rgba(255,255,255,0.8); }
+        .seccion-header .info-seccion { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+        .seccion-header .info-seccion .titulo-seccion { font-size: 20px; font-weight: 800; color: #0f172a; letter-spacing: -0.3px; line-height: 1.2; }
+        .seccion-header .info-seccion .subtitulo-seccion { font-size: 13px; font-weight: 500; color: #64748b; margin-top: 2px; }
+        .seccion-header .stats-seccion { display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+        .seccion-header .stats-seccion .pill { font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 40px; background: var(--seccion-bg, #eef2ff); color: var(--seccion-color, #2563eb); white-space: nowrap; }
+        .seccion-header .stats-seccion .pill.gris { background: #f1f5f9; color: #64748b; }
 
-        .sin-resultados-redes .emoji {
-            font-size: 48px; display: block; margin-bottom: 12px;
-        }
-
-        /* ============================================================ */
-        /* ===== SECCIONES MEJORADAS ================================= */
-        /* ============================================================ */
-        .seccion {
-            margin-bottom: 44px;
-            position: relative;
-        }
-
-        /* Encabezado de sección con letra grande a la izquierda */
-        .seccion-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 22px;
-            padding: 4px 0;
-            position: relative;
-        }
-
-        .seccion-header::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -8px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--seccion-color, #2563eb), transparent 80%);
-            opacity: 0.25;
-            border-radius: 2px;
-        }
-
-        .seccion-header .letra-bloque {
-            width: 62px;
-            height: 62px;
-            border-radius: 18px;
-            background: var(--seccion-bg, #eef2ff);
-            color: var(--seccion-color, #2563eb);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            border: 2px solid rgba(255,255,255,0.8);
-        }
-
-        .seccion-header .info-seccion {
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-            flex: 1;
-        }
-
-        .seccion-header .info-seccion .titulo-seccion {
-            font-size: 20px;
-            font-weight: 800;
-            color: #0f172a;
-            letter-spacing: -0.3px;
-            line-height: 1.2;
-        }
-
-        .seccion-header .info-seccion .subtitulo-seccion {
-            font-size: 13px;
-            font-weight: 500;
-            color: #64748b;
-            margin-top: 2px;
-        }
-
-        .seccion-header .stats-seccion {
-            display: flex;
-            gap: 8px;
-            flex-shrink: 0;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-
-        .seccion-header .stats-seccion .pill {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 40px;
-            background: var(--seccion-bg, #eef2ff);
-            color: var(--seccion-color, #2563eb);
-            white-space: nowrap;
-        }
-
-        .seccion-header .stats-seccion .pill.gris {
-            background: #f1f5f9;
-            color: #64748b;
-        }
-
-        /* ===== GRID DE TARJETAS ===== */
-        .redes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-            gap: 20px;
-        }
-
-        .red-card {
-            background: white;
-            border-radius: 22px;
-            padding: 22px 16px 18px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-            border: 2px solid #eef2f7;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            user-select: none;
-        }
-
-        .red-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--accent, #2563eb), var(--accent2, #7c3aed));
-            border-radius: 22px 22px 0 0;
-        }
-
-        .red-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-            border-color: var(--accent, #2563eb);
-        }
-
+        .redes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
+        .red-card { background: white; border-radius: 22px; padding: 22px 16px 18px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07); border: 2px solid #eef2f7; cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; text-align: center; user-select: none; }
+        .red-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--accent, #2563eb), var(--accent2, #7c3aed)); border-radius: 22px 22px 0 0; }
+        .red-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12); border-color: var(--accent, #2563eb); }
         .red-card:active { transform: scale(0.97); }
-
-        .red-card .emoji-grande {
-            font-size: 46px;
-            margin-bottom: 6px;
-            display: block;
-            line-height: 1;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
-        }
-
-        .red-card .nombre-red {
-            font-size: 15px;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 4px;
-            line-height: 1.3;
-        }
-
-        .red-card .miembros-count {
-            font-size: 12px;
-            color: #64748b;
-            font-weight: 500;
-            background: #f1f5f9;
-            padding: 3px 14px;
-            border-radius: 40px;
-            margin-top: 4px;
-            display: inline-block;
-        }
-
+        .red-card .emoji-grande { font-size: 46px; margin-bottom: 6px; display: block; line-height: 1; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08)); }
+        .red-card .nombre-red { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 4px; line-height: 1.3; }
+        .red-card .miembros-count { font-size: 12px; color: #64748b; font-weight: 500; background: #f1f5f9; padding: 3px 14px; border-radius: 40px; margin-top: 4px; display: inline-block; }
         .red-card .miembros-count .num { font-weight: 700; color: #2563eb; }
-
-        .red-card .mini-stats {
-            display: flex;
-            gap: 5px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .red-card .mini-stats .mini {
-            font-size: 10px;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 20px;
-        }
-
+        .red-card .mini-stats { display: flex; gap: 5px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
+        .red-card .mini-stats .mini { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
         .red-card .mini-stats .mini.pagado { background: #dcfce7; color: #166534; }
         .red-card .mini-stats .mini.pendiente { background: #fee2e2; color: #991b1b; }
         .red-card .mini-stats .mini.bus { background: #dbeafe; color: #1e40af; }
         .red-card .mini-stats .mini.carro { background: #fef3c7; color: #92400e; }
-
-        .red-card .hint {
-            font-size: 11px; color: #94a3b8;
-            margin-top: 10px; font-weight: 400;
-            opacity: 0.7; transition: opacity 0.2s;
-        }
-
+        .red-card .hint { font-size: 11px; color: #94a3b8; margin-top: 10px; font-weight: 400; opacity: 0.7; transition: opacity 0.2s; }
         .red-card:hover .hint { opacity: 1; }
 
-        /* ===== MODAL ===== */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(10, 20, 35, 0.6);
-            backdrop-filter: blur(6px);
-            justify-content: center; align-items: center;
-            padding: 20px; z-index: 1000;
-            animation: fadeIn 0.25s ease;
-        }
-
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 20, 35, 0.6); backdrop-filter: blur(6px); justify-content: center; align-items: center; padding: 20px; z-index: 1000; animation: fadeIn 0.25s ease; }
         .modal-overlay.active { display: flex; }
-
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp {
-            from { transform: translateY(30px) scale(0.96); opacity: 0; }
-            to { transform: translateY(0) scale(1); opacity: 1; }
-        }
+        @keyframes slideUp { from { transform: translateY(30px) scale(0.96); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
 
-        .modal {
-            background: white;
-            border-radius: 28px;
-            max-width: 720px;
-            width: 100%;
-            max-height: 88vh;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-        }
-
-        .modal-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 20px 24px 16px;
-            border-bottom: 2px solid #f1f5f9;
-            background: #fafbfc; flex-shrink: 0;
-        }
-
+        .modal { background: white; border-radius: 28px; max-width: 720px; width: 100%; max-height: 88vh; display: flex; flex-direction: column; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3); animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; }
+        .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 16px; border-bottom: 2px solid #f1f5f9; background: #fafbfc; flex-shrink: 0; }
         .modal-header .left { display: flex; align-items: center; gap: 14px; }
         .modal-header .left .emoji { font-size: 36px; line-height: 1; }
         .modal-header .left .info h3 { font-size: 20px; font-weight: 700; color: #0f172a; line-height: 1.2; }
         .modal-header .left .info .count { font-size: 13px; color: #64748b; font-weight: 500; }
+        .modal-header .close-btn { background: #f1f5f9; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #475569; transition: 0.2s; flex-shrink: 0; }
+        .modal-header .close-btn:hover { background: #e2e8f0; color: #0f172a; transform: rotate(90deg); }
 
-        .modal-header .close-btn {
-            background: #f1f5f9; border: none;
-            width: 40px; height: 40px; border-radius: 50%;
-            font-size: 20px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            color: #475569; transition: 0.2s; flex-shrink: 0;
-        }
-
-        .modal-header .close-btn:hover {
-            background: #e2e8f0; color: #0f172a;
-            transform: rotate(90deg);
-        }
-
-        .modal-resumen {
-            display: flex; gap: 10px;
-            padding: 12px 24px;
-            background: #f8fafc;
-            border-bottom: 1px solid #eef2f7;
-            flex-wrap: wrap; flex-shrink: 0;
-        }
-
-        .modal-resumen .chip {
-            font-size: 12px; font-weight: 600;
-            padding: 4px 14px; border-radius: 40px;
-            display: flex; align-items: center; gap: 4px;
-        }
-
+        .modal-resumen { display: flex; gap: 10px; padding: 12px 24px; background: #f8fafc; border-bottom: 1px solid #eef2f7; flex-wrap: wrap; flex-shrink: 0; }
+        .modal-resumen .chip { font-size: 12px; font-weight: 600; padding: 4px 14px; border-radius: 40px; display: flex; align-items: center; gap: 4px; }
         .modal-resumen .chip.pagado { background: #dcfce7; color: #166534; }
         .modal-resumen .chip.pendiente { background: #fee2e2; color: #991b1b; }
         .modal-resumen .chip.bus { background: #dbeafe; color: #1e40af; }
@@ -524,170 +113,61 @@
         .modal-resumen .chip.infantil { background: #f3e8ff; color: #6b21a8; }
 
         .modal-search { padding: 12px 24px 8px; flex-shrink: 0; }
-
-        .modal-search input {
-            width: 100%; padding: 11px 16px;
-            border: 2px solid #e9edf2;
-            border-radius: 14px; font-size: 14px;
-            outline: none; transition: 0.15s;
-            background: #f8fafc;
-        }
-
-        .modal-search input:focus {
-            border-color: #2563eb; background: white;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
-        }
-
+        .modal-search input { width: 100%; padding: 11px 16px; border: 2px solid #e9edf2; border-radius: 14px; font-size: 14px; outline: none; transition: 0.15s; background: #f8fafc; }
+        .modal-search input:focus { border-color: #2563eb; background: white; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08); }
         .modal-search input::placeholder { color: #94a3b8; }
 
-        .modal-body {
-            padding: 8px 20px 20px;
-            overflow-y: auto; flex: 1; position: relative;
-        }
-
+        .modal-body { padding: 8px 20px 20px; overflow-y: auto; flex: 1; position: relative; }
         .modal-body::-webkit-scrollbar { width: 6px; }
         .modal-body::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
         .modal-body::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
         .modal-body::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        /* ===== TABLA DE PERSONAS ===== */
-        .tabla-personas {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
-        .tabla-personas thead th {
-            position: sticky; top: 0; z-index: 10;
-            background: #ffffff;
-            text-align: left;
-            padding: 12px 12px;
-            font-size: 11px; font-weight: 700;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid #eef2f7;
-            box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.15);
-        }
-
-        .tabla-personas thead th::after {
-            content: "";
-            position: absolute;
-            left: 0; right: 0; bottom: -2px;
-            height: 2px; background: #eef2f7;
-        }
-
+        .tabla-personas { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .tabla-personas thead th { position: sticky; top: 0; z-index: 10; background: #ffffff; text-align: left; padding: 12px 12px; font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #eef2f7; box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.15); }
+        .tabla-personas thead th::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: #eef2f7; }
         .tabla-personas thead th.col-num { width: 44px; text-align: center; }
         .tabla-personas thead th.col-cuota { width: 120px; text-align: center; }
         .tabla-personas thead th.col-bus { width: 130px; text-align: center; }
-
-        .tabla-personas tbody tr {
-            border-bottom: 1px solid #f1f5f9;
-            transition: 0.12s;
-        }
-
+        .tabla-personas tbody tr { border-bottom: 1px solid #f1f5f9; transition: 0.12s; }
         .tabla-personas tbody tr:hover { background: #f8fafc; }
         .tabla-personas tbody tr:last-child { border-bottom: none; }
-
-        .tabla-personas tbody td {
-            padding: 10px 12px;
-            vertical-align: middle;
-            background: #ffffff;
-        }
-
+        .tabla-personas tbody td { padding: 10px 12px; vertical-align: middle; background: #ffffff; }
         .tabla-personas tbody tr:hover td { background: #f8fafc; }
-
-        .tabla-personas tbody td.col-num {
-            text-align: center; font-size: 12px;
-            font-weight: 600; color: #94a3b8;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .tabla-personas tbody td.col-nombre {
-            font-size: 13px; font-weight: 600;
-            color: #1e293b;
-            text-transform: uppercase;
-            letter-spacing: 0.2px;
-        }
-
-        .tabla-personas tbody td.col-nombre .badge-menor {
-            display: inline-block;
-            font-size: 10px;
-            background: #f3e8ff; color: #6b21a8;
-            padding: 1px 8px; border-radius: 40px;
-            font-weight: 700; margin-left: 6px;
-            text-transform: none; letter-spacing: 0;
-        }
-
-        .tabla-personas tbody td.col-cuota,
-        .tabla-personas tbody td.col-bus { text-align: center; }
-
-        .tabla-personas .tag {
-            display: inline-flex; align-items: center; gap: 3px;
-            font-size: 11px; font-weight: 700;
-            padding: 3px 12px; border-radius: 40px;
-            white-space: nowrap;
-        }
-
+        .tabla-personas tbody td.col-num { text-align: center; font-size: 12px; font-weight: 600; color: #94a3b8; font-variant-numeric: tabular-nums; }
+        .tabla-personas tbody td.col-nombre { font-size: 13px; font-weight: 600; color: #1e293b; text-transform: uppercase; letter-spacing: 0.2px; }
+        .tabla-personas tbody td.col-nombre .badge-menor { display: inline-block; font-size: 10px; background: #f3e8ff; color: #6b21a8; padding: 1px 8px; border-radius: 40px; font-weight: 700; margin-left: 6px; text-transform: none; letter-spacing: 0; }
+        .tabla-personas tbody td.col-cuota, .tabla-personas tbody td.col-bus { text-align: center; }
+        .tabla-personas .tag { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 40px; white-space: nowrap; }
         .tabla-personas .tag.pagado { background: #dcfce7; color: #166534; }
         .tabla-personas .tag.pendiente { background: #fee2e2; color: #991b1b; }
         .tabla-personas .tag.bus { background: #dbeafe; color: #1e40af; }
         .tabla-personas .tag.carro { background: #fef3c7; color: #92400e; }
 
-        /* ===== SIN RESULTADOS ===== */
-        .no-results {
-            text-align: center; padding: 40px 20px;
-            color: #94a3b8; font-size: 15px;
-        }
-
+        .no-results { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 15px; }
         .no-results .emoji { font-size: 40px; display: block; margin-bottom: 10px; }
 
-        /* ===== FOOTER ===== */
-        .footer {
-            margin-top: 50px; text-align: center;
-            color: #94a3b8; font-size: 14px; padding: 20px;
-        }
-
+        .footer { margin-top: 50px; text-align: center; color: #94a3b8; font-size: 14px; padding: 20px; }
         .footer strong { color: #475569; }
 
-        /* ============================================================ */
-        /* ===== RESPONSIVE =========================================== */
-        /* ============================================================ */
-        @media (max-width: 800px) {
-            .resumen { grid-template-columns: 1fr; }
-            .bloque.ancho { grid-column: span 1; }
-        }
-
+        @media (max-width: 800px) { .resumen { grid-template-columns: 1fr; } .bloque.ancho { grid-column: span 1; } }
         @media (max-width: 700px) {
             .header h1 { font-size: 30px; }
             .header .sub { font-size: 15px; }
             .buscador-redes { padding: 12px 16px; }
             .buscador-redes input { font-size: 14px; }
-
-            .seccion-header {
-                gap: 12px;
-                flex-wrap: wrap;
-            }
-            .seccion-header .letra-bloque {
-                width: 50px; height: 50px;
-                font-size: 20px;
-                border-radius: 14px;
-            }
+            .seccion-header { gap: 12px; flex-wrap: wrap; }
+            .seccion-header .letra-bloque { width: 50px; height: 50px; font-size: 20px; border-radius: 14px; }
             .seccion-header .info-seccion .titulo-seccion { font-size: 16px; }
             .seccion-header .info-seccion .subtitulo-seccion { font-size: 11px; }
             .seccion-header .stats-seccion { width: 100%; justify-content: flex-start; }
             .seccion-header .stats-seccion .pill { font-size: 10px; padding: 4px 10px; }
-
-            .redes-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 12px;
-            }
+            .redes-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
             .red-card { padding: 16px 10px 14px; }
             .red-card .emoji-grande { font-size: 34px; }
             .red-card .nombre-red { font-size: 13px; }
             .red-card .miembros-count { font-size: 10px; padding: 2px 8px; }
             .red-card .mini-stats .mini { font-size: 9px; padding: 1px 6px; }
-
             .modal { max-height: 92vh; border-radius: 20px; }
             .modal-header { padding: 16px 18px 12px; }
             .modal-header .left .emoji { font-size: 28px; }
@@ -702,21 +182,17 @@
             .tabla-personas thead th.col-cuota { width: 90px; }
             .tabla-personas thead th.col-bus { width: 100px; }
             .tabla-personas .tag { font-size: 10px; padding: 2px 8px; }
-
-            /* Resumen más compacto */
             .bloque { padding: 14px 16px; }
             .bloque-header .titulo { font-size: 13px; }
             .metrica .info .valor { font-size: 18px; }
             .metrica .info .etiqueta { font-size: 11px; }
             .metrica .icono { width: 36px; height: 36px; font-size: 17px; }
         }
-
         @media (max-width: 400px) {
             .resumen { gap: 10px; }
             .metricas { gap: 10px; }
             .metrica .info .valor { font-size: 16px; }
             .metrica .info .etiqueta { font-size: 10px; }
-
             .seccion-header .letra-bloque { width: 44px; height: 44px; font-size: 18px; }
             .redes-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
             .red-card .emoji-grande { font-size: 28px; }
@@ -743,17 +219,14 @@
             </div>
         </header>
 
-        <!-- ===== RESUMEN AGRUPADO ===== -->
         <div class="resumen" id="resumen"></div>
 
-        <!-- Buscador de redes -->
         <div class="buscador-redes">
             <span class="icono">🔍</span>
             <input type="text" id="buscadorRedes" placeholder="Buscar red... (ej. KENNEDY, GUASMO, VILLA)" />
             <span class="contador" id="contadorRedes">21 redes</span>
         </div>
 
-        <!-- Contenedor de secciones + tarjetas -->
         <div id="contenedorRedes"></div>
 
         <footer class="footer">
@@ -784,281 +257,330 @@
 
     <script>
         // ============================================================
-        // DATOS
+        // DATOS ACTUALIZADOS — 274 personas
         // ============================================================
-        const personas = [
-            { id: 1, red: "RED SAN FELIPE", nombre: "Willian Castro", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 2, red: "RED SAN FELIPE", nombre: "Virginia Obando", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 3, red: "RED SAN FELIPE", nombre: "Fiorella Castro", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 4, red: "RED SAN FELIPE", nombre: "Melida Guambaña", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 5, red: "RED SAN FELIPE", nombre: "Tiffany Briones", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 6, red: "RED SAN FELIPE", nombre: "Jonathan Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 7, red: "RED SAN FELIPE", nombre: "Amanda Campoverde", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 8, red: "RED SAN FELIPE", nombre: "Emanuel Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 9, red: "RED SAN FELIPE", nombre: "Lemuel Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 10, red: "RED SAN FELIPE", nombre: "Zuri Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 11, red: "RED SAN FELIPE", nombre: "Grabriel Pin", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 12, red: "RED SAN FELIPE", nombre: "Liliana Figueroa", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 13, red: "RED SAN FELIPE", nombre: "Juan Pablo Castro", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 14, red: "RED SAN FELIPE", nombre: "Valeria Minaya", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 15, red: "RED SAN FELIPE", nombre: "Camila Castro", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
-            { id: 16, red: "RED SAN FELIPE", nombre: "Emanuel Castro", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
-            { id: 17, red: "RED SAN FELIPE", nombre: "Dario Cabello", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 18, red: "RED SAN FELIPE", nombre: "Erlinda Mayor", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 19, red: "RED SAN FELIPE", nombre: "Enrique Avilés", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 20, red: "RED SAN FELIPE", nombre: "Marjorie Fajardo", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 21, red: "RED SAN FELIPE", nombre: "Jorge López", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 22, red: "RED SAN FELIPE", nombre: "Karina Merchán", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 23, red: "RED KENNEDY", nombre: "Oscar burgos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 24, red: "RED KENNEDY", nombre: "Roxana Gutierrez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 25, red: "RED KENNEDY", nombre: "Jorge Farad", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 26, red: "RED KENNEDY", nombre: "Tanya Obando", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 27, red: "RED KENNEDY", nombre: "Lionel Espinoza", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 28, red: "RED KENNEDY", nombre: "Esther Eugenio", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 29, red: "RED KENNEDY", nombre: "Gonzalo Aparicio", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 30, red: "RED KENNEDY", nombre: "Sofia Castillo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 31, red: "RED KENNEDY", nombre: "Mariuxi Davila", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 32, red: "RED KENNEDY", nombre: "José Luis Rosales", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 33, red: "RED KENNEDY", nombre: "Samy Pazmiño", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 34, red: "RED KENNEDY", nombre: "Patricia MIranda", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 35, red: "RED KENNEDY", nombre: "Gustavo Burgos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 36, red: "RED KENNEDY", nombre: "Gabriela Panta", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 37, red: "RED KENNEDY", nombre: "Antonela Burgos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 38, red: "RED KENNEDY", nombre: "Vanesa Castro", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 39, red: "RED KENNEDY", nombre: "José Veliz", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 40, red: "RED KENNEDY", nombre: "Mariuxi Chávez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 41, red: "RED KENNEDY", nombre: "Iris Véliz", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 42, red: "RED KENNEDY", nombre: "Amaia Véliz", infante: "MENOR", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 43, red: "RED KENNEDY", nombre: "Jairo Poso", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 44, red: "RED KENNEDY", nombre: "Matias Poso C.", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 45, red: "RED KENNEDY", nombre: "Jacob Poso C", infante: "MENOR", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 46, red: "RED ORELLANA", nombre: "Jessy Rodriguez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 47, red: "RED ORELLANA", nombre: "Evelyn Mina", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 48, red: "RED ORELLANA", nombre: "Flor de la Rosa", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 49, red: "RED ORELLANA", nombre: "Camila Cruz", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 50, red: "RED ORELLANA", nombre: "Daniel Solano", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 51, red: "RED ORELLANA", nombre: "Katty Moncada", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 52, red: "RED ORELLANA", nombre: "Roberto Rodriguez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 53, red: "RED ORELLANA", nombre: "Jaqueline de Rodriguez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 54, red: "RED SAMANES", nombre: "Antony Andrade", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 55, red: "RED SAMANES", nombre: "Liliana de Andrade", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 56, red: "RED SAMANES", nombre: "Edwin Cuadrado", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 57, red: "RED SAMANES", nombre: "Erika de Cuadrado", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 58, red: "RED SAMANES", nombre: "Fmla. Cuadrado", infante: "MENOR", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 59, red: "RED SAMANES", nombre: "Fmla. Cuadrado", infante: "MENOR", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 60, red: "RED SAMANES", nombre: "Carlos Gutierrez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 61, red: "RED SAMANES", nombre: "Verónica de Gutierrez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 62, red: "RED SAMANES", nombre: "Alexis Torres", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 63, red: "RED SAMANES", nombre: "Lilian Gutiérrez", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 64, red: "RED SAMANES", nombre: "Jorge Véliz", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 65, red: "RED SAMANES", nombre: "Cecilia", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 66, red: "RED SAMANES", nombre: "Rolando Zevallos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 67, red: "RED SAMANES", nombre: "Teresa Alcívar", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 68, red: "RED ALBORADA", nombre: "MAFER QUINTERO", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 69, red: "RED ALBORADA", nombre: "EDUARDO NAVARRO", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 70, red: "RED ALBORADA", nombre: "KATHERINE BOZADA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 71, red: "RED ALBORADA", nombre: "RAFAEL RANGEL", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 72, red: "RED ALBORADA", nombre: "ENRIQUE MORAN", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 73, red: "RED ALBORADA", nombre: "EMILIANO MORAN", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 74, red: "RED SAUCES", nombre: "ALEXANDRA YAGUAL", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 75, red: "RED SAUCES", nombre: "KAREN BARZOLA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 76, red: "RED 9 DE OCTUBRE", nombre: "DANA ARCE", infante: "17 AÑOS", cuota: "Pagado", bus: "Bus" },
-            { id: 77, red: "RED 9 DE OCTUBRE", nombre: "ANNIA ARCE", infante: "13 AÑOS", cuota: "Pagado", bus: "Bus" },
-            { id: 78, red: "RED 9 DE OCTUBRE", nombre: "RAQUEL ARCE", infante: "10 AÑOS", cuota: "Pagado", bus: "Bus" },
-            { id: 79, red: "RED 9 DE OCTUBRE", nombre: "JOSE LUIS ARCE", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 80, red: "RED 9 DE OCTUBRE", nombre: "SINDIA FERIGRA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 81, red: "RED 9 DE OCTUBRE", nombre: "MANUEL VILLON", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 82, red: "RED 9 DE OCTUBRE", nombre: "GERMANIA DE VILLON", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 83, red: "RED 9 DE OCTUBRE", nombre: "MAYRA CERVANTE", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 84, red: "RED 9 DE OCTUBRE", nombre: "Abdías Santiago Cervantes Bravo", infante: "MENOR", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 85, red: "RED 9 DE OCTUBRE", nombre: "CARLOS SANCHEZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 86, red: "RED 9 DE OCTUBRE", nombre: "PEDRO BADILLO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 87, red: "RED 9 DE OCTUBRE", nombre: "CIRA RIVERA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 88, red: "RED BATALLON", nombre: "ALEX CRESPIN", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 89, red: "RED BATALLON", nombre: "PATRICIA VACA", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 90, red: "RED BATALLON", nombre: "JUAN CARLOS PADILLA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 91, red: "RED BATALLON", nombre: "NANCY MORAN", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 92, red: "RED BATALLON", nombre: "JESSICA CUENCA", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 93, red: "RED BATALLON", nombre: "RUTH CORTEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 94, red: "RED BATALLON", nombre: "NIÑA 9 AÑOS", infante: "MENOR", cuota: "Pendiente", bus: "Bus" },
-            { id: 95, red: "RED RIOJA", nombre: "ANITA DAVILA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 96, red: "RED RIOJA", nombre: "LIBIA CAMPUZANO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 97, red: "RED RIOJA", nombre: "PATRICIA NAVARRETE", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 98, red: "RED RIOJA", nombre: "WENDY RODRIGUEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 99, red: "RED RIOJA", nombre: "CRISTHIAN BERMEO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 100, red: "RED RIOJA", nombre: "ANDREA AVILA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 101, red: "RED RIOJA", nombre: "VERONICA DE RIONCON", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 102, red: "RED RIOJA", nombre: "ALEXANDRA REDROVAN", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 103, red: "RED RIOJA", nombre: "XAVIER NEIRA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 104, red: "RED RIOJA", nombre: "JAVIER RINCON", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 105, red: "RED RIOJA", nombre: "ROCIO FLOR", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 106, red: "RED RIOJA", nombre: "FATIMA ORTIZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 107, red: "RED PADRE SOLANO", nombre: "JAVIER GUERRERO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 108, red: "RED PADRE SOLANO", nombre: "ROSY DE GUERRERO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 109, red: "RED PADRE SOLANO", nombre: "JOSUE GUERRERO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 110, red: "RED PADRE SOLANO", nombre: "MARTHA PAMPLONA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 111, red: "RED PADRE SOLANO", nombre: "JEREMY PAMPLONA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 112, red: "RED PADRE SOLANO", nombre: "MARTHA YAGUAL", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 113, red: "RED PADRE SOLANO", nombre: "MERCEDES CANDELARIO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 114, red: "RED PADRE SOLANO", nombre: "MARVIN CABEZAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 115, red: "RED PADRE SOLANO", nombre: "FIORELLA CABEZAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 116, red: "RED PADRE SOLANO", nombre: "MARVIN CABEZAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 117, red: "RED PADRE SOLANO", nombre: "LUIS ORDOÑES", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 118, red: "RED PADRE SOLANO", nombre: "FERNANDA DE ORDOÑEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 119, red: "RED PADRE SOLANO", nombre: "SANTIAGO ORDOÑEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 120, red: "RED PADRE SOLANO", nombre: "ROBERTO PINTO", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 121, red: "RED PADRE SOLANO", nombre: "MARIO MENOSCAL", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 122, red: "RED PADRE SOLANO", nombre: "OTTO JIMENEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 123, red: "RED PADRE SOLANO", nombre: "JOHANNA RODRIGUEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 124, red: "RED PADRE SOLANO", nombre: "MA. DE LOS ANGELES JIMENES", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 125, red: "RED PADRE SOLANO", nombre: "ELISEO JIMENEZ", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
-            { id: 126, red: "RED SUR OESTE", nombre: "MARIUXI VASQUEZ", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 127, red: "RED SUR OESTE", nombre: "JUAN ALAVA", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 128, red: "RED SUR OESTE", nombre: "PALMIRA VALLADOLID", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 129, red: "RED SUR OESTE", nombre: "ELIZABETH RUIZ", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 130, red: "RED SUR OESTE", nombre: "ROBERTO TIGUA", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 131, red: "RED SUR OESTE", nombre: "YAZMIN BOHORQUEZ", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 132, red: "RED GUASMO SUR", nombre: "LILIA CRESPIN", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 133, red: "RED GUASMO SUR", nombre: "EDGAR FLORES", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 134, red: "RED GUASMO SUR", nombre: "ELSY TORRES", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 135, red: "RED GUASMO SUR", nombre: "MARCIA TORRES", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 136, red: "RED GUASMO SUR", nombre: "MARIUXI CHIGUANO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 137, red: "RED GUASMO SUR", nombre: "GUSTAVO DAVILA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 138, red: "RED GUASMO SUR", nombre: "ASLEY BURGOS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 139, red: "RED GUASMO SUR", nombre: "DOUGLAS DELGADO", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 140, red: "RED GUASMO SUR", nombre: "STEPHANIA GANCHOZO", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 141, red: "RED GUASMO SUR", nombre: "RAFAELLA DELGADO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 142, red: "RED GUASMO SUR", nombre: "MARLON PINCAY", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 143, red: "RED GUASMO SUR", nombre: "LADY MENDEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 144, red: "RED GUASMO SUR", nombre: "ANGIE SANCHEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 145, red: "RED GUASMO SUR", nombre: "MARIA SANCHEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 146, red: "RED GUASMO SUR", nombre: "BYRON DAVILA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 147, red: "RED GUASMO SUR", nombre: "MOISES DAVILA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 148, red: "RED GUASMO SUR", nombre: "DEYSI AVENGO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 149, red: "RED GUASMO SUR", nombre: "ANDRES FLORES", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 150, red: "RED GUASMO SUR", nombre: "DAYANA SANCHEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 151, red: "RED GUASMO SUR", nombre: "MADELEINE OCHOA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 152, red: "RED GUASMO SUR", nombre: "ARLETH OCHOA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 153, red: "RED GUASMO SUR", nombre: "NOEMI OCHOA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 154, red: "RED GUASMO SUR", nombre: "ANTHONY ARREAGA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 155, red: "RED GUASMO SUR", nombre: "NOEMI ALVAREZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 156, red: "RED GUASMO SUR", nombre: "LUCINDA CAÑARTE", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 157, red: "RED GUASMO SUR", nombre: "BRIGITTE CAÑARTE", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 158, red: "RED GUASMO SUR", nombre: "JAZMIN CAÑARTE", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 159, red: "RED GUASMO SUR", nombre: "THYZ QUIROZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 160, red: "RED GUASMO SUR", nombre: "NICOLAS MACIAS", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 161, red: "RED ROMAREDA", nombre: "ROSA PALACIOS MEZA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 162, red: "RED ROMAREDA", nombre: "CAMILA AGUIRRE", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 163, red: "RED ROMAREDA", nombre: "MELANIE AGUIRRE", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 164, red: "RED ROMAREDA", nombre: "ANDREA IBARRA HOLGUIN", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 165, red: "RED ROMAREDA", nombre: "KAREN SUASTI IBARRA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 166, red: "RED ROMAREDA", nombre: "ELVIRA SEGARRA UBILLA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 167, red: "RED ROMAREDA", nombre: "EDITHZA FALQUEZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 168, red: "RED ROMAREDA", nombre: "ROBERTO JEREZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 169, red: "RED ROMAREDA", nombre: "CRISTINA AHT", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 170, red: "RED ROMAREDA", nombre: "ERIKAFLORES", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 171, red: "RED ROMAREDA", nombre: "JAIRO TUMBACO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 172, red: "RED ROMAREDA", nombre: "DOMENICA TUMBACO F.", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 173, red: "RED ROMAREDA", nombre: "VICTOR VERA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 174, red: "RED ROMAREDA", nombre: "ARACELY BAQUERIZO", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 175, red: "RED ROMAREDA", nombre: "LAURENT VERA B.", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 176, red: "RED ROMAREDA", nombre: "JOUSTIN VERA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 177, red: "RED ROMAREDA", nombre: "SOFIA VERA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 178, red: "RED PUNTILLA", nombre: "WILLIAM HERRERA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 179, red: "RED PUNTILLA", nombre: "PAMELA GARCÍA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 180, red: "RED PUNTILLA", nombre: "CHARYTO ROMERO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 181, red: "RED PUNTILLA", nombre: "MANUEL BENALCAZAR", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 182, red: "RED LA JOYA", nombre: "OSCAR ORDOÑEZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 183, red: "RED LA JOYA", nombre: "RITA AGUILERA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 184, red: "RED LA JOYA", nombre: "NATASHA ORDOÑEZ (10 años)", infante: "MENOR", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 185, red: "RED LA JOYA", nombre: "ROXANA ORTEGA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 186, red: "RED LA JOYA", nombre: "DAYSI GOMEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 187, red: "RED LA JOYA", nombre: "JOYCE TUMBACO", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 188, red: "RED LA JOYA", nombre: "LIA BOZADA (menor de 10 años)", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
-            { id: 189, red: "RED LA JOYA", nombre: "VICTORIA YELA (menor de 10 años)", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
-            { id: 190, red: "RED LA JOYA", nombre: "EVELYN FAJARDO", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 191, red: "RED LA JOYA", nombre: "MATTHEWS PILAMUNGA FAJARDO", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 192, red: "RED LA JOYA", nombre: "GABRIELA PILAMUNGA FAJARDO", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 193, red: "RED LA JOYA", nombre: "MILTON ALVARADO CARRIEL", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 194, red: "RED LA JOYA", nombre: "HIPATIA PINTO MUÑOZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 195, red: "RED LA JOYA", nombre: "ROSA REYNA ALCIVAR", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 196, red: "RED LA JOYA", nombre: "DANIEL PESANTES REYNA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 197, red: "RED LA JOYA", nombre: "CARLOS SUAREZ", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 198, red: "RED LA JOYA", nombre: "ILIANA SALINAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 199, red: "RED LA JOYA", nombre: "CARLY SUAREZ SALINAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 200, red: "RED LA JOYA", nombre: "CHARLIZE SUAREZ SALINAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 201, red: "RED LA JOYA", nombre: "JAVIER SAN MARTIN", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 202, red: "RED LA JOYA", nombre: "YINIRIDA DIAGO TORRES", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 203, red: "RED LA JOYA", nombre: "LEONOR SACOTO ARGUDO", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 204, red: "RED LA JOYA", nombre: "JORGE MALDONADO", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 205, red: "RED LA JOYA", nombre: "MICHELLE OCHOA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 206, red: "RED LA JOYA", nombre: "MIGUEL RINCONES", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 207, red: "RED LA JOYA", nombre: "ELSA UBE PAREDES", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 208, red: "RED LA JOYA", nombre: "ADRIAN SORNOZA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 209, red: "RED LA JOYA", nombre: "ADRIANA SORNOZA UBE", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 210, red: "RED LA JOYA", nombre: "PAMELA SORNOZA UBE", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 211, red: "VILLA DEL REY", nombre: "JOSE ALVARADO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 212, red: "VILLA DEL REY", nombre: "VERONICA POMBO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 213, red: "VILLA DEL REY", nombre: "EDUARDO SALAZAR", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 214, red: "VILLA DEL REY", nombre: "MARTINA MORENO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 215, red: "VILLA DEL REY", nombre: "JAVIER MORAN", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 216, red: "VILLA DEL REY", nombre: "WENDY ESPINOZA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 217, red: "VILLA DEL REY", nombre: "LEXIDA BRACHO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 218, red: "VILLA DEL REY", nombre: "LILIANA MARQUEZ", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 219, red: "VILLA DEL REY", nombre: "DANIEL TELLO", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 220, red: "VILLA DEL REY", nombre: "CINTHIA JUANAZO", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 221, red: "VILLA DEL REY", nombre: "RICARDO MEJIA", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 222, red: "VILLA DEL REY", nombre: "MARITZA RAMIREZ", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 223, red: "VILLA DEL REY", nombre: "MAGALY NARANJO", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 224, red: "RED MUCHO LOTE", nombre: "JOSE POLO", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 225, red: "RED MUCHO LOTE", nombre: "KERLY HUERTA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 226, red: "RED MUCHO LOTE", nombre: "MARIANA BORJA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 227, red: "RED MUCHO LOTE", nombre: "VIVIANA BASQUEZ", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 228, red: "RED MUCHO LOTE", nombre: "MONICA MORA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 229, red: "RED MUCHO LOTE", nombre: "MELISSA AGUIRRE", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 230, red: "RED MUCHO LOTE", nombre: "CAMILITA AGUIRRE", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 231, red: "RED MUCHO LOTE", nombre: "CHARITO MOLINA DE URQUIZA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 232, red: "RED MUCHO LOTE", nombre: "CARLOS URQUIZA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 233, red: "RED MUCHO LOTE", nombre: "DANIEL URQUIZA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 234, red: "RED MUCHO LOTE", nombre: "IRIS PIÑA", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
-            { id: 235, red: "RED MUCHO LOTE", nombre: "HIJO DE CHARITO", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 236, red: "RED MUCHO LOTE", nombre: "NANCY VELEZ", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 237, red: "RED MUCHO LOTE", nombre: "MARIA REBECA GOMEZ", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 238, red: "RED MUCHO LOTE", nombre: "LUZ CHERREZ", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 239, red: "RED MUCHO LOTE", nombre: "RUTH PAZMIÑO", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 240, red: "RED FERROVIARIA", nombre: "MAIDA PAREJA", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 241, red: "RED FERROVIARIA", nombre: "PEDRO PAREJA", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 242, red: "RED FERROVIARIA", nombre: "PEDRO PAREJA JR.", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 243, red: "RED FERROVIARIA", nombre: "ABEL DELGADO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 244, red: "RED FERROVIARIA", nombre: "SANDRA BRAVO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 245, red: "RED FERROVIARIA", nombre: "MARTHITA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 246, red: "RED FERROVIARIA", nombre: "GIOVANNY PILOZO", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 247, red: "RED FERROVIARIA", nombre: "ILIANA ANCHUNDIA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 248, red: "RED FERROVIARIA", nombre: "PAULO ESPINOZA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 249, red: "RED FERROVIARIA", nombre: "MIA ESPINIOZA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 250, red: "RED SIMON BOLIVAR", nombre: "MARCELA MOLINA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 251, red: "RED SIMON BOLIVAR", nombre: "YOHANNA BARRERA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 252, red: "RED SIMON BOLIVAR", nombre: "STALIN CEDEÑO", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 253, red: "RED SIMON BOLIVAR", nombre: "BETTY VILLACRES", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 254, red: "RED CONDOR", nombre: "SANTIAGO CAÑARTE", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 255, red: "RED CONDOR", nombre: "XAVIER CAÑARTE", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 256, red: "RED CONDOR", nombre: "LISSETT VERA", infante: "", cuota: "Pagado", bus: "Bus" },
-            { id: 257, red: "RED CONDOR", nombre: "ABEL QUIMI", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 258, red: "RED CONDOR", nombre: "GINA SELLAN", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 259, red: "RED CONDOR", nombre: "JAIME NUÑEZ", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { id: 260, red: "RED CONDOR", nombre: "WLADIMIR PAREDES", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { id: 261, red: "RED VIA A LA COSTA", nombre: "ALEX CANTOS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 262, red: "RED VIA A LA COSTA", nombre: "BETZABETH MERCHAN", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 263, red: "RED VIA A LA COSTA", nombre: "YESENIA VARGAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 264, red: "RED VIA A LA COSTA", nombre: "JOFFRE CASTAÑEDA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 265, red: "RED VIA A LA COSTA", nombre: "VALERIA CASTAÑEDA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 266, red: "RED VIA A LA COSTA", nombre: "ARIANNA LAMBERTUCCI", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 267, red: "RED VIA A LA COSTA", nombre: "PEDRO TRIVIÑO", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 268, red: "RED VIA A LA COSTA", nombre: "HERMANO DE ARIANNA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 269, red: "RED VIA A LA COSTA", nombre: "KELLY VARAS", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 270, red: "RED VIA A LA COSTA", nombre: "BELLEN SEGARRA", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { id: 271, red: "RED VIA A LA COSTA", nombre: "MIRIAN VALERO", infante: "", cuota: "Pagado", bus: "Bus" }
+        const personasRaw = [
+            // RED SAN FELIPE (26)
+            { red: "RED SAN FELIPE", nombre: "Willian Castro", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Virginia Obando", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Fiorella Castro", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Melida Guambaña", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Tiffany Briones", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Jonathan Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Amanda Campoverde", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Emanuel Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Lemuel Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Zuri Crespo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Grabriel Pin", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Liliana Figueroa", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Juan Pablo Castro", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Valeria Minaya", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Camila Castro", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Emanuel Castro", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Dario Cabello", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Darellys Cabello", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Scarlet Cabello", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Erlinda Mayor", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Enrique Avilés", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Marjorie Fajardo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Paola Bernal", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Maximiliano Calva", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Jorge López", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAN FELIPE", nombre: "Karina Merchán", infante: "", cuota: "Pagado", bus: "Bus" },
+
+            // RED KENNEDY (23)
+            { red: "RED KENNEDY", nombre: "Oscar burgos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Roxana Gutierrez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Jorge Farad", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Tanya Obando", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Lionel Espinoza", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Esther Eugenio", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Gonzalo Aparicio", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Sofia Castillo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Mariuxi Davila", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "José Luis Rosales", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Samy Pazmiño", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Patricia MIranda", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Gustavo Burgos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Gabriela Panta", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Antonela Burgos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Vanesa Castro", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "José Veliz", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Mariuxi Chávez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Iris Véliz", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Amaia Véliz", infante: "MENOR", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Jairo Poso", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Matias Poso C.", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED KENNEDY", nombre: "Jacob Poso C", infante: "MENOR", cuota: "Pagado", bus: "Carro Propio" },
+
+            // RED ORELLANA (8)
+            { red: "RED ORELLANA", nombre: "Jessy Rodriguez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ORELLANA", nombre: "Evelyn Mina", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ORELLANA", nombre: "Flor de la Rosa", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED ORELLANA", nombre: "Camila Cruz", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED ORELLANA", nombre: "Daniel Solano", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ORELLANA", nombre: "Katty Moncada", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ORELLANA", nombre: "Roberto Rodriguez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ORELLANA", nombre: "Jaqueline de Rodriguez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+
+            // RED SAMANES (10)
+            { red: "RED SAMANES", nombre: "Antony Andrade", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED SAMANES", nombre: "Liliana de Andrade", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED SAMANES", nombre: "Carlos Gutierrez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED SAMANES", nombre: "Verónica de Gutierrez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED SAMANES", nombre: "Alexis Torres", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAMANES", nombre: "Lilian Gutiérrez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAMANES", nombre: "Jorge Véliz", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAMANES", nombre: "Cecilia", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAMANES", nombre: "Rolando Zevallos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED SAMANES", nombre: "Teresa Alcívar", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+
+            // RED ALBORADA (7)
+            { red: "RED ALBORADA", nombre: "Mafer Quintero", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED ALBORADA", nombre: "Eduardo Navarro", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED ALBORADA", nombre: "Katherine Bozada", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED ALBORADA", nombre: "Rafael Rangel", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED ALBORADA", nombre: "Enrique Moran", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED ALBORADA", nombre: "Gustavo Moran", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED ALBORADA", nombre: "Emiliano Moran", infante: "", cuota: "Pagado", bus: "Bus" },
+
+            // RED SAUCES (2)
+            { red: "RED SAUCES", nombre: "Alexandra Yagual", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SAUCES", nombre: "Karen Barzola", infante: "", cuota: "Pagado", bus: "Bus" },
+
+            // RED 9 DE OCTUBRE (12)
+            { red: "RED 9 DE OCTUBRE", nombre: "Dana Arce", infante: "17 AÑOS", cuota: "Pagado", bus: "Bus" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Annia Arce", infante: "13 AÑOS", cuota: "Pagado", bus: "Bus" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Raquel Arce", infante: "10 AÑOS", cuota: "Pagado", bus: "Bus" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Jose Luis Arce", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Sindia Ferigra", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Manuel Villon", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Germania De Villon", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Mayra Cervante", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Abdias Cervantes Bravo", infante: "MENOR", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Carlos Sanchez", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Pedro Badillo", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Cira Rivera", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+
+            // RED BATALLON (7)
+            { red: "RED BATALLON", nombre: "Alex Crespin", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED BATALLON", nombre: "Patricia Vaca", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED BATALLON", nombre: "Juan Carlos Padilla", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED BATALLON", nombre: "Nancy Moran", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED BATALLON", nombre: "Jessica Cuenca", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED BATALLON", nombre: "Ruth Cortez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED BATALLON", nombre: "Niña 9 Años", infante: "MENOR", cuota: "Pendiente", bus: "Bus" },
+
+            // RED RIOJA (12)
+            { red: "RED RIOJA", nombre: "Anita Davila", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED RIOJA", nombre: "Libia Campuzano", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED RIOJA", nombre: "Patricia Navarrete", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED RIOJA", nombre: "Wendy Rodriguez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED RIOJA", nombre: "Cristhian Bermeo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED RIOJA", nombre: "Andrea Avila", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED RIOJA", nombre: "Veronica De Rioncon", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED RIOJA", nombre: "Alexandra Redrovan", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED RIOJA", nombre: "Xavier Neira", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED RIOJA", nombre: "Javier Rincon", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED RIOJA", nombre: "Rocio Flor", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED RIOJA", nombre: "Fatima Ortiz", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+
+            // RED PADRE SOLANO (19)
+            { red: "RED PADRE SOLANO", nombre: "Javier Guerrero", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED PADRE SOLANO", nombre: "Rosy De Guerrero", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED PADRE SOLANO", nombre: "Josue Guerrero", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED PADRE SOLANO", nombre: "Martha Pamplona", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED PADRE SOLANO", nombre: "Jeremy Pamplona", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED PADRE SOLANO", nombre: "Martha Yagual", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED PADRE SOLANO", nombre: "Mercedes Candelario", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED PADRE SOLANO", nombre: "Marvin Cabezas", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED PADRE SOLANO", nombre: "Fiorella Cabezas", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED PADRE SOLANO", nombre: "Marvin Cabezas", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED PADRE SOLANO", nombre: "Luis Ordoñes", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED PADRE SOLANO", nombre: "Fernanda De Ordoñez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED PADRE SOLANO", nombre: "Santiago Ordoñez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED PADRE SOLANO", nombre: "Roberto Pinto", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED PADRE SOLANO", nombre: "Mario Menoscal", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED PADRE SOLANO", nombre: "Otto Jimenez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED PADRE SOLANO", nombre: "Johanna Rodriguez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED PADRE SOLANO", nombre: "Ma. De Los Angeles Jimenes", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED PADRE SOLANO", nombre: "Eliseo Jimenez", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
+
+            // RED SUR OESTE (11)
+            { red: "RED SUR OESTE", nombre: "Mariuxi Vasquez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SUR OESTE", nombre: "Juan Alava", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SUR OESTE", nombre: "Palmira Valladolid", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SUR OESTE", nombre: "Elizabeth Ruiz", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SUR OESTE", nombre: "Roberto Tigua", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SUR OESTE", nombre: "Ohanna Jimenez", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SUR OESTE", nombre: "Isabella Jimenez", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SUR OESTE", nombre: "SonnIA Tayupanda", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SUR OESTE", nombre: "Yeremi Tuyapanda", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SUR OESTE", nombre: "Alexandra Zambrano", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SUR OESTE", nombre: "Yazmin Bohorquez", infante: "", cuota: "Pagado", bus: "Bus" },
+
+            // RED GUASMO SUR (29)
+            { red: "RED GUASMO SUR", nombre: "Lilia Crespin", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Edgar Flores", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Elsy Torres", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Marcia Torres", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Mariuxi Chiguano", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED GUASMO SUR", nombre: "Gustavo Davila", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED GUASMO SUR", nombre: "Asley Burgos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED GUASMO SUR", nombre: "Douglas Delgado", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { red: "RED GUASMO SUR", nombre: "Stephania Ganchozo", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { red: "RED GUASMO SUR", nombre: "Rafaella Delgado", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED GUASMO SUR", nombre: "Marlon Pincay", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Lady Mendez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Angie Sanchez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Maria Sanchez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Byron Davila", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED GUASMO SUR", nombre: "Moises Davila", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED GUASMO SUR", nombre: "Deysi Avengo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED GUASMO SUR", nombre: "Andres Flores", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Dayana Sanchez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Madeleine Ochoa", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Arleth Ochoa", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Noemi Ochoa", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Anthony Arreaga", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Noemi Alvarez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Lucinda Cañarte", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Brigitte Cañarte", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Jazmin Cañarte", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Thyz Quiroz", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Nicolas Macias", infante: "", cuota: "Pagado", bus: "Bus" },
+
+            // RED ROMAREDA (18)
+            { red: "RED ROMAREDA", nombre: "Rosa Palacios Meza", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Camila Aguirre", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Melanie Aguirre", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Andrea Ibarra Holguin", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED ROMAREDA", nombre: "Karen Suasti Ibarra", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED ROMAREDA", nombre: "Elvira Segarra Ubilla", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED ROMAREDA", nombre: "Edithza Falquez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Roberto Jerez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Cristina Aht", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Erikaflores", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Jairo Tumbaco", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Domenica Tumbaco F.", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Victor Vera", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Aracely Baquerizo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Laurent Vera B.", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Joustin Vera", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Sofia Vera", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED ROMAREDA", nombre: "Leonor Madero", infante: "", cuota: "Pagado", bus: "Bus" },
+
+            // RED PUNTILLA (4)
+            { red: "RED PUNTILLA", nombre: "William Herrera", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED PUNTILLA", nombre: "Pamela García", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED PUNTILLA", nombre: "Charyto Romero", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED PUNTILLA", nombre: "Manuel Benalcazar", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+
+            // RED LA JOYA (29)
+            { red: "RED LA JOYA", nombre: "Oscar Ordoñez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED LA JOYA", nombre: "Rita Aguilera", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED LA JOYA", nombre: "Natasha Ordoñez (10 años)", infante: "MENOR", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED LA JOYA", nombre: "Roxana Ortega", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Daysi Gomez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Joyce Tumbaco", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Lia Bozada (menor de 10 años)", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Victoria Yela (menor de 10 años)", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Evelyn Fajardo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Matthews Pilamunga Fajardo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Gabriela Pilamunga Fajardo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Milton Alvarado Carriel", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Hipatia Pinto Muñoz", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Rosa Reyna Alcivar", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED LA JOYA", nombre: "Daniel Pesantes Reyna", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED LA JOYA", nombre: "Carlos Suarez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED LA JOYA", nombre: "Iliana Salinas", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED LA JOYA", nombre: "Carly Suarez Salinas", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED LA JOYA", nombre: "Charlize Suarez Salinas", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED LA JOYA", nombre: "Javier San Martin", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Yinirida Diago Torres", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Leonor Sacoto Argudo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Jorge Maldonado", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Michelle Ochoa", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Miguel Rincones", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Elsa Ube Paredes", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Adrian Sornoza", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Adriana Sornoza Ube", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED LA JOYA", nombre: "Pamela Sornoza Ube", infante: "", cuota: "Pagado", bus: "Bus" },
+
+            // RED VILLA DEL REY (9)
+            { red: "RED VILLA DEL REY", nombre: "Jose Alvarado", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VILLA DEL REY", nombre: "Veronica Pombo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VILLA DEL REY", nombre: "Eduardo Salazar", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VILLA DEL REY", nombre: "Martina Moreno", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VILLA DEL REY", nombre: "Javier Moran", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VILLA DEL REY", nombre: "Wendy Espinoza", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VILLA DEL REY", nombre: "Lexida Bracho", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VILLA DEL REY", nombre: "Lily Marquez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VILLA DEL REY", nombre: "Hija Lily Marquez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+
+            // RED MUCHO LOTE (16)
+            { red: "RED MUCHO LOTE", nombre: "Jose Polo", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Kerly Huerta", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Mariana Borja", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Viviana Basquez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Monica Mora", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Melissa Aguirre", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Camilita Aguirre", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Charito Molina De Urquiza", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Carlos Urquiza", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Daniel Urquiza", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Iris Piña", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Hijo De Charito", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Nancy Velez", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Maria Rebeca Gomez", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Luz Cherrez", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Ruth Pazmiño", infante: "", cuota: "Pendiente", bus: "Bus" },
+
+            // RED FERROVIARIA (10)
+            { red: "RED FERROVIARIA", nombre: "Maida Pareja", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { red: "RED FERROVIARIA", nombre: "Pedro Pareja", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { red: "RED FERROVIARIA", nombre: "Pedro Pareja Jr.", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { red: "RED FERROVIARIA", nombre: "Abel Delgado", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED FERROVIARIA", nombre: "Sandra Bravo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED FERROVIARIA", nombre: "Marthita", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED FERROVIARIA", nombre: "Giovanny Pilozo", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED FERROVIARIA", nombre: "Iliana Anchundia", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED FERROVIARIA", nombre: "Paulo Espinoza", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED FERROVIARIA", nombre: "Mia Espinioza", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+
+            // RED SIMON BOLIVAR (4)
+            { red: "RED SIMON BOLIVAR", nombre: "Marcela Molina", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SIMON BOLIVAR", nombre: "Yohanna Barrera", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SIMON BOLIVAR", nombre: "Stalin Cedeño", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED SIMON BOLIVAR", nombre: "Sebastián Rosado", infante: "", cuota: "Pagado", bus: "Bus" },
+
+            // RED CONDOR (7)
+            { red: "RED CONDOR", nombre: "Santiago Cañarte", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED CONDOR", nombre: "Xavier Cañarte", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED CONDOR", nombre: "Lissett Vera", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED CONDOR", nombre: "Abel Quimi", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED CONDOR", nombre: "Gina Sellan", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED CONDOR", nombre: "Jaime Nuñez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED CONDOR", nombre: "Wladimir Paredes", infante: "", cuota: "Pagado", bus: "Bus" },
+
+            // RED VIA A LA COSTA (11)
+            { red: "RED VIA A LA COSTA", nombre: "Alex Cantos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VIA A LA COSTA", nombre: "Betzabeth Merchan", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VIA A LA COSTA", nombre: "Yesenia Vargas", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VIA A LA COSTA", nombre: "Joffre Castañeda", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VIA A LA COSTA", nombre: "Valeria Castañeda", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VIA A LA COSTA", nombre: "Arianna Lambertucci", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VIA A LA COSTA", nombre: "Pedro Triviño", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VIA A LA COSTA", nombre: "Hermano De Arianna", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VIA A LA COSTA", nombre: "Kelly Varas", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED VIA A LA COSTA", nombre: "Belen Segarra", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VIA A LA COSTA", nombre: "Mirian Valero", infante: "", cuota: "Pagado", bus: "Bus" }
         ];
+
+        // ============================================================
+        // ASIGNAR IDs AUTOMÁTICAMENTE
+        // ============================================================
+        const personas = personasRaw.map((p, i) => ({ ...p, id: i + 1 }));
 
         // ============================================================
         // EMOJIS Y COLORES POR RED
@@ -1079,7 +601,7 @@
             "RED ROMAREDA":         { emoji: "🌸", color: "#db2777", color2: "#ec4899" },
             "RED PUNTILLA":         { emoji: "🏖️", color: "#0e7490", color2: "#06b6d4" },
             "RED LA JOYA":          { emoji: "💎", color: "#7c3aed", color2: "#a78bfa" },
-            "VILLA DEL REY":        { emoji: "👑", color: "#b45309", color2: "#f59e0b" },
+            "RED VILLA DEL REY":    { emoji: "👑", color: "#b45309", color2: "#f59e0b" },
             "RED MUCHO LOTE":       { emoji: "🌻", color: "#d97706", color2: "#fbbf24" },
             "RED FERROVIARIA":      { emoji: "🚂", color: "#475569", color2: "#64748b" },
             "RED SIMON BOLIVAR":    { emoji: "🗽", color: "#1d4ed8", color2: "#3b82f6" },
@@ -1134,7 +656,6 @@
         const totalPendientes = personas.filter(p => p.cuota === "Pendiente").length;
         const totalBus = personas.filter(p => p.bus === "Bus").length;
         const totalCarro = personas.filter(p => p.bus === "Carro Propio").length;
-        const totalMenores = personas.filter(p => p.infante && p.infante !== "").length;
 
         const pctPagados = Math.round((totalPagados / totalPersonas) * 100);
         const pctPendientes = Math.round((totalPendientes / totalPersonas) * 100);
@@ -1142,11 +663,10 @@
         const pctCarro = Math.round((totalCarro / totalPersonas) * 100);
 
         // ============================================================
-        // RENDERIZAR RESUMEN AGRUPADO
+        // RENDERIZAR RESUMEN
         // ============================================================
         const resumenEl = document.getElementById('resumen');
         resumenEl.innerHTML = `
-            <!-- Bloque: Registro general -->
             <div class="bloque">
                 <div class="bloque-header">
                     <span class="emoji">📊</span>
@@ -1172,7 +692,6 @@
                 </div>
             </div>
 
-            <!-- Bloque: Cuotas -->
             <div class="bloque">
                 <div class="bloque-header">
                     <span class="emoji">💰</span>
@@ -1203,7 +722,6 @@
                 </div>
             </div>
 
-            <!-- Bloque: Traslado (ancho completo) -->
             <div class="bloque ancho">
                 <div class="bloque-header">
                     <span class="emoji">🚗</span>
@@ -1236,7 +754,7 @@
         `;
 
         // ============================================================
-        // RENDERIZAR TARJETAS AGRUPADAS POR SECCIÓN
+        // RENDERIZAR TARJETAS
         // ============================================================
         const contenedor = document.getElementById('contenedorRedes');
         const contadorRedes = document.getElementById('contadorRedes');
@@ -1305,7 +823,6 @@
                 const redesSec = seccionesConRedes[sec.id];
                 if (redesSec.length === 0) return;
 
-                // Totales de la sección
                 const totalPersonasSec = redesSec.reduce((acc, r) => acc + redesMap[r].length, 0);
                 const totalPagadosSec = redesSec.reduce((acc, r) =>
                     acc + redesMap[r].filter(p => p.cuota === "Pagado").length, 0);
@@ -1344,7 +861,7 @@
         });
 
         // ============================================================
-        // MODAL — LÓGICA
+        // MODAL
         // ============================================================
         const overlay = document.getElementById('modalOverlay');
         const modalEmoji = document.getElementById('modalEmoji');
