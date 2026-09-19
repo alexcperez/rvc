@@ -314,7 +314,7 @@
 
     <script>
         // ============================================================
-        // DATOS ACTUALIZADOS — 271 personas
+        // DATOS ACTUALIZADOS — 272 personas
         // ============================================================
         const personasRaw = [
             // RED SAN FELIPE (26)
@@ -405,7 +405,7 @@
             { red: "RED SAUCES", nombre: "Alexandra Yagual", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED SAUCES", nombre: "Karen Barzola", infante: "", cuota: "Pagado", bus: "Bus" },
 
-            // RED 9 DE OCTUBRE (12)
+            // RED 9 DE OCTUBRE (12) — Carlos y Pedro NO han cancelado (Pendiente)
             { red: "RED 9 DE OCTUBRE", nombre: "Dana Arce", infante: "17 AÑOS", cuota: "Pagado", bus: "Bus" },
             { red: "RED 9 DE OCTUBRE", nombre: "Annia Arce", infante: "13 AÑOS", cuota: "Pagado", bus: "Bus" },
             { red: "RED 9 DE OCTUBRE", nombre: "Raquel Arce", infante: "10 AÑOS", cuota: "Pagado", bus: "Bus" },
@@ -415,8 +415,8 @@
             { red: "RED 9 DE OCTUBRE", nombre: "Germania De Villon", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED 9 DE OCTUBRE", nombre: "Mayra Cervante", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED 9 DE OCTUBRE", nombre: "Abdias Cervantes Bravo", infante: "MENOR", cuota: "Pagado", bus: "Carro Propio" },
-            { red: "RED 9 DE OCTUBRE", nombre: "Carlos Sanchez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { red: "RED 9 DE OCTUBRE", nombre: "Pedro Badillo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Carlos Sanchez", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Pedro Badillo", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
             { red: "RED 9 DE OCTUBRE", nombre: "Cira Rivera", infante: "", cuota: "Pagado", bus: "Carro Propio" },
 
             // RED BATALLON (7)
@@ -476,16 +476,16 @@
             { red: "RED SUR OESTE", nombre: "Alexandra Zambrano", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED SUR OESTE", nombre: "Yazmin Bohorquez", infante: "", cuota: "Pagado", bus: "Bus" },
 
-            // RED GUASMO SUR (29)
+            // RED GUASMO SUR (30) — +1 Esperanza · TODOS PAGADOS
             { red: "RED GUASMO SUR", nombre: "Lilia Crespin", infante: "", cuota: "Pagado", bus: "Bus" },
-            { red: "RED GUASMO SUR", nombre: "Edgar Flores", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Edgar Flores", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED GUASMO SUR", nombre: "Elsy Torres", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED GUASMO SUR", nombre: "Marcia Torres", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED GUASMO SUR", nombre: "Mariuxi Chiguano", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED GUASMO SUR", nombre: "Gustavo Davila", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED GUASMO SUR", nombre: "Asley Burgos", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { red: "RED GUASMO SUR", nombre: "Douglas Delgado", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { red: "RED GUASMO SUR", nombre: "Stephania Ganchozo", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { red: "RED GUASMO SUR", nombre: "Douglas Delgado", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED GUASMO SUR", nombre: "Stephania Ganchozo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED GUASMO SUR", nombre: "Rafaella Delgado", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED GUASMO SUR", nombre: "Marlon Pincay", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED GUASMO SUR", nombre: "Lady Mendez", infante: "", cuota: "Pagado", bus: "Bus" },
@@ -494,7 +494,7 @@
             { red: "RED GUASMO SUR", nombre: "Byron Davila", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED GUASMO SUR", nombre: "Moises Davila", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED GUASMO SUR", nombre: "Deysi Avengo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { red: "RED GUASMO SUR", nombre: "Andres Flores", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Andres Flores", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED GUASMO SUR", nombre: "Dayana Sanchez", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED GUASMO SUR", nombre: "Madeleine Ochoa", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED GUASMO SUR", nombre: "Arleth Ochoa", infante: "", cuota: "Pagado", bus: "Bus" },
@@ -506,6 +506,7 @@
             { red: "RED GUASMO SUR", nombre: "Jazmin Cañarte", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED GUASMO SUR", nombre: "Thyz Quiroz", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED GUASMO SUR", nombre: "Nicolas Macias", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED GUASMO SUR", nombre: "Esperanza", infante: "", cuota: "Pagado", bus: "Bus" },
 
             // RED ROMAREDA (18)
             { red: "RED ROMAREDA", nombre: "Rosa Palacios Meza", infante: "", cuota: "Pagado", bus: "Carro Propio" },
@@ -564,7 +565,7 @@
             { red: "RED LA JOYA", nombre: "Adriana Sornoza Ube", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED LA JOYA", nombre: "Pamela Sornoza Ube", infante: "", cuota: "Pagado", bus: "Bus" },
 
-            // RED VILLA DEL REY (10) — Jana Moran va en carro propio
+            // RED VILLA DEL REY (10) — Jana Moran en carro propio
             { red: "RED VILLA DEL REY", nombre: "Jose Alvarado", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED VILLA DEL REY", nombre: "Veronica Pombo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED VILLA DEL REY", nombre: "Eduardo Salazar", infante: "", cuota: "Pagado", bus: "Carro Propio" },
@@ -1105,10 +1106,8 @@
         closePendientes.addEventListener('click', cerrarModalPendientes);
         overlayPend.addEventListener('click', (e) => { if (e.target === overlayPend) cerrarModalPendientes(); });
 
-        // Click en la métrica de Pendientes
         document.getElementById('metricaPendientes').addEventListener('click', abrirModalPendientes);
 
-        // Búsqueda en modal de pendientes
         searchPendientes.addEventListener('input', (e) => {
             renderizarPendientes(e.target.value);
         });
