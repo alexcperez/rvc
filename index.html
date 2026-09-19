@@ -44,6 +44,20 @@
         .metrica .info .etiqueta { font-size: 12px; font-weight: 600; color: #475569; margin-top: 2px; }
         .metrica .info .porcentaje { font-size: 11px; font-weight: 600; color: #94a3b8; margin-top: 1px; }
 
+        /* Métrica clickeable */
+        .metrica.clickable { cursor: pointer; border-radius: 14px; padding: 6px 8px; margin: -6px -8px; transition: 0.15s; }
+        .metrica.clickable:hover { background: #fef2f2; }
+        .metrica.clickable:hover .info .etiqueta { color: #dc2626; }
+        .metrica.clickable .ver-mas {
+            font-size: 10px;
+            color: #dc2626;
+            font-weight: 700;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
         .barra-progreso { grid-column: span 2; height: 8px; background: #f1f5f9; border-radius: 10px; overflow: hidden; display: flex; margin-top: 4px; }
         .barra-progreso .seg { height: 100%; transition: width 0.3s; }
         .barra-progreso .seg.pagado { background: #22c55e; }
@@ -90,6 +104,7 @@
         .red-card .hint { font-size: 11px; color: #94a3b8; margin-top: 10px; font-weight: 400; opacity: 0.7; transition: opacity 0.2s; }
         .red-card:hover .hint { opacity: 1; }
 
+        /* ===== MODAL ===== */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 20, 35, 0.6); backdrop-filter: blur(6px); justify-content: center; align-items: center; padding: 20px; z-index: 1000; animation: fadeIn 0.25s ease; }
         .modal-overlay.active { display: flex; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -144,6 +159,21 @@
         .tabla-personas .tag.bus { background: #dbeafe; color: #1e40af; }
         .tabla-personas .tag.carro { background: #fef3c7; color: #92400e; }
 
+        /* Tabla del modal de pendientes */
+        .tabla-pendientes { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .tabla-pendientes thead th { position: sticky; top: 0; z-index: 10; background: #ffffff; text-align: left; padding: 12px 14px; font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #eef2f7; box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.15); }
+        .tabla-pendientes thead th.col-red { width: 45%; }
+        .tabla-pendientes thead th.col-nombre-p { width: 55%; }
+        .tabla-pendientes tbody tr { border-bottom: 1px solid #f1f5f9; transition: 0.12s; }
+        .tabla-pendientes tbody tr:hover { background: #fef2f2; }
+        .tabla-pendientes tbody tr:last-child { border-bottom: none; }
+        .tabla-pendientes tbody td { padding: 12px 14px; vertical-align: middle; background: #ffffff; }
+        .tabla-pendientes tbody tr:hover td { background: #fef2f2; }
+        .tabla-pendientes tbody td.col-red { font-size: 12px; font-weight: 700; color: #dc2626; }
+        .tabla-pendientes tbody td.col-red .emoji-red { margin-right: 6px; }
+        .tabla-pendientes tbody td.col-nombre-p { font-size: 13px; font-weight: 600; color: #1e293b; text-transform: uppercase; letter-spacing: 0.2px; }
+        .tabla-pendientes tbody td.col-nombre-p .badge-menor { display: inline-block; font-size: 10px; background: #f3e8ff; color: #6b21a8; padding: 1px 8px; border-radius: 40px; font-weight: 700; margin-left: 6px; text-transform: none; letter-spacing: 0; }
+
         .no-results { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 15px; }
         .no-results .emoji { font-size: 40px; display: block; margin-bottom: 10px; }
 
@@ -182,6 +212,10 @@
             .tabla-personas thead th.col-cuota { width: 90px; }
             .tabla-personas thead th.col-bus { width: 100px; }
             .tabla-personas .tag { font-size: 10px; padding: 2px 8px; }
+            .tabla-pendientes thead th { font-size: 10px; padding: 10px 10px; }
+            .tabla-pendientes tbody td { padding: 10px 10px; }
+            .tabla-pendientes tbody td.col-red { font-size: 11px; }
+            .tabla-pendientes tbody td.col-nombre-p { font-size: 12px; }
             .bloque { padding: 14px 16px; }
             .bloque-header .titulo { font-size: 13px; }
             .metrica .info .valor { font-size: 18px; }
@@ -203,6 +237,8 @@
             .tabla-personas thead th.col-cuota { width: 70px; }
             .tabla-personas thead th.col-bus { width: 80px; }
             .tabla-personas .tag { font-size: 9px; padding: 2px 6px; }
+            .tabla-pendientes thead th.col-red { width: 40%; }
+            .tabla-pendientes thead th.col-nombre-p { width: 60%; }
         }
     </style>
 </head>
@@ -235,6 +271,7 @@
 
     </div>
 
+    <!-- MODAL DE RED -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
@@ -255,9 +292,29 @@
         </div>
     </div>
 
+    <!-- MODAL DE PENDIENTES -->
+    <div class="modal-overlay" id="modalPendientesOverlay">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div class="left">
+                    <span class="emoji">⏳</span>
+                    <div class="info">
+                        <h3>Cuotas Pendientes</h3>
+                        <div class="count" id="pendientesCount">0 personas</div>
+                    </div>
+                </div>
+                <button class="close-btn" id="closePendientes" aria-label="Cerrar">✕</button>
+            </div>
+            <div class="modal-search">
+                <input type="text" id="searchPendientes" placeholder="🔍 Buscar por nombre o red..." />
+            </div>
+            <div class="modal-body" id="modalPendientesBody"></div>
+        </div>
+    </div>
+
     <script>
         // ============================================================
-        // DATOS ACTUALIZADOS — 274 personas
+        // DATOS ACTUALIZADOS — 271 personas
         // ============================================================
         const personasRaw = [
             // RED SAN FELIPE (26)
@@ -358,8 +415,8 @@
             { red: "RED 9 DE OCTUBRE", nombre: "Germania De Villon", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED 9 DE OCTUBRE", nombre: "Mayra Cervante", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED 9 DE OCTUBRE", nombre: "Abdias Cervantes Bravo", infante: "MENOR", cuota: "Pagado", bus: "Carro Propio" },
-            { red: "RED 9 DE OCTUBRE", nombre: "Carlos Sanchez", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { red: "RED 9 DE OCTUBRE", nombre: "Pedro Badillo", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Carlos Sanchez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED 9 DE OCTUBRE", nombre: "Pedro Badillo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED 9 DE OCTUBRE", nombre: "Cira Rivera", infante: "", cuota: "Pagado", bus: "Carro Propio" },
 
             // RED BATALLON (7)
@@ -507,7 +564,7 @@
             { red: "RED LA JOYA", nombre: "Adriana Sornoza Ube", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED LA JOYA", nombre: "Pamela Sornoza Ube", infante: "", cuota: "Pagado", bus: "Bus" },
 
-            // RED VILLA DEL REY (9)
+            // RED VILLA DEL REY (10) — Jana Moran va en carro propio
             { red: "RED VILLA DEL REY", nombre: "Jose Alvarado", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED VILLA DEL REY", nombre: "Veronica Pombo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED VILLA DEL REY", nombre: "Eduardo Salazar", infante: "", cuota: "Pagado", bus: "Carro Propio" },
@@ -516,7 +573,8 @@
             { red: "RED VILLA DEL REY", nombre: "Wendy Espinoza", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED VILLA DEL REY", nombre: "Lexida Bracho", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED VILLA DEL REY", nombre: "Lily Marquez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { red: "RED VILLA DEL REY", nombre: "Hija Lily Marquez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VILLA DEL REY", nombre: "Hijo Lily Marquez", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VILLA DEL REY", nombre: "Jana Moran", infante: "MENOR", cuota: "Pagado", bus: "Carro Propio" },
 
             // RED MUCHO LOTE (16)
             { red: "RED MUCHO LOTE", nombre: "Jose Polo", infante: "", cuota: "Pagado", bus: "Bus" },
@@ -524,26 +582,22 @@
             { red: "RED MUCHO LOTE", nombre: "Mariana Borja", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED MUCHO LOTE", nombre: "Viviana Basquez", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED MUCHO LOTE", nombre: "Monica Mora", infante: "", cuota: "Pagado", bus: "Bus" },
-            { red: "RED MUCHO LOTE", nombre: "Melissa Aguirre", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { red: "RED MUCHO LOTE", nombre: "Camilita Aguirre", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Melissa Aguirre", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Camilita Aguirre", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
             { red: "RED MUCHO LOTE", nombre: "Charito Molina De Urquiza", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED MUCHO LOTE", nombre: "Carlos Urquiza", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED MUCHO LOTE", nombre: "Daniel Urquiza", infante: "", cuota: "Pagado", bus: "Bus" },
-            { red: "RED MUCHO LOTE", nombre: "Iris Piña", infante: "MENOR", cuota: "Pagado", bus: "Bus" },
-            { red: "RED MUCHO LOTE", nombre: "Hijo De Charito", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Iris Piña", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Hijo De Charito", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED MUCHO LOTE", nombre: "Nancy Velez", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { red: "RED MUCHO LOTE", nombre: "Maria Rebeca Gomez", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { red: "RED MUCHO LOTE", nombre: "Luz Cherrez", infante: "", cuota: "Pendiente", bus: "Bus" },
-            { red: "RED MUCHO LOTE", nombre: "Ruth Pazmiño", infante: "", cuota: "Pendiente", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Maria Rebeca Gomez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Luz Cherrez", infante: "", cuota: "Pagado", bus: "Bus" },
+            { red: "RED MUCHO LOTE", nombre: "Ruth Pazmiño", infante: "", cuota: "Pagado", bus: "Bus" },
 
-            // RED FERROVIARIA (10)
-            { red: "RED FERROVIARIA", nombre: "Maida Pareja", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { red: "RED FERROVIARIA", nombre: "Pedro Pareja", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
-            { red: "RED FERROVIARIA", nombre: "Pedro Pareja Jr.", infante: "", cuota: "Pendiente", bus: "Carro Propio" },
+            // RED FERROVIARIA (6)
             { red: "RED FERROVIARIA", nombre: "Abel Delgado", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED FERROVIARIA", nombre: "Sandra Bravo", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED FERROVIARIA", nombre: "Marthita", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { red: "RED FERROVIARIA", nombre: "Giovanny Pilozo", infante: "", cuota: "Pendiente", bus: "Bus" },
             { red: "RED FERROVIARIA", nombre: "Iliana Anchundia", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED FERROVIARIA", nombre: "Paulo Espinoza", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED FERROVIARIA", nombre: "Mia Espinioza", infante: "", cuota: "Pagado", bus: "Carro Propio" },
@@ -572,7 +626,7 @@
             { red: "RED VIA A LA COSTA", nombre: "Arianna Lambertucci", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED VIA A LA COSTA", nombre: "Pedro Triviño", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED VIA A LA COSTA", nombre: "Hermano De Arianna", infante: "", cuota: "Pagado", bus: "Carro Propio" },
-            { red: "RED VIA A LA COSTA", nombre: "Kelly Varas", infante: "", cuota: "Pagado", bus: "Carro Propio" },
+            { red: "RED VIA A LA COSTA", nombre: "Kelly Varas", infante: "", cuota: "Pagado", bus: "Bus" },
             { red: "RED VIA A LA COSTA", nombre: "Belen Segarra", infante: "", cuota: "Pagado", bus: "Carro Propio" },
             { red: "RED VIA A LA COSTA", nombre: "Mirian Valero", infante: "", cuota: "Pagado", bus: "Bus" }
         ];
@@ -707,12 +761,13 @@
                             <span class="porcentaje">${pctPagados}% del total</span>
                         </div>
                     </div>
-                    <div class="metrica">
+                    <div class="metrica clickable" id="metricaPendientes" title="Clic para ver el listado">
                         <div class="icono rojo">⏳</div>
                         <div class="info">
                             <span class="valor rojo">${totalPendientes}</span>
                             <span class="etiqueta">Pendientes</span>
                             <span class="porcentaje">${pctPendientes}% del total</span>
+                            <span class="ver-mas">👆 Ver listado</span>
                         </div>
                     </div>
                     <div class="barra-progreso">
@@ -861,7 +916,7 @@
         });
 
         // ============================================================
-        // MODAL
+        // MODAL DE RED
         // ============================================================
         const overlay = document.getElementById('modalOverlay');
         const modalEmoji = document.getElementById('modalEmoji');
@@ -962,6 +1017,80 @@
         }
 
         // ============================================================
+        // MODAL DE PENDIENTES
+        // ============================================================
+        const overlayPend = document.getElementById('modalPendientesOverlay');
+        const pendientesCount = document.getElementById('pendientesCount');
+        const modalPendientesBody = document.getElementById('modalPendientesBody');
+        const closePendientes = document.getElementById('closePendientes');
+        const searchPendientes = document.getElementById('searchPendientes');
+
+        function renderizarPendientes(filtro = "") {
+            const query = filtro.toLowerCase().trim();
+            const lista = personas.filter(p => p.cuota === "Pendiente");
+
+            const filtrada = lista.filter(p =>
+                p.nombre.toLowerCase().includes(query) ||
+                p.red.toLowerCase().includes(query)
+            );
+
+            pendientesCount.textContent = filtro
+                ? `${filtrada.length} de ${lista.length} personas`
+                : `${lista.length} personas pendientes`;
+
+            if (!filtrada.length) {
+                modalPendientesBody.innerHTML = `
+                    <div class="no-results">
+                        <span class="emoji">🔍</span>
+                        No se encontraron personas pendientes
+                    </div>
+                `;
+                return;
+            }
+
+            const filas = filtrada.map(p => {
+                const info = redInfo[p.red] || { emoji: "🏠" };
+                const esMenor = p.infante && p.infante !== "";
+                return `
+                    <tr>
+                        <td class="col-red"><span class="emoji-red">${info.emoji}</span>${p.red.toUpperCase()}</td>
+                        <td class="col-nombre-p">
+                            ${p.nombre.toUpperCase()}
+                            ${esMenor ? `<span class="badge-menor">👶 ${p.infante}</span>` : ''}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            modalPendientesBody.innerHTML = `
+                <table class="tabla-pendientes">
+                    <thead>
+                        <tr>
+                            <th class="col-red">Red</th>
+                            <th class="col-nombre-p">Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${filas}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function abrirModalPendientes() {
+            renderizarPendientes();
+            overlayPend.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            searchPendientes.value = '';
+            searchPendientes.focus();
+        }
+
+        function cerrarModalPendientes() {
+            overlayPend.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ============================================================
         // EVENTOS
         // ============================================================
         contenedor.addEventListener('click', (e) => {
@@ -972,8 +1101,23 @@
 
         closeBtn.addEventListener('click', cerrarModal);
         overlay.addEventListener('click', (e) => { if (e.target === overlay) cerrarModal(); });
+
+        closePendientes.addEventListener('click', cerrarModalPendientes);
+        overlayPend.addEventListener('click', (e) => { if (e.target === overlayPend) cerrarModalPendientes(); });
+
+        // Click en la métrica de Pendientes
+        document.getElementById('metricaPendientes').addEventListener('click', abrirModalPendientes);
+
+        // Búsqueda en modal de pendientes
+        searchPendientes.addEventListener('input', (e) => {
+            renderizarPendientes(e.target.value);
+        });
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && overlay.classList.contains('active')) cerrarModal();
+            if (e.key === 'Escape') {
+                if (overlay.classList.contains('active')) cerrarModal();
+                if (overlayPend.classList.contains('active')) cerrarModalPendientes();
+            }
         });
 
         searchInput.addEventListener('input', (e) => {
